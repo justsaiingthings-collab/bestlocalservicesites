@@ -23,12 +23,12 @@ const baseFeatures = [
 ];
 
 const conversionFeatures = [
-  "Instant SMS reply when form is submitted",
-  "Missed-call text-back (within 30 seconds)",
-  "Follow-up automation (day 1, 3, 7)",
-  "Lead notification via text + email",
-  "Monthly performance report",
-  "\"You'll get a response immediately\" guarantee on every page",
+  "Button-Driven Chat & Popover Booking Widgets",
+  "Dedicated Business Number",
+  "Missed Call Textback & SMS Confirmations",
+  "Abandoned Flow Recovery (1h/24h)",
+  "Automated Google Reviews & On My Way Texts",
+  "Unlimited Leads & Real-time Analytics",
 ];
 
 const comparisons = [
@@ -100,12 +100,11 @@ export default function PricingPage() {
                 <span className="text-5xl font-black text-slate-900">$198</span>
                 <span className="text-slate-400">/mo</span>
               </div>
-              <p className="text-slate-400 text-xs mb-1">$149 base + $49 Conversion Pack</p>
               <p className="text-slate-500 text-sm mb-6">
-                Every lead gets an immediate response — even at 2am.
+                Turn your visitors into booked appointments automatically.
               </p>
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">
-                Everything in Base, plus:
+                Core Automation Capabilities:
               </div>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {conversionFeatures.map((f) => (
@@ -233,7 +232,7 @@ export default function PricingPage() {
               },
               {
                 q: "How does the Conversion Pack work?",
-                a: "We set up a dedicated phone number for your business. When someone submits a form, they get an SMS within 30 seconds. If they call and you don't answer, they get a text-back in under a minute. All replies route to you.",
+                a: "It integrates a full automation engine into your site. We set up an intelligent chat booking widget, a dedicated business phone number, and automated workflows. When a visitor interacts, they can book instantly. If they call and you don't answer, they get a text-back in under a minute. It handles the entire lead capture and recovery process automatically.",
               },
               {
                 q: "What counts as a 'location'?",

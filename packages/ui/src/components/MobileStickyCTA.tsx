@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import type { SiteConfig } from "../types/site-config";
 
 export function MobileStickyCTA({ config }: { config: SiteConfig }) {
@@ -18,13 +19,13 @@ export function MobileStickyCTA({ config }: { config: SiteConfig }) {
             {config.isEmergencyService ? "Call 24/7" : "Call Now"}
           </span>
         </a>
-        <a
+        <Link
           href="/contact"
           className="flex flex-col items-center justify-center py-4 bg-slate-900/90 text-white font-black text-xs gap-1 transition-all active:scale-95 border-l border-white/10"
         >
           <span className="text-xl">📋</span>
           <span className="uppercase tracking-tighter text-slate-300">Get Quote</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
