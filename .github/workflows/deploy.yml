@@ -60,13 +60,27 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Build with Next.js
-        # We use turbo to build only the landing page
-        run: pnpm run build --filter=landing
+      - name: Build all apps with Next.js
+        run: pnpm run build
+        
+      - name: Prepare unified deployment artifact
+        run: |
+          mkdir -p _site
+          cp -r apps/landing/out/. _site/
+          
+          for demo in cleaning hvac landscaping painting plumbing roofing
+          do
+            mkdir -p _site/$demo
+            cp -r apps/demo-$demo/out/. _site/$demo/
+          done
+          
+          # Explicitly disable Jekyll to ensure _next folders are served
+          touch _site/.nojekyll
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/landing/out
+          path: ./_site
 
   # Deployment job
   deploy:

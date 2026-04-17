@@ -239,9 +239,9 @@ export default function LandingPage() {
                 href={
                   process.env.NODE_ENV === "development"
                     ? `http://localhost:${demo.port}`
-                    : `https://${demo.slug}.${process.env.NEXT_PUBLIC_SITE_DOMAIN || "bestlocalservices.com"}`
+                    : `/bestlocalservicesites/${demo.slug}`
                 }
-                target="_blank"
+                target={process.env.NODE_ENV === "development" ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="group bg-slate-800 hover:bg-slate-700 rounded-2xl p-6 border border-slate-700 hover:border-orange-500 transition-all"
               >
@@ -259,13 +259,14 @@ export default function LandingPage() {
                 <p className="text-slate-400 text-sm">
                   {process.env.NODE_ENV === "development" 
                     ? `localhost:${demo.port}` 
-                    : `${demo.slug}.${process.env.NEXT_PUBLIC_SITE_DOMAIN || "bestlocalservices.com"}`}
+                    : `/bestlocalservicesites/${demo.slug}`}
                 </p>
                 <div className="mt-3 text-orange-400 text-sm font-semibold group-hover:underline">
                   View demo →
                 </div>
               </a>
             ))}
+
           </div>
         </div>
 

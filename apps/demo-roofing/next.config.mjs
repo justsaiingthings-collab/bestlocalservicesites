@@ -1,6 +1,11 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   transpilePackages: ["@bestlocal/ui", "@bestlocal/templates"],
+  output: "export",
+  basePath: "/bestlocalservicesites/roofing",
+  assetPrefix: "/bestlocalservicesites/roofing/",
+  images: {
+    unoptimized: true,
+  },
 };
-
 export default nextConfig;
