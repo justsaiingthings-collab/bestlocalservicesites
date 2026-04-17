@@ -19,8 +19,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Best Local Service Sites
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-              <a href="/#how-it-works" className="hover:text-slate-900">How it works</a>
-              <a href="/#demos" className="hover:text-slate-900">See demos</a>
+              <a href={process.env.NODE_ENV === "development" ? "/#how-it-works" : "/bestlocalservicesites/#how-it-works"} className="hover:text-slate-900">How it works</a>
+              <a href={process.env.NODE_ENV === "development" ? "/#demos" : "/bestlocalservicesites/#demos"} className="hover:text-slate-900">See demos</a>
               <Link href="/pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
             <div className="flex items-center gap-3">
@@ -48,8 +48,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span className="text-white font-bold">Best Local Service Sites</span>
             <div className="flex gap-6">
               <Link href="/pricing" className="hover:text-white">Pricing</Link>
-              <a href="/#demos" className="hover:text-white">Demos</a>
-              <a href="/#faq" className="hover:text-white">FAQ</a>
+              <a href={process.env.NODE_ENV === "development" ? "/#demos" : "/bestlocalservicesites/#demos"} className="hover:text-white">Demos</a>
+              <a href={process.env.NODE_ENV === "development" ? "/#faq" : "/bestlocalservicesites/#faq"} className="hover:text-white">FAQ</a>
             </div>
             <span>© {new Date().getFullYear()} Best Local Service Sites</span>
           </div>

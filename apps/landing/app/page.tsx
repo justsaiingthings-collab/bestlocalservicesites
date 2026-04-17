@@ -239,7 +239,7 @@ export default function LandingPage() {
                 href={
                   process.env.NODE_ENV === "development"
                     ? `http://localhost:${demo.port}`
-                    : `/${demo.slug}`
+                    : `/bestlocalservicesites/${demo.slug}`
                 }
                 target={process.env.NODE_ENV === "development" ? "_blank" : "_self"}
                 rel="noopener noreferrer"
@@ -259,7 +259,7 @@ export default function LandingPage() {
                 <p className="text-slate-400 text-sm">
                   {process.env.NODE_ENV === "development" 
                     ? `localhost:${demo.port}` 
-                    : `bestlocalservicesites.com/${demo.slug}`}
+                    : `/bestlocalservicesites/${demo.slug}`}
                 </p>
                 <div className="mt-3 text-orange-400 text-sm font-semibold group-hover:underline">
                   View demo →

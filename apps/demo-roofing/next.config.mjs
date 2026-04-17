@@ -2,8 +2,8 @@
 const nextConfig = {
   transpilePackages: ["@bestlocal/ui", "@bestlocal/templates"],
   output: "export",
-  basePath: "/roofing",
-  assetPrefix: "/roofing/",
+  basePath: "/bestlocalservicesites/roofing",
+  assetPrefix: "/bestlocalservicesites/roofing/",
   images: {
     unoptimized: true,
   },
