@@ -22,8 +22,8 @@ export const roofingConfig: SiteConfig = {
   serviceRadius: "Serving King County & surrounding areas",
 
   heroVideo: "https://videos.pexels.com/video-files/5731914/5731914-uhd_2560_1440_25fps.mp4",
-  heroPoster: "/roof.png",
-  technicianImage: "/technician.png",
+  heroPoster: "/roofing/roof.png",
+  technicianImage: "/roofing/technician.png",
 
   heroHeadline: "Roof Leaking? We Fix It Today.",
   heroSubheadline:

@@ -23,7 +23,7 @@ export const plumbingConfig: SiteConfig = {
 
   heroVideo: "https://videos.pexels.com/video-files/4108795/4108795-uhd_2560_1440_25fps.mp4",
   heroPoster: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1600&q=80",
-  technicianImage: "/technician.png",
+  technicianImage: "/plumbing/technician.png",
 
   heroHeadline: "Pipe Burst? Drain Clogged? Call Now.",
   heroSubheadline:

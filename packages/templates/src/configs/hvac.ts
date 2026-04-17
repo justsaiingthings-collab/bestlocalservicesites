@@ -23,7 +23,7 @@ export const hvacConfig: SiteConfig = {
 
   heroVideo: "https://videos.pexels.com/video-files/3843435/3843435-uhd_2560_1440_25fps.mp4",
   heroPoster: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80",
-  technicianImage: "/technician.png",
+  technicianImage: "/hvac/technician.png",
 
 
   heroHeadline: "AC Out? Furnace Down? We Fix It Today.",

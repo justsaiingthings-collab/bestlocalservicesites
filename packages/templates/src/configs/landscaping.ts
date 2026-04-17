@@ -23,7 +23,7 @@ export const landscapingConfig: SiteConfig = {
 
   heroVideo: "https://videos.pexels.com/video-files/856132/856132-hd_1920_1080_25fps.mp4",
   heroPoster: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1600&q=80",
-  technicianImage: "/technician.png",
+  technicianImage: "/landscaping/technician.png",
 
   heroHeadline: "Lawn Looking Rough? We Fix That.",
   heroSubheadline:

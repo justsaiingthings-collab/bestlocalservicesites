@@ -23,7 +23,7 @@ export const cleaningConfig: SiteConfig = {
 
   heroVideo: "https://videos.pexels.com/video-files/4108670/4108670-uhd_2560_1440_25fps.mp4",
   heroPoster: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
-  technicianImage: "/technician.png",
+  technicianImage: "/cleaning/technician.png",
 
   heroHeadline: "A Clean Home Without the Hassle.",
   heroSubheadline:

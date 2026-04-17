@@ -23,7 +23,7 @@ export const paintingConfig: SiteConfig = {
 
   heroVideo: "https://videos.pexels.com/video-files/3252421/3252421-uhd_2560_1440_25fps.mp4",
   heroPoster: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=80",
-  technicianImage: "/technician.png",
+  technicianImage: "/painting/technician.png",
 
   heroHeadline: "Fresh Paint. Zero Mess. Done Right.",
   heroSubheadline:
