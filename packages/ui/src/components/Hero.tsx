@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { SiteConfig } from "../types/site-config";
 import { EmergencyBadge } from "./EmergencyBadge";
 
@@ -133,11 +134,15 @@ export function Hero({ config, locationOverride }: HeroProps) {
           {(config.technicianImage || config.heroPoster) && (
             <div className="hidden lg:block flex-shrink-0 w-1/3 max-w-sm relative">
               <div className="absolute -inset-4 bg-orange-500/20 blur-3xl rounded-full" />
-              <img 
-                src={config.technicianImage || config.heroPoster} 
-                alt={config.heroImageAlt || "Our Technician"}
-                className="relative rounded-3xl shadow-2xl border-4 border-white/10 object-cover w-full aspect-[4/5] object-top"
-              />
+              <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+                <Image 
+                  src={config.technicianImage || config.heroPoster || ""} 
+                  alt={config.heroImageAlt || "Our Technician"}
+                  fill
+                  className="object-cover object-top"
+                  unoptimized
+                />
+              </div>
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-2xl flex items-center gap-3 border border-slate-100">
                 <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl">
                   ✓

@@ -77,6 +77,9 @@ jobs:
           # Explicitly disable Jekyll to ensure _next folders are served
           touch _site/.nojekyll
           
+          # Configure Custom Domain
+          echo "bestlocalservicesites.com" > _site/CNAME
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
