@@ -15,3 +15,4 @@ export { CTASection } from "./components/CTASection";
 export { LeadForm } from "./components/LeadForm";
 export { Footer } from "./components/Footer";
 export { LocationServicePage } from "./components/LocationPages";
+export { LocalBusinessSchema } from "./components/LocalBusinessSchema";

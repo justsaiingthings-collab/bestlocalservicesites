@@ -112,6 +112,50 @@ const faqs = [
 export default function LandingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "Home Service Contractor Website Engine",
+            description: "Done-for-you conversion-optimized websites for home service contractors.",
+            brand: {
+              "@type": "Brand",
+              name: "Best Local Service Sites",
+            },
+            offers: {
+              "@type": "Offer",
+              url: "https://bestlocalservicesites.com/pricing",
+              priceCurrency: "USD",
+              price: "149.00",
+              priceValidUntil: "2027-12-31",
+              availability: "https://schema.org/InStock",
+              seller: {
+                "@type": "Organization",
+                name: "Best Local Service Sites",
+              },
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.a,
+              },
+            })),
+          }),
+        }}
+      />
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="bg-slate-900 text-white pt-20 pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center">

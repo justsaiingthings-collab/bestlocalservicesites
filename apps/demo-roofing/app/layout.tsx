@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { StickyHeader, MobileStickyCTA, Footer, TopBar } from "@bestlocal/ui";
+import { StickyHeader, MobileStickyCTA, Footer, TopBar, LocalBusinessSchema } from "@bestlocal/ui";
 import { roofingConfig as config } from "@bestlocal/templates";
 
 
@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans">
+        <LocalBusinessSchema config={config} />
         <TopBar config={config} />
         <StickyHeader config={config} />
         <main className="min-h-screen pb-16 md:pb-0">{children}</main>
