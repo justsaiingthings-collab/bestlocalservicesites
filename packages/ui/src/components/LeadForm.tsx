@@ -56,7 +56,7 @@ export function LeadForm({ config }: { config: SiteConfig }) {
 
   return (
     <div className="bg-white rounded-3xl p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-slate-100 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-right from-orange-400 to-orange-600" />
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-400 to-orange-600" />
       
       <div className="mb-6">
         <h3 className="text-2xl font-black text-slate-900 mb-1">Get an instant quote</h3>

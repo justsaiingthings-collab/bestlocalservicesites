@@ -54,11 +54,7 @@ export function CTASection({ config }: { config: SiteConfig }) {
           </div>
 
           {/* Right: Lead form */}
-          <div className="bg-white rounded-2xl p-8 text-slate-900">
-            <h3 className="text-xl font-black mb-1">Request a free estimate</h3>
-            <p className="text-slate-500 text-sm mb-6">
-              You'll get a response immediately.
-            </p>
+          <div>
             <LeadForm config={config} />
           </div>
         </div>
