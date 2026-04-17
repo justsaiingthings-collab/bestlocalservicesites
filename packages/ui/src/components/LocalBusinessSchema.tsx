@@ -22,7 +22,7 @@ export function LocalBusinessSchema({ config }: LocalBusinessSchemaProps) {
     "@context": "https://schema.org",
     "@type": schemaType,
     name: config.businessName,
-    image: config.heroPoster || "https://bestlocalservicesites.com/favicon.ico",
+    image: config.heroPoster || "https://bestlocalservicesites.com/icon.png",
     "@id": config.siteUrl || `https://bestlocalservicesites.com/${config.vertical}`,
     url: config.siteUrl || `https://bestlocalservicesites.com/${config.vertical}`,
     telephone: config.phone,

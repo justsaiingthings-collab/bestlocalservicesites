@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               email: "team@bestlocalservicesites.com",
               description:
                 "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
-              logo: "https://bestlocalservicesites.com/favicon.ico",
+              logo: "https://bestlocalservicesites.com/icon.png",
             }),
           }}
         />

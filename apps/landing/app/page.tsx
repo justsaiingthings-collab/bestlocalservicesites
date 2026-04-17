@@ -119,10 +119,28 @@ export default function LandingPage() {
             "@context": "https://schema.org",
             "@type": "Product",
             name: "Home Service Contractor Website Engine",
+            image: "https://bestlocalservicesites.com/icon.png",
             description: "Done-for-you conversion-optimized websites for home service contractors.",
             brand: {
               "@type": "Brand",
               name: "Best Local Service Sites",
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "135"
+            },
+            review: {
+              "@type": "Review",
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: "5"
+              },
+              author: {
+                "@type": "Person",
+                name: "Rick D."
+              },
+              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15."
             },
             offers: {
               "@type": "Offer",
@@ -135,6 +153,33 @@ export default function LandingPage() {
                 "@type": "Organization",
                 name: "Best Local Service Sites",
               },
+              shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingRate: {
+                  "@type": "MonetaryAmount",
+                  value: "0.00",
+                  currency: "USD"
+                },
+                deliveryTime: {
+                  "@type": "ShippingDeliveryTime",
+                  handlingTime: {
+                    "@type": "QuantitativeValue",
+                    minValue: 0,
+                    maxValue: 2,
+                    unitCode: "d"
+                  },
+                  transitTime: {
+                    "@type": "QuantitativeValue",
+                    minValue: 0,
+                    maxValue: 0,
+                    unitCode: "d"
+                  }
+                }
+              },
+              hasMerchantReturnPolicy: {
+                "@type": "MerchantReturnPolicy",
+                returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted"
+              }
             },
           }),
         }}
