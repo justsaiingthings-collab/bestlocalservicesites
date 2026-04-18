@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing | Best Local Service Sites",
   description:
-    "Simple, transparent pricing for home service websites. $149/mo base + $100 one-time setup. +$45/location. +$49/mo Conversion Pack. No contracts.",
+    "Simple, transparent pricing for home service websites. $149/mo base + $200 one-time setup. +$45/location. +$49/mo Conversion Pack. No contracts.",
 };
 
 const baseFeatures = [
@@ -19,7 +19,7 @@ const baseFeatures = [
   "Monthly content updates",
   "SSL + fast hosting included",
   "4.9★ rated support team",
-  "$100 One-time Setup + Domain",
+  "$200 One-time Setup + Domain",
   "No contracts · Cancel any time",
 ];
 
@@ -157,7 +157,7 @@ export default function PricingPage() {
 
           {/* All plans note */}
           <div className="text-center mt-8 text-slate-500 text-sm">
-            All plans are month-to-month. $100 one-time setup fee covers domain and configuration. No contracts.
+            All plans are month-to-month. $200 one-time setup fee covers domain and configuration. No contracts.
           </div>
         </div>
       </section>
@@ -215,7 +215,7 @@ export default function PricingPage() {
             {[
               {
                 q: "Is there a setup fee?",
-                a: "There is a one-time $100 fee which covers professional setup, domain registration, and technical configuration. After that, you only pay your flat monthly rate.",
+                a: "There is a one-time $200 fee which covers professional setup, domain registration, and technical configuration. After that, you only pay your flat monthly rate.",
               },
               {
                 q: "What if I want to cancel?",
