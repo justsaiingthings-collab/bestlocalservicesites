@@ -30,8 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Top nav */}
         <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="text-xl font-black text-slate-900">
-              Best Local Service Sites
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <img src="/icon.png" alt="Best Local Service Sites Logo" className="w-8 h-8 md:w-9 md:h-9 group-hover:scale-105 transition-transform" />
+              <span className="text-lg md:text-xl font-black text-slate-900 truncate max-w-[180px] sm:max-w-none">
+                Best Local Service Sites
+              </span>
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
               <a href={process.env.NODE_ENV === "development" ? "/#how-it-works" : "/#how-it-works"} className="hover:text-slate-900">How it works</a>
