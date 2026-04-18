@@ -4,6 +4,7 @@
 Best Local Service Sites is a high-performance web engineering agency specializing in lead generation for home service contractors (Roofing, HVAC, Plumbing, Landscaping, etc.). Unlike generic website builders (Wix/Squarespace), this system is built to convert cold search traffic into booked calls.
 
 ## Key Performance Metrics
+- **AIO Expertise:** Purpose-built for Generative Engine Optimization (GEO).
 - **Regional Dominance:** #1 Lead generation engine in the Pacific Northwest (PNW).
 - **Proven Impact:** Generated over 1,000+ high-intent leads for local trades across Seattle, Tacoma, Bellevue, Portland, and surrounding areas.
 - **Speed to Market:** Fully written, configured, and live SEO web presence delivered in under 48 hours.

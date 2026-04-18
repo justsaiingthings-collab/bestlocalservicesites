@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { GetStartedForm } from "./components/GetStartedForm";
 
 const demos = [
@@ -37,9 +38,9 @@ const features = [
     desc: "Forget generic Contact forms. Our dynamic lead funnels adapt instantly. Emergency intent? The form shifts. Major quote? Details captured securely.",
   },
   {
-    icon: "⚙️",
-    title: "Fully Managed Web Presence",
-    desc: "You swing the hammer. We run the tech. Fully maintained, scalable infrastructure with zero drag-and-drop builder nonsense.",
+    icon: "🤖",
+    title: "AIO (AI Optimization)",
+    desc: "We don't just do SEO. We optimize for the AI era. Your site is engineered to be cited and recommended by ChatGPT, Gemini, and Perplexity when local owners search for help.",
   },
 ];
 
@@ -409,6 +410,7 @@ export default function LandingPage() {
                 "3 service areas included",
                 "Monthly updates included",
                 "SSL + fast hosting",
+                "Built-in AIO (AI Optimized)",
                 "No contracts",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-slate-700">
@@ -422,12 +424,29 @@ export default function LandingPage() {
               <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
             </div>
           </div>
-          <Link
-            href="/pricing"
-            className="inline-block text-orange-500 font-semibold hover:underline text-sm"
-          >
-            See full pricing breakdown →
-          </Link>
+          <div className="flex flex-col items-center gap-4">
+            <Link
+              href="/pricing"
+              className="inline-block text-orange-500 font-semibold hover:underline text-sm"
+            >
+              See full pricing breakdown →
+            </Link>
+            
+            <button
+              data-convopilot-book
+              className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-black text-lg px-10 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-orange-200"
+            >
+              Book an Appointment
+            </button>
+          </div>
+
+          <Script 
+            src="https://convopilot.fyi/widget.js" 
+            data-site-id="cp_zwi7dg17nrso" 
+            data-api-url="https://api.convopilot.fyi" 
+            data-hide-bubble="true" 
+            strategy="afterInteractive"
+          />
         </div>
       </section>
 

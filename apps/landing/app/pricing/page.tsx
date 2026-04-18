@@ -18,7 +18,7 @@ const baseFeatures = [
   "Up to 3 service areas / location pages",
   "Monthly content updates",
   "SSL + fast hosting included",
-  "4.9★ rated support team",
+  "Built-in AIO (AI Optimized)",
   "$200 One-time Setup + Domain",
   "No contracts · Cancel any time",
 ];
