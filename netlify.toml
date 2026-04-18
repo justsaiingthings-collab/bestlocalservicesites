@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm i --frozen-lockfile && pnpm run build && bash build-netlify.sh"
+  publish = "_site"
+
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
