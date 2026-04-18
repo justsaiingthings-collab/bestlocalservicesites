@@ -23,12 +23,12 @@ const baseFeatures = [
 ];
 
 const conversionFeatures = [
-  "Button-Driven Chat & Popover Booking Widgets",
-  "Dedicated Business Number",
-  "Missed Call Textback & SMS Confirmations",
-  "Abandoned Flow Recovery (1h/24h)",
-  "Automated Google Reviews & On My Way Texts",
-  "Unlimited Leads & Real-time Analytics",
+  "Button-Driven Chat & Popover Widgets",
+  "Standalone Booking Page & Custom Branding",
+  "Email Reminders & Booking Alerts",
+  "Weekly Performance Digest Emails",
+  "Unlimited Leads & Bookings",
+  "Real-time Analytics & Team Collaboration",
 ];
 
 const comparisons = [
@@ -232,7 +232,7 @@ export default function PricingPage() {
               },
               {
                 q: "How does the Conversion Pack work?",
-                a: "It integrates a full automation engine into your site. We set up an intelligent chat booking widget, a dedicated business phone number, and automated workflows. When a visitor interacts, they can book instantly. If they call and you don't answer, they get a text-back in under a minute. It handles the entire lead capture and recovery process automatically.",
+                a: "It integrates a robust Core booking platform directly into your site. We provision a fully button-driven chat widget, a dynamic popover booking engine, and standalone scheduling pages. This eliminates the friction of typing, drastically increases your lead conversions, and tracks all performance via real-time analytics.",
               },
               {
                 q: "What counts as a 'location'?",

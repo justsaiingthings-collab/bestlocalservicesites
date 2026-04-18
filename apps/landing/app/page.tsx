@@ -13,51 +13,51 @@ const demos = [
 const features = [
   {
     icon: "📞",
-    title: "Phone number everywhere",
-    desc: "Visible in the header, hero, every CTA section, and the footer. On mobile, it's one tap from anywhere on the page.",
+    title: "Sticky Action Logic",
+    desc: "Fixed tap-to-call banners injected across all mobile breakpoints. The client is never more than a single thumb-tap away from booking.",
   },
   {
     icon: "🚨",
-    title: "Emergency CTA mode",
-    desc: "For HVAC, roofing, and plumbing: the entire site shifts into urgency mode — '24/7 Emergency' headline, pulsing red badge, call-first layout.",
+    title: "Emergency CTA Matrix",
+    desc: "HVAC and plumbing sites inherently carry high-intent traffic. We trigger pulsing 'Call 24/7' action bars to leverage natural urgency and force immediate action.",
   },
   {
     icon: "📋",
-    title: "Smart lead form",
-    desc: "Starts with 3 fields. Expands only when needed. Emergency intent? Shows urgency selector. Quote? Shows project details. Never overwhelms.",
+    title: "The Core Booking Platform",
+    desc: "We deploy native popover widgets and standalone scheduling pipelines. Complete zero-friction conversion engines.",
   },
   {
     icon: "📍",
-    title: "Multi-location built in",
-    desc: "Seattle, Bellevue, Redmond — each city gets its own service page for SEO. Add a location for +$45/mo.",
+    title: "Hyper-Local SEO Clusters",
+    desc: "Seattle, Bellevue, Redmond — each city gets its own siloed service page meticulously engineered to rank for '[Your Service] in [Your City]'.",
   },
   {
     icon: "⚡",
-    title: "Same-day response promise",
-    desc: "Every page reinforces: 'You will get a response immediately.' Conversion Pack enables auto SMS reply and missed-call text-back.",
+    title: "Intent-Driven Funnels",
+    desc: "Forget generic Contact forms. Our dynamic lead funnels adapt instantly. Emergency intent? The form shifts. Major quote? Details captured securely.",
   },
   {
-    icon: "📱",
-    title: "Mobile sticky CTA bar",
-    desc: "Fixed at the bottom of every mobile screen: Call Now + Get Quote. Never more than one tap from converting.",
+    icon: "⚙️",
+    title: "Fully Managed Web Presence",
+    desc: "You swing the hammer. We run the tech. Fully maintained, scalable infrastructure with zero drag-and-drop builder nonsense.",
   },
 ];
 
 const steps = [
   {
     n: "1",
-    title: "Tell us your business",
-    desc: "Name, phone, services, locations. Takes about 5 minutes.",
+    title: "Target Identification",
+    desc: "Give us 5 minutes of your time. Tell us your exact service areas and primary operational focus.",
   },
   {
     n: "2",
-    title: "We build your site",
-    desc: "Fully written, designed, and live within 48 hours. No templates to fiddle with.",
+    title: "The Turnkey Go-Live",
+    desc: "We completely write, configure, and deploy a fully-optimized local SEO web presence within 48 hours.",
   },
   {
     n: "3",
-    title: "Calls start coming in",
-    desc: "Add the Conversion Pack and every lead gets an instant SMS reply — even at 2am.",
+    title: "Dominate Your Market",
+    desc: "Armed with sticky CTAs and local keyword dominance, the organic leads start flowing directly to your phone.",
   },
 ];
 
@@ -160,6 +160,10 @@ export default function LandingPage() {
                   value: "0.00",
                   currency: "USD"
                 },
+                shippingDestination: {
+                  "@type": "DefinedRegion",
+                  addressCountry: "US"
+                },
                 deliveryTime: {
                   "@type": "ShippingDeliveryTime",
                   handlingTime: {
@@ -178,6 +182,7 @@ export default function LandingPage() {
               },
               hasMerchantReturnPolicy: {
                 "@type": "MerchantReturnPolicy",
+                applicableCountry: "US",
                 returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted"
               }
             },
@@ -208,19 +213,18 @@ export default function LandingPage() {
             🚀 Live in 48 hours · No contracts
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-none mb-6">
-            Websites that<br />
-            <span className="text-orange-400">generate calls.</span>
+            Stop Losing $10,000 Jobs to <br />
+            <span className="text-orange-400">Competitors With Better Websites.</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10">
-            Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses.
-            Built to convert visitors into calls and booked jobs — not just traffic.
+            You swing the hammer. We build the high-conversion lead generation engine. Get a completely done-for-you home service web presence designed to dominate local search and turn cold traffic into booked appointments.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#get-started"
               className="bg-orange-500 hover:bg-orange-600 text-white font-black text-lg px-8 py-4 rounded-xl transition-colors"
             >
-              Get My Site →
+              Claim Your Local Market →
             </Link>
             <Link
               href="#demos"
@@ -242,22 +246,24 @@ export default function LandingPage() {
 
       {/* ─── THE PROBLEM ─────────────────────────────────────────────── */}
       <section className="bg-white py-16 px-4 border-b">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-            Most contractor websites don't actually work.
+            Your "Brochure" Website is Bleeding Money.
           </h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto mb-10">
-            They look decent. But the phone number is buried, there's no clear CTA, and visitors
-            leave without calling. You're paying for a brochure, not a sales tool.
+            A pretty design does absolutely nothing if the phone isn't ringing. If your web presence isn't operating as an automated sales rep capturing local leads 24/7, you are actively giving away market share.
           </p>
-          <div className="grid sm:grid-cols-3 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {[
-              { icon: "❌", bad: "Phone number in the footer", good: "Phone visible in header, hero, and sticky bar" },
-              { icon: "❌", bad: "Generic 'Contact Us' form", good: "Smart form that adapts to intent" },
-              { icon: "❌", bad: "Visitors leave without calling", good: "Instant SMS reply keeps leads warm" },
+              { icon: "❌", bad: "Phone number buried", good: "Sticky instant-dial logic fixed dynamically on every screen." },
+              { icon: "❌", bad: "Generic 'Email Us' forms", good: "High-intent service funnels routing straight to SMS." },
+              { icon: "❌", bad: "Traffic bouncing off site", good: "Core Conversion widgets capture stragglers immediately." },
+              { icon: "❌", bad: "Invisible to Google", good: "Siloed Service-Area pages locking down hyper-local SEO." },
             ].map((item, i) => (
-              <div key={i} className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                <div className="text-sm text-slate-400 line-through mb-2">{item.bad}</div>
+              <div key={i} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
+                <div>
+                  <div className="text-sm text-slate-400 line-through mb-4 pb-4 border-b border-slate-200">{item.bad}</div>
+                </div>
                 <div className="text-sm font-semibold text-green-700 flex items-start gap-2">
                   <span className="text-green-500 mt-0.5">✓</span>
                   {item.good}
@@ -272,7 +278,7 @@ export default function LandingPage() {
       <section className="bg-slate-50 py-16 px-4" id="how-it-works">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-12">
-            How it works
+            We Build The Engine. You Take The Calls.
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
@@ -292,10 +298,10 @@ export default function LandingPage() {
       <section className="bg-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-4">
-            Every site includes
+            Engineered For Domination
           </h2>
           <p className="text-slate-500 text-center mb-12">
-            Not just a website. A system built to get your phone ringing.
+            Not just a pretty website. A highly lethal system built to secure localized market share.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
