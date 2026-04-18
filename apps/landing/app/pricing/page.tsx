@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Pricing | Best Local Service Sites",
+  title: "Pricing | PNW's Leading Lead Gen Engine",
   description:
-    "Simple, transparent pricing for home service websites. $149/mo base + $200 one-time setup. +$45/location. +$49/mo Conversion Pack. No contracts.",
+    "Transparent pricing for PNW home service websites. $149/mo base + $200 setup. 1,000+ leads generated for trades in Seattle, Tacoma, and Portland.",
 };
 
 const baseFeatures = [

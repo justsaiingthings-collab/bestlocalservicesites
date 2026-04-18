@@ -17,13 +17,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Best Local Service Sites",
-              url: "https://bestlocalservicesites.com",
-              email: "team@bestlocalservicesites.com",
-              description:
-                "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
-              logo: "https://bestlocalservicesites.com/icon.png",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://bestlocalservicesites.com/#organization",
+                  "name": "Best Local Service Sites",
+                  "url": "https://bestlocalservicesites.com",
+                  "email": "team@bestlocalservicesites.com",
+                  "logo": "https://bestlocalservicesites.com/icon.png",
+                  "description": "The PNW's leading lead generation engine for home service contractors. 1000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+                  "areaServed": [
+                    { "@type": "State", "name": "Washington" },
+                    { "@type": "State", "name": "Oregon" },
+                    { "@type": "State", "name": "Idaho" },
+                    { "@type": "Country", "name": "United States" }
+                  ],
+                  "knowsAbout": [
+                    "Local SEO",
+                    "Home Service Marketing",
+                    "Lead Generation for Contractors",
+                    "Responsive Web Design",
+                    "Conversion Rate Optimization"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://bestlocalservicesites.com/#website",
+                  "url": "https://bestlocalservicesites.com",
+                  "name": "Best Local Service Sites",
+                  "publisher": { "@id": "https://bestlocalservicesites.com/#organization" }
+                }
+              ]
             }),
           }}
         />

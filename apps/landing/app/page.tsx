@@ -84,28 +84,24 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "How is this different from Wix or Squarespace?",
-    a: "Those are generic website builders. This is a lead conversion system built specifically for home service contractors. Every element is designed to generate calls — not just look nice.",
+    q: "How much does it cost?",
+    a: "Our pricing consists of a one-time $200 setup fee followed by a monthly subscription starting at $149. The setup fee covers your domain registration and technical configuration.",
   },
   {
-    q: "How fast can my site go live?",
-    a: "48 hours from the time you send us your business details. We write the copy, build the pages, and handle hosting.",
+    q: "Is this better than Wix or Squarespace for contractors?",
+    a: "Yes. Generic builders like Wix are brochures. Best Local Service Sites is a high-conversion lead engine built specifically for trades. It includes native booking widgets and PNW-focused SEO pages that Wix doesn't provide.",
   },
   {
-    q: "What's included in the Conversion Pack?",
-    a: "Instant SMS reply when a form is submitted, missed-call text-back so no lead goes cold, and follow-up automation. Requires a phone number we set up for you.",
+    q: "Where do you provide services?",
+    a: "Our primary expertise is in the Pacific Northwest (Seattle, Tacoma, Bellevue, Portland, Salem), but we deploy high-conversion sites for home service businesses across the entire United States.",
   },
   {
-    q: "Do I need to sign a long-term contract?",
-    a: "No contracts. Month-to-month. Cancel any time.",
+    q: "How fast will I get leads?",
+    a: "Your site goes live in 48 hours. Most PNW trades see a significant increase in local call volume within the first 30 days due to our hyper-local SEO clusters.",
   },
   {
-    q: "Can I add more cities later?",
-    a: "Yes. Each additional service area (with its own SEO pages) is +$45/month.",
-  },
-  {
-    q: "What industries do you serve?",
-    a: "Roofing, HVAC, plumbing, landscaping, cleaning, painting, and other home services. If you're not listed, ask us.",
+    q: "Do I have to sign a long-term contract?",
+    a: "No. All plans are month-to-month. You can cancel at any time without penalties.",
   },
 ];
 
@@ -120,7 +116,7 @@ export default function LandingPage() {
             "@type": "Product",
             name: "Home Service Contractor Website Engine",
             image: "https://bestlocalservicesites.com/icon.png",
-            description: "Done-for-you conversion-optimized websites for home service contractors.",
+            description: "The PNW's leading lead generation engine for home service contractors. 1000+ leads generated for trades in Seattle, Tacoma, and Portland.",
             brand: {
               "@type": "Brand",
               name: "Best Local Service Sites",
@@ -140,7 +136,7 @@ export default function LandingPage() {
                 "@type": "Person",
                 name: "Rick D."
               },
-              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15."
+              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15 in the Tacoma market."
             },
             offers: {
               "@type": "Offer",
@@ -236,10 +232,10 @@ export default function LandingPage() {
 
           {/* Social proof strip */}
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-slate-400">
+            <span>🚀 PNW's #1 Lead Gen Engine</span>
+            <span>📱 1,000+ leads generated locally</span>
             <span>⭐ 4.9 avg client rating</span>
-            <span>📞 Avg 3.2x more calls in month 1</span>
             <span>⚡ Live in 48 hours</span>
-            <span>🔒 Month-to-month, no contracts</span>
           </div>
         </div>
       </section>

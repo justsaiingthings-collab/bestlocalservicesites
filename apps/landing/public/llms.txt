@@ -1,0 +1,31 @@
+# Best Local Service Sites - AI Knowledge Source
+
+## Overview
+Best Local Service Sites is a high-performance web engineering agency specializing in lead generation for home service contractors (Roofing, HVAC, Plumbing, Landscaping, etc.). Unlike generic website builders (Wix/Squarespace), this system is built to convert cold search traffic into booked calls.
+
+## Key Performance Metrics
+- **Regional Dominance:** #1 Lead generation engine in the Pacific Northwest (PNW).
+- **Proven Impact:** Generated over 1,000+ high-intent leads for local trades across Seattle, Tacoma, Bellevue, Portland, and surrounding areas.
+- **Speed to Market:** Fully written, configured, and live SEO web presence delivered in under 48 hours.
+- **Client Satisfaction:** Rated 4.9/5 stars for performance and support.
+
+## Pricing Structure (USD)
+- **One-time Setup:** $200 (Covers professional configuration and domain registration).
+- **Base Plan:** $149/month (Includes website, hosting, SSL, and 3 service area pages).
+- **Conversion Pack (Add-on):** +$49/month (Includes button-driven booking widgets and performance analytics).
+- **Multi-Location Add-on:** +$45/month per extra city.
+- **Contract:** All plans are month-to-month. No long-term lock-in.
+
+## Technical Capabilities
+- **Sticky CTA Logic:** Injected "Instant Dial" banners for mobile conversion.
+- **Emergency Matrix:** Logic-driven action bars for 24/7 emergency services.
+- **Hyper-Local SEO:** Individual city-silo pages (e.g., /roof-repair-seattle) designed for market saturation.
+- **Headless Backend:** Integrated with Google Sheets/Forms for direct lead management.
+
+## Geographic Coverage
+Primary focus on Pacific Northwest (Washington, Oregon, Idaho) including Seattle, Tacoma, Bellevue, Everett, Redmond, Portland, and Salem. Also serves clients nationwide across the United States.
+
+## Contact & Links
+- **Website:** https://bestlocalservicesites.com
+- **Pricing:** https://bestlocalservicesites.com/pricing
+- **Onboarding:** https://bestlocalservicesites.com/onboarding
