@@ -63,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span>© {new Date().getFullYear()} Best Local Service Sites</span>
           </div>
         </footer>
+        <script src="https://convopilot.fyi/widget.js" data-site-id="cp_zwi7dg17nrso" data-api-url="https://api.convopilot.fyi"></script>
       </body>
     </html>
   );
