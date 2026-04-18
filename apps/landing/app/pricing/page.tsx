@@ -32,14 +32,14 @@ const conversionFeatures = [
 ];
 
 const comparisons = [
-  { feature: "Written copy included", us: true, wix: false, agency: "Sometimes" },
-  { feature: "Built to convert, not just look nice", us: true, wix: false, agency: "Rarely" },
-  { feature: "Emergency CTA mode", us: true, wix: false, agency: false },
-  { feature: "Mobile sticky CTA bar", us: true, wix: false, agency: "Sometimes" },
-  { feature: "Missed-call text-back", us: true, wix: false, agency: false },
-  { feature: "Multi-location SEO pages", us: true, wix: false, agency: "$$$" },
-  { feature: "Month-to-month, no contract", us: true, wix: true, agency: false },
-  { feature: "Monthly price", us: "$149", wix: "$23–$49", agency: "$500–$2,000" },
+  { feature: "Written copy included", us: true, agency: "Sometimes" },
+  { feature: "Built to convert, not just look nice", us: true, agency: "Rarely" },
+  { feature: "Emergency CTA mode", us: true, agency: false },
+  { feature: "Mobile sticky CTA bar", us: true, agency: "Sometimes" },
+  { feature: "Missed-call text-back", us: true, agency: false },
+  { feature: "Multi-location SEO pages", us: true, agency: "$$$" },
+  { feature: "Month-to-month, no contract", us: true, agency: false },
+  { feature: "Monthly price", us: "$149", agency: "$500–$2,000" },
 ];
 
 export default function PricingPage() {
@@ -175,7 +175,6 @@ export default function PricingPage() {
                   <th className="py-3 px-4 text-center font-black text-slate-900 bg-orange-50 rounded-t-lg">
                     Best Local Service Sites
                   </th>
-                  <th className="py-3 px-4 text-center text-slate-500 font-semibold">Wix / Squarespace</th>
                   <th className="py-3 px-4 text-center text-slate-500 font-semibold">Web Agency</th>
                 </tr>
               </thead>
@@ -188,15 +187,6 @@ export default function PricingPage() {
                         <span className="text-green-600 font-bold">✓</span>
                       ) : (
                         <span className="font-bold text-slate-900">{row.us}</span>
-                      )}
-                    </td>
-                    <td className="py-3.5 px-4 text-center">
-                      {row.wix === true ? (
-                        <span className="text-green-600">✓</span>
-                      ) : row.wix === false ? (
-                        <span className="text-slate-300">✗</span>
-                      ) : (
-                        <span className="text-slate-500">{row.wix}</span>
                       )}
                     </td>
                     <td className="py-3.5 px-4 text-center">
