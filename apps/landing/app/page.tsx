@@ -396,7 +396,7 @@ export default function LandingPage() {
             Simple, transparent pricing
           </h2>
           <p className="text-slate-500 mb-8">
-            No setup fees. No annual lock-in. One flat monthly rate.
+            $100 one-time setup includes your domain. No annual lock-in. One flat monthly rate.
           </p>
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-6">
             <div className="flex items-baseline justify-center gap-1 mb-2">
@@ -421,6 +421,7 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-3 text-sm text-slate-500 justify-center">
+              <span>🏗️ One-time setup: <strong className="text-slate-900">$100</strong></span>
               <span>➕ Extra location: <strong className="text-slate-900">+$45/mo</strong></span>
               <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
             </div>
