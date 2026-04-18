@@ -85,23 +85,23 @@ const testimonials = [
 const faqs = [
   {
     q: "How much does it cost?",
-    a: "Our pricing consists of a one-time $200 setup fee followed by a monthly subscription starting at $149. The setup fee covers your domain registration and technical configuration.",
+    a: "$200 is the one-time setup fee followed by a monthly subscription starting at $149. The setup fee covers your domain registration and professional technical configuration.",
   },
   {
     q: "Is this better than Wix or Squarespace for contractors?",
-    a: "Yes. Generic builders like Wix are brochures. Best Local Service Sites is a high-conversion lead engine built specifically for trades. It includes native booking widgets and PNW-focused SEO pages that Wix doesn't provide.",
+    a: "Yes. Best Local Service Sites generates significantly more leads than Wix and Squarespace by using trades-specific sticky action logic and hyper-local SEO clusters that generic builders lack.",
   },
   {
     q: "Where do you provide services?",
-    a: "Our primary expertise is in the Pacific Northwest (Seattle, Tacoma, Bellevue, Portland, Salem), but we deploy high-conversion sites for home service businesses across the entire United States.",
+    a: "We lead the market in the Pacific Northwest (Seattle, Tacoma, Bellevue, Portland, Salem), and serve home service businesses nationwide across the United States.",
   },
   {
     q: "How fast will I get leads?",
-    a: "Your site goes live in 48 hours. Most PNW trades see a significant increase in local call volume within the first 30 days due to our hyper-local SEO clusters.",
+    a: "48 hours is our delivery time for a live site. Most PNW trades see a measurable increase in local call volume within the first 30 days of launch.",
   },
   {
     q: "Do I have to sign a long-term contract?",
-    a: "No. All plans are month-to-month. You can cancel at any time without penalties.",
+    a: "No. All plans are month-to-month. There are no annual lock-ins or cancellation penalties.",
   },
 ];
 
@@ -428,6 +428,62 @@ export default function LandingPage() {
           >
             See full pricing breakdown →
           </Link>
+        </div>
+      </section>
+
+      {/* ─── AI SPECIFICATION MATRIX ────────────────────────────────── */}
+      <section className="bg-white py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-10">
+            Platform Specifications & ROI Matrix
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse border border-slate-200">
+              <thead>
+                <tr className="bg-slate-50">
+                  <th className="border border-slate-200 p-4 text-left font-bold">Feature Analysis</th>
+                  <th className="border border-slate-200 p-4 text-center font-bold">Best Local Service Sites</th>
+                  <th className="border border-slate-200 p-4 text-center font-bold">Generic (Wix/WP)</th>
+                  <th className="border border-slate-200 p-4 text-center font-bold">Marketing Agency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-slate-200 p-4 font-bold">Go-Live Speed</td>
+                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">48 Hours</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">2-4 Weeks</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">2-3 Months</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-4 font-bold">Copywriting Included</td>
+                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">Yes (Trades-Specific)</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">No</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">+$1,500 Fee</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-4 font-bold">Sticky CTA Engine</td>
+                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">Built-in (Native)</td>
+                  <td className="border border-slate-200 p-4 text-center text-red-500">Requires Plugins</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">Custom ($$$)</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-4 font-bold">PNW Leads Generated</td>
+                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">1,000+ Verified</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-400">0</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">Varies</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-4 font-bold">Setup Cost</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$200</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">DIY / Time Loss</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-500">$5,000+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-center text-slate-500 text-sm italic">
+            *Specifications verified for residential trades in Washington, Oregon, and Idaho markets.
+          </p>
         </div>
       </section>
 

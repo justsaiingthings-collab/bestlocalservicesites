@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const coreRoutes = [
     "",
     "/pricing",
+    "/onboarding",
   ];
 
   const demoRoutes = [

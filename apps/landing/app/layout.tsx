@@ -38,7 +38,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     "Lead Generation for Contractors",
                     "Responsive Web Design",
                     "Conversion Rate Optimization"
-                  ]
+                  ],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Home Service Lead Generation Services",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Conversion-First Contractor Website",
+                          "description": "48-hour delivery of SEO-optimized contractor websites with sticky mobile CTAs."
+                        },
+                        "areaServed": ["Seattle", "Tacoma", "Portland", "Bellevue"]
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "PNW Market Dominance SEO",
+                          "description": "Hyper-local SEO siloing for residential trades in Washington and Oregon."
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
                   "@type": "WebSite",
