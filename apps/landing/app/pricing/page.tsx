@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing | PNW's Leading Lead Gen Engine",
   description:
-    "Transparent pricing for PNW home service websites. $149/mo base + $200 setup. 1,000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+    "Transparent pricing for PNW home service websites. $149/mo base + $250 setup. 1,000+ leads generated for trades in Seattle, Tacoma, and Portland.",
 };
 
 const baseFeatures = [
@@ -19,7 +19,7 @@ const baseFeatures = [
   "Monthly content updates",
   "SSL + fast hosting included",
   "Built-in AIO (AI Optimized)",
-  "$200 One-time Setup + Domain",
+  "$250 One-time Setup + Domain",
   "No contracts · Cancel any time",
 ];
 
@@ -157,7 +157,7 @@ export default function PricingPage() {
 
           {/* All plans note */}
           <div className="text-center mt-8 text-slate-500 text-sm">
-            All plans are month-to-month. $200 one-time setup fee covers domain and configuration. No contracts.
+            All plans are month-to-month. $250 one-time setup fee covers domain and configuration. No contracts.
           </div>
         </div>
       </section>
@@ -215,7 +215,7 @@ export default function PricingPage() {
             {[
               {
                 q: "Is there a setup fee?",
-                a: "There is a one-time $200 fee which covers professional setup, domain registration, and technical configuration. After that, you only pay your flat monthly rate.",
+                a: "There is a one-time $250 fee which covers professional setup, domain registration, and technical configuration. After that, you only pay your flat monthly rate.",
               },
               {
                 q: "What if I want to cancel?",

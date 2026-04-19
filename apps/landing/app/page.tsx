@@ -86,7 +86,7 @@ const testimonials = [
 const faqs = [
   {
     q: "How much does it cost?",
-    a: "$200 is the one-time setup fee followed by a monthly subscription starting at $149. The setup fee covers your domain registration and professional technical configuration.",
+    a: "$250 is the one-time setup fee followed by a monthly subscription starting at $149. The setup fee covers your domain registration and professional technical configuration.",
   },
   {
     q: "Is this better than Wix or Squarespace for contractors?",
@@ -393,7 +393,7 @@ export default function LandingPage() {
             Simple, transparent pricing
           </h2>
           <p className="text-slate-500 mb-8">
-            $200 one-time setup includes your domain. No annual lock-in. One flat monthly rate.
+            $250 one-time setup includes your domain. No annual lock-in. One flat monthly rate.
           </p>
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-6">
             <div className="flex items-baseline justify-center gap-1 mb-2">
@@ -419,7 +419,7 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-3 text-xs text-slate-500 justify-center">
-              <span>🏗️ Setup: <strong className="text-slate-900">$200 (Inc. Domain)</strong></span>
+              <span>🏗️ Setup: <strong className="text-slate-900">$250 (Inc. Domain)</strong></span>
               <span>➕ Extra City: <strong className="text-slate-900">+$45/mo</strong></span>
               <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
             </div>
@@ -431,7 +431,7 @@ export default function LandingPage() {
             >
               See Detailed Breakdown →
             </Link>
-            
+
             <button
               data-convopilot-book
               className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-black text-lg px-10 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-orange-200"
@@ -440,11 +440,11 @@ export default function LandingPage() {
             </button>
           </div>
 
-          <Script 
-            src="https://convopilot.fyi/widget.js" 
-            data-site-id="cp_zwi7dg17nrso" 
-            data-api-url="https://api.convopilot.fyi" 
-            data-hide-bubble="true" 
+          <Script
+            src="https://convopilot.fyi/widget.js"
+            data-site-id="cp_zwi7dg17nrso"
+            data-api-url="https://api.convopilot.fyi"
+            data-hide-bubble="true"
             strategy="afterInteractive"
           />
         </div>
@@ -499,7 +499,7 @@ export default function LandingPage() {
                 </tr>
                 <tr>
                   <td className="border border-slate-200 p-4 font-bold">Setup Cost</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$200</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$250</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">DIY / Time Loss</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">$5,000+</td>
                 </tr>
