@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: "Best Local Service Sites — Websites That Generate Calls",
   description:
     "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
+  openGraph: {
+    type: "website",
+  },
+  other: {
+    "og:updated_time": "2026-04-01T00:00:00Z",
+    "dc.date.reviewed": "2026-04-01",
+    "date-modified": "2026-04-01",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -26,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "email": "team@bestlocalservicesites.com",
                   "logo": "https://bestlocalservicesites.com/icon.png",
                   "description": "The PNW's leading lead generation engine for home service contractors. 1000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+                  "dateModified": "2026-04-01T00:00:00Z",
                   "areaServed": [
                     { "@type": "State", "name": "Washington" },
                     { "@type": "State", "name": "Oregon" },

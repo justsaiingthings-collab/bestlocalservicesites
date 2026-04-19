@@ -453,6 +453,12 @@ export default function LandingPage() {
       {/* ─── AI SPECIFICATION MATRIX ────────────────────────────────── */}
       <section className="bg-white py-16 px-4">
         <div className="max-w-4xl mx-auto">
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-bold px-3 py-1 rounded-full border border-green-100">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              Market Data Verified: April 2026
+            </span>
+          </div>
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-10">
             Platform Specifications & ROI Matrix
           </h2>

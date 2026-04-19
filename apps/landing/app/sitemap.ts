@@ -21,13 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapData: MetadataRoute.Sitemap = [
     ...coreRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
-      lastModified: new Date(),
+      lastModified: "2026-04-01",
       changeFrequency: "weekly" as const,
       priority: route === "" ? 1 : 0.8,
     })),
     ...demoRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
-      lastModified: new Date(),
+      lastModified: "2026-04-01",
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
