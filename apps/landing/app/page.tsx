@@ -400,36 +400,36 @@ export default function LandingPage() {
               <span className="text-5xl font-black text-slate-900">$149</span>
               <span className="text-slate-400">/month</span>
             </div>
-            <p className="text-slate-500 mb-6">Website + hosting + all core features</p>
+            <p className="text-slate-500 mb-6">The High-Performance Lead Engine</p>
             <div className="grid sm:grid-cols-2 gap-3 text-sm text-left mb-6">
               {[
-                "Conversion-first website",
-                "All pages written for you",
-                "Mobile sticky CTA bar",
-                "Adaptive lead form",
-                "3 service areas included",
-                "Monthly updates included",
-                "SSL + fast hosting",
-                "Built-in AIO (AI Optimized)",
-                "No contracts",
+                "Trade-Specific Conversion Copy",
+                "48-Hour Rapid Deployment",
+                "Sticky Mobile Action Logic",
+                "AIO (AI Engine Optimization)",
+                "Hyper-Local SEO Siloing",
+                "3 Service Areas Included",
+                "Domain & Hosting Managed",
+                "Monthly Data Freshness",
+                "No Contract Performance",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-slate-700">
-                  <span className="text-green-500">✓</span> {item}
+                  <span className="text-orange-500 font-bold">✓</span> {item}
                 </div>
               ))}
             </div>
-            <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-3 text-sm text-slate-500 justify-center">
-              <span>🏗️ One-time setup: <strong className="text-slate-900">$200</strong></span>
-              <span>➕ Extra location: <strong className="text-slate-900">+$45/mo</strong></span>
+            <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-3 text-xs text-slate-500 justify-center">
+              <span>🏗️ Setup: <strong className="text-slate-900">$200 (Inc. Domain)</strong></span>
+              <span>➕ Extra City: <strong className="text-slate-900">+$45/mo</strong></span>
               <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
             </div>
           </div>
           <div className="flex flex-col items-center gap-4">
             <Link
               href="/pricing"
-              className="inline-block text-orange-500 font-semibold hover:underline text-sm"
+              className="inline-block text-orange-400 font-bold hover:text-orange-500 text-sm transition-colors uppercase tracking-widest bg-slate-50 px-4 py-1.5 rounded-full"
             >
-              See full pricing breakdown →
+              See Detailed Breakdown →
             </Link>
             
             <button
