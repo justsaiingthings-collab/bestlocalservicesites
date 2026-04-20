@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         "itemOffered": {
                           "@type": "Service",
                           "name": "Conversion-First Contractor Website",
-                          "description": "48-hour delivery of SEO-optimized contractor websites with sticky mobile CTAs."
+                          "description": "72-hour delivery of SEO-optimized contractor websites with sticky mobile CTAs."
                         },
                         "areaServed": ["Seattle", "Tacoma", "Portland", "Bellevue"]
                       },

@@ -19,7 +19,7 @@ const baseFeatures = [
   "Monthly content updates",
   "SSL + fast hosting included",
   "Built-in AIO (AI Optimized)",
-  "$250 One-time Setup + Domain",
+  "$250 One-Time Setup — see what's included below",
   "No contracts · Cancel any time",
 ];
 
@@ -71,7 +71,7 @@ export default function PricingPage() {
                 <span className="text-slate-400">/mo</span>
               </div>
               <p className="text-slate-500 text-sm mb-6">
-                Your website, fully built and live in 48 hours.
+                Your website, fully built and live in 72 hours.
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {baseFeatures.map((f) => (
@@ -155,9 +155,54 @@ export default function PricingPage() {
             </div>
           </div>
 
+          {/* Setup fee breakdown */}
+          <div className="mt-10 bg-slate-50 rounded-2xl border border-slate-200 p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+              <div>
+                <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">🏗️ One-Time Setup Fee</p>
+                <p className="text-3xl font-black text-slate-900">$250 <span className="text-base font-normal text-slate-500">one-time</span></p>
+              </div>
+              <p className="text-slate-500 text-sm max-w-sm">
+                Paid once at signup. Covers everything needed to get your business live and discoverable from Day 1.
+              </p>
+            </div>
+            <ul className="grid sm:grid-cols-3 gap-4">
+              {[
+                {
+                  icon: "🌐",
+                  title: "Domain Registration & DNS",
+                  detail: "We register your .com, configure DNS, and manage annual renewals — no Namecheap account needed.",
+                },
+                {
+                  icon: "📍",
+                  title: "6 Business Listings",
+                  detail: "We claim & optimize your profiles on Google Business, Bing Places, Yelp, Nextdoor, Apple Maps, and BBB.",
+                  link: "/listings",
+                  linkText: "See full guide →",
+                },
+                {
+                  icon: "⚡",
+                  title: "Full Website Build & Launch",
+                  detail: "Trade-specific conversion copy, SEO structure, mobile-first design, and 72-hour go-live guarantee.",
+                },
+              ].map((item) => (
+                <li key={item.title} className="bg-white rounded-xl p-5 border border-slate-200 flex flex-col gap-2">
+                  <span className="text-2xl">{item.icon}</span>
+                  <p className="font-black text-slate-900 text-sm">{item.title}</p>
+                  <p className="text-slate-500 text-xs leading-relaxed flex-1">{item.detail}</p>
+                  {item.link && (
+                    <Link href={item.link} className="text-orange-500 text-xs font-bold hover:underline mt-1">
+                      {item.linkText}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* All plans note */}
-          <div className="text-center mt-8 text-slate-500 text-sm">
-            All plans are month-to-month. $250 one-time setup fee covers domain and configuration. No contracts.
+          <div className="text-center mt-6 text-slate-500 text-sm">
+            All plans are month-to-month. No contracts. Setup fee is a one-time payment.
           </div>
         </div>
       </section>
@@ -248,7 +293,7 @@ export default function PricingPage() {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-black mb-4">Start at $149/month.</h2>
           <p className="text-orange-100 text-lg mb-8">
-            Live in 48 hours. No contract. Cancel any time.
+            Live in 72 hours. No contract. Cancel any time.
           </p>
           <Link
             href="/#get-started"

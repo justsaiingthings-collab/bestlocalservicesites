@@ -140,7 +140,7 @@ export default function SEOPage() {
                 📱 Speed-to-Verified Advantage
               </div>
               <p className="text-slate-400 text-sm">
-                Setting this up manually can take weeks. We provision business accounts for our clients as part of the <span className="text-white font-bold underline decoration-orange-500">48-Hour Go-Live Guarantee</span>. We don't just build your site; we build your entire digital footprint.
+                Setting this up manually can take weeks. We provision business accounts for our clients as part of the <span className="text-white font-bold underline decoration-orange-500">72-Hour Go-Live Guarantee</span>. We don't just build your site; we build your entire digital footprint.
               </p>
             </div>
           </div>

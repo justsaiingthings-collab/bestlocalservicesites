@@ -60,7 +60,7 @@ const platforms = [
     proTip:
       "Turn on Q&A notifications. Answer every question within 24 hours. Google interprets fast responses as a signal of an active, trustworthy business and boosts your ranking.",
     pitchAngle:
-      "Google verification takes up to 7 days. We submit and manage your GBP as part of our 48-Hour Go-Live process — your profile is live and optimized before your site even launches.",
+      "Google verification takes up to 7 days. We submit and manage your GBP as part of our 72-Hour Go-Live process — your profile is live and optimized before your site even launches.",
   },
   {
     id: "bing",
@@ -266,7 +266,7 @@ const platforms = [
 
 export default function ListingsPage() {
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen overflow-x-hidden">
       {/* ─── HERO ──────────────────────────────────────────────────── */}
       <section className="bg-slate-900 text-white pt-24 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -285,11 +285,11 @@ export default function ListingsPage() {
             each one, step by step, with exact timelines.
           </p>
           {/* Progress Pill */}
-          <div className="inline-flex items-center gap-4 bg-slate-800/80 rounded-2xl px-6 py-4 border border-slate-700">
-            <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-slate-800/80 rounded-2xl px-5 py-4 border border-slate-700 max-w-full">
+            <svg className="w-5 h-5 text-orange-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
             </svg>
-            <span className="text-slate-300 text-sm">
+            <span className="text-slate-300 text-sm text-center">
               <strong className="text-white">6 platforms</strong> · All free to claim ·{" "}
               <strong className="text-orange-400">~2–3 hrs total setup time</strong>
             </span>
@@ -303,13 +303,13 @@ export default function ListingsPage() {
           <h2 className="text-lg font-black text-slate-700 mb-6 uppercase tracking-widest">
             Verification Timeline at a Glance
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {platforms.map((p) => (
               <div key={p.id} className="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <span className={`text-xs font-black ${p.textColor} shrink-0 mt-0.5`}>{p.num}</span>
-                <div>
+                <div className="min-w-0">
                   <div className="text-slate-800 font-bold text-sm">{p.name}</div>
-                  <div className="text-slate-500 text-xs mt-0.5">{p.timeToVerify}</div>
+                  <div className="text-slate-500 text-xs mt-0.5 break-words">{p.timeToVerify}</div>
                 </div>
               </div>
             ))}
@@ -326,22 +326,22 @@ export default function ListingsPage() {
           {platforms.map((platform) => (
             <div key={platform.id} id={platform.id}>
               {/* Platform Header */}
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex flex-wrap items-start gap-4 mb-8">
                 <span className={`w-12 h-12 rounded-xl ${platform.color} text-white flex items-center justify-center text-lg font-black shrink-0`}>
                   {platform.num}
                 </span>
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900">{platform.name}</h2>
-                  <p className="text-slate-500 text-sm">{platform.tagline}</p>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-2xl font-black text-slate-900 break-words">{platform.name}</h2>
+                  <p className="text-slate-500 text-sm break-words">{platform.tagline}</p>
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-xs font-bold text-orange-500 hover:underline"
+                  >
+                    Open Platform ↗
+                  </a>
                 </div>
-                <a
-                  href={platform.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-auto text-xs font-bold text-orange-500 hover:underline whitespace-nowrap shrink-0"
-                >
-                  Open Platform ↗
-                </a>
               </div>
 
               {/* Meta info bar */}
@@ -368,8 +368,8 @@ export default function ListingsPage() {
                       <div className={`w-7 h-7 rounded-lg border-2 border-slate-200 flex items-center justify-center shrink-0 mt-0.5 group-hover:border-orange-400 transition-colors`}>
                         <span className="text-slate-300 text-xs font-black">{String(i + 1).padStart(2, "0")}</span>
                       </div>
-                      <div>
-                        <h3 className="font-black text-slate-900 mb-1">{step.title}</h3>
+                      <div className="min-w-0">
+                        <h3 className="font-black text-slate-900 mb-1 break-words">{step.title}</h3>
                         <p className="text-slate-600 text-sm leading-relaxed">{step.detail}</p>
                       </div>
                     </div>
@@ -406,7 +406,7 @@ export default function ListingsPage() {
         <div className="max-w-3xl mx-auto">
           <div className="bg-slate-900 text-white rounded-[2rem] px-8 py-14 text-center shadow-2xl">
             <div className="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 text-xs font-bold px-4 py-1.5 rounded-full mb-6 border border-orange-500/20 uppercase tracking-widest">
-              The 48-Hour Alternative
+              The 72-Hour Alternative
             </div>
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Want all 6 done for you{" "}

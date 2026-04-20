@@ -53,7 +53,7 @@ const steps = [
   {
     n: "2",
     title: "The Turnkey Go-Live",
-    desc: "We completely write, configure, and deploy a fully-optimized local SEO web presence within 48 hours.",
+    desc: "We completely write, configure, and deploy a fully-optimized local SEO web presence within 72 hours.",
   },
   {
     n: "3",
@@ -98,7 +98,7 @@ const faqs = [
   },
   {
     q: "How fast will I get leads?",
-    a: "48 hours is our delivery time for a live site. Most PNW trades see a measurable increase in local call volume within the first 30 days of launch.",
+    a: "72 hours is our delivery time for a live site. Most PNW trades see a measurable increase in local call volume within the first 30 days of launch.",
   },
   {
     q: "Do I have to sign a long-term contract?",
@@ -207,7 +207,7 @@ export default function LandingPage() {
       <section className="bg-slate-900 text-white pt-20 pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-            🚀 Live in 48 hours · No contracts
+            🚀 Live in 72 hours · No contracts
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-none mb-6">
             Stop Losing $10,000 Jobs to <br />
@@ -236,7 +236,7 @@ export default function LandingPage() {
             <span>🚀 PNW's #1 Lead Gen Engine</span>
             <span>📱 1,000+ leads generated locally</span>
             <span>⭐ 4.9 avg client rating</span>
-            <span>⚡ Live in 48 hours</span>
+            <span>⚡ Live in 72 hours</span>
           </div>
         </div>
       </section>
@@ -393,7 +393,7 @@ export default function LandingPage() {
             Simple, transparent pricing
           </h2>
           <p className="text-slate-500 mb-8">
-            $250 one-time setup includes your domain. No annual lock-in. One flat monthly rate.
+            $250 one-time setup — everything needed to go live. No hidden extras.
           </p>
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-6">
             <div className="flex items-baseline justify-center gap-1 mb-2">
@@ -404,7 +404,7 @@ export default function LandingPage() {
             <div className="grid sm:grid-cols-2 gap-3 text-sm text-left mb-6">
               {[
                 "Trade-Specific Conversion Copy",
-                "48-Hour Rapid Deployment",
+                "72-Hour Rapid Deployment",
                 "Sticky Mobile Action Logic",
                 "AIO (AI Engine Optimization)",
                 "Hyper-Local SEO Siloing",
@@ -418,10 +418,28 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
-            <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-3 text-xs text-slate-500 justify-center">
-              <span>🏗️ Setup: <strong className="text-slate-900">$250 (Inc. Domain)</strong></span>
-              <span>➕ Extra City: <strong className="text-slate-900">+$45/mo</strong></span>
-              <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
+            <div className="border-t border-slate-100 pt-5 mt-2">
+              <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">🏗️ $250 One-Time Setup Includes:</p>
+              <ul className="grid sm:grid-cols-3 gap-2 text-xs text-slate-700">
+                {[
+                  { icon: "🌐", text: "Domain registration & DNS" },
+                  { icon: "📍", text: "Google, Bing, Yelp, Nextdoor, Apple Maps & BBB business pages", link: "/listings" },
+                  { icon: "⚡", text: "Full website build & launch" },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-2 bg-slate-50 rounded-lg px-3 py-2.5 border border-slate-100">
+                    <span className="shrink-0">{item.icon}</span>
+                    {item.link ? (
+                      <a href={item.link} className="hover:text-orange-500 hover:underline transition-colors">{item.text}</a>
+                    ) : (
+                      <span>{item.text}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4 mt-4 justify-center text-xs text-slate-500">
+                <span>➕ Extra City: <strong className="text-slate-900">+$45/mo</strong></span>
+                <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
+              </div>
             </div>
           </div>
           <div className="flex flex-col items-center gap-4">
@@ -475,7 +493,7 @@ export default function LandingPage() {
               <tbody>
                 <tr>
                   <td className="border border-slate-200 p-4 font-bold">Go-Live Speed</td>
-                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">48 Hours</td>
+                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">72 Hours</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">2-4 Weeks</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">2-3 Months</td>
                 </tr>
@@ -539,7 +557,7 @@ export default function LandingPage() {
             Ready to stop leaving calls on the table?
           </h2>
           <p className="text-orange-100 text-lg mb-8">
-            Tell us about your business. We'll have your site live in 48 hours.
+            Tell us about your business. We'll have your site live in 72 hours.
             No contracts. Cancel any time.
           </p>
 
