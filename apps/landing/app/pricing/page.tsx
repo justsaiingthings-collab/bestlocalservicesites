@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing | PNW's Leading Lead Gen Engine",
   description:
-    "Transparent pricing for PNW home service websites. $149/mo base + $250 setup. 1,000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+    "Transparent pricing for PNW home service websites. $199/mo base + $350 setup. 1,000+ leads generated for trades in Seattle, Tacoma, and Portland.",
 };
 
 const baseFeatures = [
@@ -19,7 +19,7 @@ const baseFeatures = [
   "Monthly content updates",
   "SSL + fast hosting included",
   "Built-in AIO (AI Optimized)",
-  "$250 One-Time Setup — see what's included below",
+  "$350 One-Time Setup — see what's included below",
   "No contracts · Cancel any time",
 ];
 
@@ -40,7 +40,7 @@ const comparisons = [
   { feature: "Missed-call text-back", us: true, agency: false },
   { feature: "Multi-location SEO pages", us: true, agency: "$$$" },
   { feature: "Month-to-month, no contract", us: true, agency: false },
-  { feature: "Monthly price", us: "$149", agency: "$500–$2,000" },
+  { feature: "Monthly price", us: "$199", agency: "$500–$2,000" },
 ];
 
 export default function PricingPage() {
@@ -67,7 +67,7 @@ export default function PricingPage() {
             <div className="border-2 border-slate-200 rounded-2xl p-7 flex flex-col">
               <div className="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Base</div>
               <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-5xl font-black text-slate-900">$149</span>
+                <span className="text-5xl font-black text-slate-900">$199</span>
                 <span className="text-slate-400">/mo</span>
               </div>
               <p className="text-slate-500 text-sm mb-6">
@@ -160,7 +160,7 @@ export default function PricingPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
               <div>
                 <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">🏗️ One-Time Setup Fee</p>
-                <p className="text-3xl font-black text-slate-900">$250 <span className="text-base font-normal text-slate-500">one-time</span></p>
+                <p className="text-3xl font-black text-slate-900">$350 <span className="text-base font-normal text-slate-500">one-time</span></p>
               </div>
               <p className="text-slate-500 text-sm max-w-sm">
                 Paid once at signup. Covers everything needed to get your business live and discoverable from Day 1.
@@ -260,7 +260,7 @@ export default function PricingPage() {
             {[
               {
                 q: "Is there a setup fee?",
-                a: "There is a one-time $250 fee which covers professional setup, domain registration, and technical configuration. After that, you only pay your flat monthly rate.",
+                a: "There is a one-time $350 fee which covers professional setup, domain registration, 6 business listings, and technical configuration. After that, you only pay your flat monthly rate.",
               },
               {
                 q: "What if I want to cancel?",
@@ -291,7 +291,7 @@ export default function PricingPage() {
       {/* Bottom CTA */}
       <section className="bg-orange-500 text-white py-16 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-black mb-4">Start at $149/month.</h2>
+          <h2 className="text-4xl font-black mb-4">Start at $199/month.</h2>
           <p className="text-orange-100 text-lg mb-8">
             Live in 72 hours. No contract. Cancel any time.
           </p>

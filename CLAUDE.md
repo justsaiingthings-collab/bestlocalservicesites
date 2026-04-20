@@ -7,7 +7,7 @@ This is a monorepo for a SaaS product called "Best Local Service Sites".
 We build and manage high-converting websites for home service businesses (roofing, HVAC, plumbing, landscaping, cleaning, painting).
 
 Core offering:
-- Website + hosting ($149/month)
+- Website + hosting ($199/month)
 - Multi-location support (+$45/location)
 - Conversion pack (+$49/month)
 
