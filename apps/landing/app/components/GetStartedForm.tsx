@@ -1,22 +1,49 @@
 "use client";
 import { useState } from "react";
 
+function formatPhone(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(phone: string): boolean {
+  return phone.replace(/\D/g, "").length === 10;
+}
+
 export function GetStartedForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneTouched, setPhoneTouched] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+
+  const phoneError = phoneTouched && !isValidPhone(phone);
+  const emailError = emailTouched && !isValidEmail(email);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isValidPhone(phone) || !isValidEmail(email)) {
+      setPhoneTouched(true);
+      setEmailTouched(true);
+      return;
+    }
+
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const searchParams = new URLSearchParams();
-    
-    // Google Form entry mappings
+
     searchParams.append("entry.343815537", formData.get("name") as string);
     searchParams.append("entry.346954958", formData.get("business") as string);
-    searchParams.append("entry.1111864749", formData.get("phone") as string);
-    searchParams.append("entry.2100871410", formData.get("email") as string);
+    searchParams.append("entry.1111864749", phone.replace(/\D/g, ""));
+    searchParams.append("entry.2100871410", email);
     searchParams.append("entry.2081766879", formData.get("type") as string);
 
     try {
@@ -25,9 +52,7 @@ export function GetStartedForm() {
         {
           method: "POST",
           mode: "no-cors",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: searchParams.toString(),
         }
       );
@@ -69,20 +94,49 @@ export function GetStartedForm() {
           required
           className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
-        <input
-          name="phone"
-          type="tel"
-          placeholder="Your phone number"
-          required
-          className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Your email address"
-          required
-          className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
-        />
+
+        {/* Phone with formatter */}
+        <div>
+          <input
+            name="phone"
+            type="tel"
+            placeholder="(555) 555-5555"
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            onBlur={() => setPhoneTouched(true)}
+            required
+            className={`w-full border rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 ${
+              phoneError
+                ? "border-red-400 focus:ring-red-300"
+                : "border-slate-300 focus:ring-orange-400"
+            }`}
+          />
+          {phoneError && (
+            <p className="text-red-500 text-xs mt-1 text-left">Please enter a valid 10-digit phone number.</p>
+          )}
+        </div>
+
+        {/* Email with validator */}
+        <div>
+          <input
+            name="email"
+            type="email"
+            placeholder="Your email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={() => setEmailTouched(true)}
+            required
+            className={`w-full border rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 ${
+              emailError
+                ? "border-red-400 focus:ring-red-300"
+                : "border-slate-300 focus:ring-orange-400"
+            }`}
+          />
+          {emailError && (
+            <p className="text-red-500 text-xs mt-1 text-left">Please enter a valid email address.</p>
+          )}
+        </div>
+
         <select
           name="type"
           required
@@ -98,6 +152,7 @@ export function GetStartedForm() {
           <option value="Pest Control">Pest Control</option>
           <option value="Other home service">Other home service</option>
         </select>
+
         <button
           type="submit"
           disabled={loading}
