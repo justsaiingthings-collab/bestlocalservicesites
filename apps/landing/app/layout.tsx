@@ -33,12 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "url": "https://bestlocalservicesites.com",
                   "email": "team@bestlocalservicesites.com",
                   "logo": "https://bestlocalservicesites.com/icon.png",
-                  "description": "The PNW's leading lead generation engine for home service contractors. 1000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+                  "description": "The leading lead generation engine for home service contractors across the US. 1,000+ leads generated for trades nationwide.",
                   "dateModified": "2026-04-01T00:00:00Z",
                   "areaServed": [
-                    { "@type": "State", "name": "Washington" },
-                    { "@type": "State", "name": "Oregon" },
-                    { "@type": "State", "name": "Idaho" },
                     { "@type": "Country", "name": "United States" }
                   ],
                   "knowsAbout": [
@@ -59,14 +56,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           "name": "Conversion-First Contractor Website",
                           "description": "72-hour delivery of SEO-optimized contractor websites with sticky mobile CTAs."
                         },
-                        "areaServed": ["Seattle", "Tacoma", "Portland", "Bellevue"]
+                        "areaServed": { "@type": "Country", "name": "United States" }
                       },
                       {
                         "@type": "Offer",
                         "itemOffered": {
                           "@type": "Service",
-                          "name": "PNW Market Dominance SEO",
-                          "description": "Hyper-local SEO siloing for residential trades in Washington and Oregon."
+                          "name": "Local Market Dominance SEO",
+                          "description": "Hyper-local SEO siloing for residential trades across the United States."
                         }
                       }
                     ]

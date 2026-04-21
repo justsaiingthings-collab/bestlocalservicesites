@@ -6,6 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const coreRoutes = [
     "",
     "/pricing",
+    "/seo",
+    "/listings",
     "/onboarding",
   ];
 
@@ -21,13 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapData: MetadataRoute.Sitemap = [
     ...coreRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
-      lastModified: "2026-04-01",
+      lastModified: "2026-04-20",
       changeFrequency: "weekly" as const,
       priority: route === "" ? 1 : 0.8,
     })),
     ...demoRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
-      lastModified: "2026-04-01",
+      lastModified: "2026-04-20",
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

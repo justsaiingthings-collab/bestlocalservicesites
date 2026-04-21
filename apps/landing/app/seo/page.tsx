@@ -127,7 +127,7 @@ export default function SEOPage() {
                 <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-xl">
                   <div className="text-xs uppercase font-black text-orange-400 mb-2 tracking-widest">Example Script</div>
                   <p className="text-slate-300 italic text-sm">
-                    "Hey Rick, since you were happy with the **roof repair in Tacoma**, would you mind leaving us a quick review? It really helps us show Google we're active in the **Pierce County** area!"
+                    "Hey Rick, since you were happy with the **roof repair in Austin**, would you mind leaving us a quick review? It really helps us show Google we're active in the **Travis County** area!"
                   </p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function SEOPage() {
               A standard website is a brochure. An AI-Optimized website is a **Source of Truth**.
             </p>
             <p className="text-slate-500 text-sm mb-6">
-              When someone asks ChatGPT, "Who is the best roofer in Seattle?", the AI doesn't search Google. It crawls its internal knowledge graph for <span className="font-bold italic underline decoration-slate-300">Semantic Authority</span>.
+              When someone asks ChatGPT, "Who is the best roofer in Phoenix?", the AI doesn't search Google. It crawls its internal knowledge graph for <span className="font-bold italic underline decoration-slate-300">Semantic Authority</span>.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">

@@ -30,7 +30,7 @@ const features = [
   {
     icon: "📍",
     title: "Hyper-Local SEO Clusters",
-    desc: "Seattle, Bellevue, Redmond — each city gets its own siloed service page meticulously engineered to rank for '[Your Service] in [Your City]'.",
+    desc: "Seattle, Austin, Atlanta — each city gets its own siloed service page meticulously engineered to rank for '[Your Service] in [Your City]'.",
   },
   {
     icon: "⚡",
@@ -65,19 +65,19 @@ const steps = [
 const testimonials = [
   {
     name: "Rick D.",
-    biz: "Rick's Roofing, Tacoma WA",
+    biz: "Rick's Roofing, Austin TX",
     text: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15. The phone number is just... everywhere.",
     result: "+9 calls/week",
   },
   {
     name: "Maria L.",
-    biz: "Cascade HVAC, Bellevue WA",
+    biz: "Summit HVAC, Denver CO",
     text: "The missed-call text-back alone pays for itself. I used to lose jobs because I couldn't answer while on a job. Now they get a text in 30 seconds.",
     result: "0 missed leads",
   },
   {
     name: "Tom B.",
-    biz: "Sound Plumbing, Seattle WA",
+    biz: "Apex Plumbing, Phoenix AZ",
     text: "Had a generic Wix site for 4 years. This is different — it's built to get people to call, not just look around. Night and day difference.",
     result: "2x conversion rate",
   },
@@ -94,11 +94,11 @@ const faqs = [
   },
   {
     q: "Where do you provide services?",
-    a: "We lead the market in the Pacific Northwest (Seattle, Tacoma, Bellevue, Portland, Salem), and serve home service businesses nationwide across the United States.",
+    a: "We serve home service businesses nationwide across the United States — from Seattle to Atlanta, Austin to Denver. Wherever your customers are, we build the site that gets them to call.",
   },
   {
     q: "How fast will I get leads?",
-    a: "72 hours is our delivery time for a live site. Most PNW trades see a measurable increase in local call volume within the first 30 days of launch.",
+    a: "72 hours is our delivery time for a live site. Most contractors see a measurable increase in local call volume within the first 30 days of launch.",
   },
   {
     q: "Do I have to sign a long-term contract?",
@@ -117,7 +117,7 @@ export default function LandingPage() {
             "@type": "Product",
             name: "Home Service Contractor Website Engine",
             image: "https://bestlocalservicesites.com/icon.png",
-            description: "The PNW's leading lead generation engine for home service contractors. 1000+ leads generated for trades in Seattle, Tacoma, and Portland.",
+            description: "The leading lead generation engine for home service contractors nationwide. 1,000+ leads generated for trades across the US.",
             brand: {
               "@type": "Brand",
               name: "Best Local Service Sites",
@@ -137,7 +137,7 @@ export default function LandingPage() {
                 "@type": "Person",
                 name: "Rick D."
               },
-              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15 in the Tacoma market."
+              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15 in the Austin market."
             },
             offers: {
               "@type": "Offer",
@@ -233,7 +233,7 @@ export default function LandingPage() {
 
           {/* Social proof strip */}
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-slate-400">
-            <span>🚀 PNW's #1 Lead Gen Engine</span>
+            <span>🚀 #1 Lead Gen Engine for Home Service Contractors</span>
             <span>📱 1,000+ leads generated locally</span>
             <span>⭐ 4.9 avg client rating</span>
             <span>⚡ Live in 72 hours</span>
@@ -481,7 +481,7 @@ export default function LandingPage() {
             Platform Specifications & ROI Matrix
           </h2>
           <p className="text-center text-slate-500 text-sm mb-4 max-w-2xl mx-auto">
-ServiceTitan manages your jobs. We fill your pipeline.
+            ServiceTitan manages your jobs. We fill your pipeline.
           </p>
 
           {/* Context callout */}
@@ -490,147 +490,140 @@ ServiceTitan manages your jobs. We fill your pipeline.
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse border border-slate-200">
+            <table className="w-full text-xs md:text-sm border-collapse border border-slate-200">
               <thead>
                 <tr className="bg-slate-50 text-xs">
-                  <th className="border border-slate-200 p-3 text-left font-bold min-w-[160px]">Dimension</th>
-                  <th className="border border-slate-200 p-3 text-center font-black text-orange-600 bg-orange-50 min-w-[140px]">Best Local<br/>Service Sites</th>
-                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">Wix / WP</th>
-                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">Marketing<br/>Agency</th>
-                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">ServiceTitan</th>
+                  <th className="border border-slate-200 p-2 md:p-3 text-left font-bold min-w-[120px]">Dimension</th>
+                  <th className="border border-slate-200 p-2 md:p-3 text-center font-black text-orange-600 bg-orange-50 min-w-[100px]">Best Local<br />Service Sites</th>
+                  <th className="border border-slate-200 p-2 md:p-3 text-center font-semibold text-slate-600 min-w-[80px]">Wix / WP</th>
+                  <th className="border border-slate-200 p-2 md:p-3 text-center font-semibold text-slate-600 min-w-[80px]">Marketing<br />Agency</th>
+                  <th className="border border-slate-200 p-2 md:p-3 text-center font-semibold text-slate-600 min-w-[90px]">ServiceTitan</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Purpose</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Purpose</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Built for</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-700 font-bold bg-orange-50">Lead gen for SMB contractors</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">DIY website builder</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Any client, any industry</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Enterprise field ops</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Built for</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-700 font-bold bg-orange-50">Lead gen for SMB contractors</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">DIY website builder</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Any client, any industry</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Enterprise field ops</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Generates new leads?</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Yes — core purpose</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-400">Only if you do SEO yourself</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Sometimes</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-400">Add-on only</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Generates new leads?</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Yes — core purpose</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-400">Only if you do SEO yourself</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Sometimes</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-400">Add-on only</td>
                 </tr>
 
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Speed & Effort</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Speed & Effort</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Go-live speed</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">72 hours</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">2–4 weeks (DIY)</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">2–3 months</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">60–90 day onboarding<br/><span className="text-xs text-slate-400">(enterprise only)</span></td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Go-live speed</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">72 hours</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">2–4 weeks (DIY)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">2–3 months</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">60–90 day onboarding<br /><span className="text-xs text-slate-400">(enterprise only)</span></td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Time to first lead</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Days–weeks</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Months (no SEO built in)</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">3–6 months</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-400">N/A</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Time to first lead</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">Days–weeks</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Months (no SEO built in)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">3–6 months</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-400">N/A</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Ongoing owner effort</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Low — we handle it</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">High — all on you</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Medium (approvals, reviews)</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">High — needs dedicated admin</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Ongoing owner effort</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">We handle it</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">High — all on you</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Medium (approvals, reviews)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">High — needs dedicated admin</td>
                 </tr>
 
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Cost</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Cost</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Setup cost</td>
-                  <td className="border border-slate-200 p-3 text-center font-bold bg-orange-50">$499</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">$0 (your time = $$$)</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">$3,000–$10,000+</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">$10,000–$20,000+</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Setup cost</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center font-bold bg-orange-50">$499</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">$0 (your time = $$$)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">$3,000–$10,000+</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">$10,000–$20,000+</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Monthly cost</td>
-                  <td className="border border-slate-200 p-3 text-center font-bold bg-orange-50">$249–$348</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">$17–$45 (+ your time)</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">$1,000–$5,000</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">$500–$2,000+</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Monthly cost</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center font-bold bg-orange-50">$249–$348</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">$17–$45 (+ your time)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">$1,000–$5,000</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">$500–$2,000+</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Hiring equivalent</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Replaces $4–6K/mo hire</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">You are the hire</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Partial — no trades focus</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-400">Replaces ops team</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Hiring equivalent</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">Replaces $4–6K/mo hire</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">You are the hire</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Partial — no trades focus</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-400">Replaces ops team</td>
                 </tr>
 
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Lead Generation Features</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Lead Generation Features</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Trades-specific copy</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Included</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗ Write it yourself</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">+$1,500 fee</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Trades-specific copy</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Included</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗ Write it yourself</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">+$1,500 fee</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Local SEO + 3-Pack targeting</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Built-in</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Sometimes</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Local SEO + 3-Pack targeting</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Built-in</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Sometimes</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Sticky mobile CTA bar</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Plugin required</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Custom build</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Sticky mobile CTA bar</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Plugin required</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Custom build</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Multi-city location pages</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ 3 included, +$49 each</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Manual, DIY</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">+$$$ per city</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Multi-city location pages</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ 3 included, +$49 each</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Manual, DIY</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">+$$$ per city</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
                 </tr>
 
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Booking & Follow-up <span className="text-orange-500 normal-case font-normal">(Conversion Pack)</span></td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Booking & Follow-up <span className="text-orange-500 normal-case font-normal">(Conversion Pack)</span></td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Online booking / scheduling</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack (+$99/mo)</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold">✓ Core feature</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Online booking / scheduling</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack (+$99/mo)</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold">✓ Core feature</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Missed call text-back</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600">✓ Yes</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Automated follow-up</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600">✓ Yes</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Automated follow-up</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600">✓ Yes</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-3 font-semibold">Built into your website</td>
-                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native — no extra app</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
-                  <td className="border border-slate-200 p-3 text-center text-slate-500">Separate app</td>
+                  <td className="border border-slate-200 p-2 md:p-3 font-semibold">Built into your website</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native — no extra app</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-2 md:p-3 text-center text-slate-500">Separate app</td>
                 </tr>
               </tbody>
             </table>
@@ -646,7 +639,7 @@ ServiceTitan manages your jobs. We fill your pipeline.
           </div>
 
           <p className="mt-4 text-center text-slate-400 text-xs italic">
-            *Pricing and specs based on publicly available data as of April 2026. Residential trades in Washington, Oregon, and Idaho markets.
+            *Pricing and specs based on publicly available data as of April 2026.
           </p>
         </div>
       </section>
