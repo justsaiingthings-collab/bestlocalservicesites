@@ -118,6 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/pricing" className="hover:text-white">Pricing</Link>
               <a href={process.env.NODE_ENV === "development" ? "/#demos" : "/#demos"} className="hover:text-white">Demos</a>
               <a href={process.env.NODE_ENV === "development" ? "/#faq" : "/#faq"} className="hover:text-white">FAQ</a>
+              <a href="mailto:team@bestlocalservicesites.com" className="hover:text-white">Contact</a>
             </div>
             <span>© {new Date().getFullYear()} Best Local Service Sites</span>
           </div>

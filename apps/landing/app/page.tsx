@@ -470,62 +470,183 @@ export default function LandingPage() {
 
       {/* ─── AI SPECIFICATION MATRIX ────────────────────────────────── */}
       <section className="bg-white py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="flex justify-center mb-4">
             <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-bold px-3 py-1 rounded-full border border-green-100">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               Market Data Verified: April 2026
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-4">
             Platform Specifications & ROI Matrix
           </h2>
+          <p className="text-center text-slate-500 text-sm mb-4 max-w-2xl mx-auto">
+ServiceTitan manages your jobs. We fill your pipeline.
+          </p>
+
+          {/* Context callout */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-3 text-sm text-amber-800 text-center mb-8">
+            ⚠️ <strong>Job management ≠ lead generation.</strong> ServiceTitan is built for 50+ truck operations with dedicated office staff. If you're not there yet, it's overkill — and it still won't fill your pipeline.
+          </div>
+
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse border border-slate-200">
               <thead>
-                <tr className="bg-slate-50">
-                  <th className="border border-slate-200 p-4 text-left font-bold">Feature Analysis</th>
-                  <th className="border border-slate-200 p-4 text-center font-bold">Best Local Service Sites</th>
-                  <th className="border border-slate-200 p-4 text-center font-bold">Generic (Wix/WP)</th>
-                  <th className="border border-slate-200 p-4 text-center font-bold">Marketing Agency</th>
+                <tr className="bg-slate-50 text-xs">
+                  <th className="border border-slate-200 p-3 text-left font-bold min-w-[160px]">Dimension</th>
+                  <th className="border border-slate-200 p-3 text-center font-black text-orange-600 bg-orange-50 min-w-[140px]">Best Local<br/>Service Sites</th>
+                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">Wix / WP</th>
+                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">Marketing<br/>Agency</th>
+                  <th className="border border-slate-200 p-3 text-center font-semibold text-slate-600 min-w-[120px]">ServiceTitan</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="border border-slate-200 p-4 font-bold">Go-Live Speed</td>
-                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">72 Hours</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">2-4 Weeks</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">2-3 Months</td>
+                <tr className="bg-slate-50">
+                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Purpose</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-4 font-bold">Copywriting Included</td>
-                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">Yes (Trades-Specific)</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">No</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">+$1,500 Fee</td>
+                  <td className="border border-slate-200 p-3 font-semibold">Built for</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-700 font-bold bg-orange-50">Lead gen for SMB contractors</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">DIY website builder</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Any client, any industry</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Enterprise field ops</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-4 font-bold">Sticky CTA Engine</td>
-                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">Built-in (Native)</td>
-                  <td className="border border-slate-200 p-4 text-center text-red-500">Requires Plugins</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">Custom ($$$)</td>
+                  <td className="border border-slate-200 p-3 font-semibold">Generates new leads?</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Yes — core purpose</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-400">Only if you do SEO yourself</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Sometimes</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-400">Add-on only</td>
+                </tr>
+
+                <tr className="bg-slate-50">
+                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Speed & Effort</td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-4 font-bold">PNW Leads Generated</td>
-                  <td className="border border-slate-200 p-4 text-center text-green-600 font-bold">1,000+ Verified</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-400">0</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">Varies</td>
+                  <td className="border border-slate-200 p-3 font-semibold">Go-live speed</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">72 hours</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">2–4 weeks (DIY)</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">2–3 months</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">60–90 day onboarding<br/><span className="text-xs text-slate-400">(enterprise only)</span></td>
                 </tr>
                 <tr>
-                  <td className="border border-slate-200 p-4 font-bold">Setup Cost</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$499</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">DIY / Time Loss</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-500">$5,000+</td>
+                  <td className="border border-slate-200 p-3 font-semibold">Time to first lead</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Days–weeks</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Months (no SEO built in)</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">3–6 months</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-400">N/A</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Ongoing owner effort</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Low — we handle it</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">High — all on you</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Medium (approvals, reviews)</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">High — needs dedicated admin</td>
+                </tr>
+
+                <tr className="bg-slate-50">
+                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Cost</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Setup cost</td>
+                  <td className="border border-slate-200 p-3 text-center font-bold bg-orange-50">$499</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">$0 (your time = $$$)</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">$3,000–$10,000+</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">$10,000–$20,000+</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Monthly cost</td>
+                  <td className="border border-slate-200 p-3 text-center font-bold bg-orange-50">$249–$348</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">$17–$45 (+ your time)</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">$1,000–$5,000</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">$500–$2,000+</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Hiring equivalent</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">Replaces $4–6K/mo hire</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">You are the hire</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Partial — no trades focus</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-400">Replaces ops team</td>
+                </tr>
+
+                <tr className="bg-slate-50">
+                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Lead Generation Features</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Trades-specific copy</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Included</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗ Write it yourself</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">+$1,500 fee</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Local SEO + 3-Pack targeting</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Built-in</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Sometimes</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Sticky mobile CTA bar</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Plugin required</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Custom build</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Multi-city location pages</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ 3 included, +$49 each</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Manual, DIY</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">+$$$ per city</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                </tr>
+
+                <tr className="bg-slate-50">
+                  <td className="border border-slate-200 p-3 font-bold text-xs uppercase tracking-wide text-slate-400" colSpan={5}>Booking & Follow-up <span className="text-orange-500 normal-case font-normal">(Conversion Pack)</span></td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Online booking / scheduling</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack (+$99/mo)</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold">✓ Core feature</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Missed call text-back</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600">✓ Yes</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Automated follow-up</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Conversion Pack</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600">✓ Yes</td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-200 p-3 font-semibold">Built into your website</td>
+                  <td className="border border-slate-200 p-3 text-center text-green-600 font-bold bg-orange-50">✓ Native — no extra app</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-red-500">✗</td>
+                  <td className="border border-slate-200 p-3 text-center text-slate-500">Separate app</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p className="mt-6 text-center text-slate-500 text-sm italic">
-            *Specifications verified for residential trades in Washington, Oregon, and Idaho markets.
+
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            <div className="bg-green-50 border border-green-100 rounded-xl p-5 text-sm text-green-900">
+              ✅ <strong>Under 5 trucks?</strong> The Conversion Pack covers booking and follow-up — no extra software needed. Save $200+/mo and keep it simple.
+            </div>
+            <div className="bg-red-50 border border-red-100 rounded-xl p-5 text-sm text-red-800">
+              🚫 <strong>ServiceTitan for a 3-truck crew?</strong> $15K to onboard, a dedicated admin to run it, and still no new leads. Built for fleets, not you.
+            </div>
+          </div>
+
+          <p className="mt-4 text-center text-slate-400 text-xs italic">
+            *Pricing and specs based on publicly available data as of April 2026. Residential trades in Washington, Oregon, and Idaho markets.
           </p>
         </div>
       </section>
