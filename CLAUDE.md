@@ -6,10 +6,12 @@ This is a monorepo for a SaaS product called "Best Local Service Sites".
 
 We build and manage high-converting websites for home service businesses (roofing, HVAC, plumbing, landscaping, cleaning, painting).
 
-Core offering:
-- Website + hosting ($199/month)
-- Multi-location support (+$45/location)
-- Conversion pack (+$49/month)
+Core offering (1–50 employees):
+- $499 one-time setup fee
+- Pro Plan: $249/month (website + hosting, includes 3 locations)
+- Conversion Pack: +$99/month (recommended upgrade)
+- Additional locations: +$49/month per location after first 3
+- 50+ employees: contact for custom pricing
 
 The system is NOT a generic website builder.
 It is a **lead conversion + follow-up system**.

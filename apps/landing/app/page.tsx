@@ -86,7 +86,7 @@ const testimonials = [
 const faqs = [
   {
     q: "How much does it cost?",
-    a: "$350 is the one-time setup fee followed by a monthly subscription starting at $199. The setup fee covers your domain registration, 6 business listings, and professional technical configuration.",
+    a: "$499 is the one-time setup fee followed by a monthly subscription starting at $249/mo (Pro Plan). The setup fee covers your domain registration, 6 business listings, and professional technical configuration. Pricing is for businesses with 1–50 employees — contact us for larger teams.",
   },
   {
     q: "Is this better than Wix or Squarespace for contractors?",
@@ -393,14 +393,14 @@ export default function LandingPage() {
             Simple, transparent pricing
           </h2>
           <p className="text-slate-500 mb-8">
-            $350 one-time setup — everything needed to go live. No hidden extras.
+            $499 one-time setup — everything needed to go live. No hidden extras.
           </p>
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-6">
             <div className="flex items-baseline justify-center gap-1 mb-2">
-              <span className="text-5xl font-black text-slate-900">$199</span>
+              <span className="text-5xl font-black text-slate-900">$249</span>
               <span className="text-slate-400">/month</span>
             </div>
-            <p className="text-slate-500 mb-6">The High-Performance Lead Engine</p>
+            <p className="text-slate-500 mb-6">Pro Plan — The High-Performance Lead Engine</p>
             <div className="grid sm:grid-cols-2 gap-3 text-sm text-left mb-6">
               {[
                 "Trade-Specific Conversion Copy",
@@ -419,7 +419,7 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="border-t border-slate-100 pt-5 mt-2">
-              <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">🏗️ $350 One-Time Setup Includes:</p>
+              <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">🏗️ $499 One-Time Setup Includes:</p>
               <ul className="grid sm:grid-cols-3 gap-2 text-xs text-slate-700">
                 {[
                   { icon: "🌐", text: "Domain registration & DNS" },
@@ -437,8 +437,8 @@ export default function LandingPage() {
                 ))}
               </ul>
               <div className="flex flex-wrap gap-4 mt-4 justify-center text-xs text-slate-500">
-                <span>➕ Extra City: <strong className="text-slate-900">+$45/mo</strong></span>
-                <span>⚡ Conversion Pack: <strong className="text-slate-900">+$49/mo</strong></span>
+                <span>➕ Extra City (after 3): <strong className="text-slate-900">+$49/mo</strong></span>
+                <span>⚡ Conversion Pack: <strong className="text-slate-900">+$99/mo</strong></span>
               </div>
             </div>
           </div>
@@ -517,7 +517,7 @@ export default function LandingPage() {
                 </tr>
                 <tr>
                   <td className="border border-slate-200 p-4 font-bold">Setup Cost</td>
-                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$350</td>
+                  <td className="border border-slate-200 p-4 text-center text-slate-900 font-bold">$499</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">DIY / Time Loss</td>
                   <td className="border border-slate-200 p-4 text-center text-slate-500">$5,000+</td>
                 </tr>
