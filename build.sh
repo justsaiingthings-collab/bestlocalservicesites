@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "=> Preparing unified Netlify deployment artifact..."
+echo "=> Preparing unified deployment artifact..."
 
 mkdir -p _site
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -201,12 +200,13 @@ export default function SEOPage() {
         <p className="text-slate-400 text-xs">© 2026 Best Local Service Sites | Confidential Resource for Home Service Teams</p>
       </footer>
 
-      <Script 
-        src="https://convopilot.fyi/widget.js" 
-        data-site-id="cp_zwi7dg17nrso" 
-        data-api-url="https://api.convopilot.fyi" 
-        data-hide-bubble="true" 
-        strategy="afterInteractive"
+      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+      <script
+        src="https://convopilot.fyi/widget.js"
+        data-site-id="cp_zwi7dg17nrso"
+        data-api-url="https://api.convopilot.fyi"
+        data-hide-bubble="true"
+        async
       />
     </div>
   );

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -442,12 +441,12 @@ export default function ListingsPage() {
         </p>
       </footer>
 
-      <Script
+      <script
         src="https://convopilot.fyi/widget.js"
         data-site-id="cp_zwi7dg17nrso"
         data-api-url="https://api.convopilot.fyi"
         data-hide-bubble="true"
-        strategy="afterInteractive"
+        async
       />
     </div>
   );
