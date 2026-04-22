@@ -81,7 +81,7 @@ export default function OnboardingPage() {
           <h1 className="text-4xl font-black text-slate-900 mb-4">Onboarding Complete!</h1>
           <p className="text-slate-500 text-lg mb-8 leading-relaxed">
             We've received your business details and photos. Our team is now building your high-conversion engine. 
-            Expect your first draft within 72 hours.
+            Expect your first draft within under 7 days.
           </p>
           <Link
             href="/"

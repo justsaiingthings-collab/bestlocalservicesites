@@ -139,7 +139,7 @@ export default function SEOPage() {
                 📱 Speed-to-Verified Advantage
               </div>
               <p className="text-slate-400 text-sm">
-                Setting this up manually can take weeks. We provision business accounts for our clients as part of the <span className="text-white font-bold underline decoration-orange-500">72-Hour Go-Live Guarantee</span>. We don't just build your site; we build your entire digital footprint.
+                Setting this up manually can take weeks. We provision business accounts for our clients as part of the <span className="text-white font-bold underline decoration-orange-500">7-Day Go-Live Guarantee</span>. We don't just build your site; we build your entire digital footprint.
               </p>
             </div>
           </div>
@@ -184,10 +184,10 @@ export default function SEOPage() {
                     Book a Strategy Call
                   </button>
                   <Link
-                    href="/pricing"
+                    href="/#get-started"
                     className="bg-slate-900/10 hover:bg-slate-900/20 text-white font-bold text-lg px-8 py-5 rounded-2xl border border-white/20 transition-all"
                   >
-                    View Packages
+                    Get a Quote
                   </Link>
                 </div>
              </div>

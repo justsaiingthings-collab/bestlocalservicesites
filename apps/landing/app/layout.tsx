@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         "itemOffered": {
                           "@type": "Service",
                           "name": "Conversion-First Contractor Website",
-                          "description": "72-hour delivery of SEO-optimized contractor websites with sticky mobile CTAs."
+                          "description": "7-day delivery of SEO-optimized contractor websites with sticky mobile CTAs."
                         },
                         "areaServed": { "@type": "Country", "name": "United States" }
                       },
@@ -98,16 +98,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-              <a href={process.env.NODE_ENV === "development" ? "/#how-it-works" : "/#how-it-works"} className="hover:text-slate-900">How it works</a>
-              <a href={process.env.NODE_ENV === "development" ? "/#demos" : "/#demos"} className="hover:text-slate-900">See demos</a>
-              <Link href="/pricing" className="hover:text-slate-900">Pricing</Link>
+              <a href="/#how-it-works" className="hover:text-slate-900">How it works</a>
+              <Link href="/demos" className="hover:text-slate-900">See demos</Link>
+              <Link href="/#get-started" className="hover:text-slate-900">Get a Quote</Link>
             </nav>
             <div className="flex items-center gap-3">
               <Link
                 href="#get-started"
                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors"
               >
-                Get Started
+                Request a Quote
               </Link>
             </div>
           </div>
@@ -120,8 +120,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
             <span className="text-white font-bold">Best Local Service Sites</span>
             <div className="flex gap-6">
-              <Link href="/pricing" className="hover:text-white">Pricing</Link>
-              <a href={process.env.NODE_ENV === "development" ? "/#demos" : "/#demos"} className="hover:text-white">Demos</a>
+              <Link href="/#get-started" className="hover:text-white">Get a Quote</Link>
+              <Link href="/demos" className="hover:text-white">Demos</Link>
               <a href={process.env.NODE_ENV === "development" ? "/#faq" : "/#faq"} className="hover:text-white">FAQ</a>
               <a href="mailto:team@bestlocalservicesites.com" className="hover:text-white">Contact</a>
             </div>

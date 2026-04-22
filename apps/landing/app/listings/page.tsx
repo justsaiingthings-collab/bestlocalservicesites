@@ -59,7 +59,7 @@ const platforms = [
     proTip:
       "Turn on Q&A notifications. Answer every question within 24 hours. Google interprets fast responses as a signal of an active, trustworthy business and boosts your ranking.",
     pitchAngle:
-      "Google verification takes up to 7 days. We submit and manage your GBP as part of our 72-Hour Go-Live process — your profile is live and optimized before your site even launches.",
+      "Google verification takes up to 7 days. We submit and manage your GBP as part of our 7-Day Go-Live process — your profile is live and optimized before your site even launches.",
   },
   {
     id: "bing",
@@ -405,7 +405,7 @@ export default function ListingsPage() {
         <div className="max-w-3xl mx-auto">
           <div className="bg-slate-900 text-white rounded-[2rem] px-8 py-14 text-center shadow-2xl">
             <div className="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 text-xs font-bold px-4 py-1.5 rounded-full mb-6 border border-orange-500/20 uppercase tracking-widest">
-              The 72-Hour Alternative
+              The 7-Day Alternative
             </div>
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Want all 6 done for you{" "}
@@ -424,10 +424,10 @@ export default function ListingsPage() {
                 Book a Strategy Call
               </button>
               <Link
-                href="/pricing"
+                href="/#get-started"
                 className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg px-8 py-5 rounded-2xl border border-slate-700 transition-all"
               >
-                View Packages →
+                Get a Quote →
               </Link>
             </div>
           </div>

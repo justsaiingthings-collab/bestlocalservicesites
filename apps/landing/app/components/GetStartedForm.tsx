@@ -38,24 +38,18 @@ export function GetStartedForm() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const searchParams = new URLSearchParams();
-
-    searchParams.append("entry.343815537", formData.get("name") as string);
-    searchParams.append("entry.346954958", formData.get("business") as string);
-    searchParams.append("entry.1111864749", phone.replace(/\D/g, ""));
-    searchParams.append("entry.2100871410", email);
-    searchParams.append("entry.2081766879", formData.get("type") as string);
-
     try {
-      await fetch(
-        "https://docs.google.com/forms/d/e/1FAIpQLSdwFVO4cd23RMOBiVf_juk9vEdux2t_Qhim7qh2SWgJGB5-QA/formResponse",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: searchParams.toString(),
-        }
-      );
+      await fetch("https://formspree.io/f/xreryann", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          business: formData.get("business"),
+          phone: phone,
+          email: email,
+          type: formData.get("type"),
+        }),
+      });
     } catch (err) {
       console.error("Form submission error", err);
     }
@@ -158,7 +152,7 @@ export function GetStartedForm() {
           disabled={loading}
           className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-black text-lg py-4 rounded-xl transition-colors"
         >
-          {loading ? "Submitting..." : "Get My Site →"}
+          {loading ? "Submitting..." : "Get My Free Quote →"}
         </button>
         <p className="text-center text-xs text-slate-400">
           We'll call you within 1 business day. No spam.
