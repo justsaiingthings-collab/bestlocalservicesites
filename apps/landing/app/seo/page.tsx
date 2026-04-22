@@ -73,6 +73,17 @@ export default function SEOPage() {
                   <li className="flex items-center gap-2 underline decoration-orange-500/30 font-medium">⚠️ Warning: Yelp sales teams are aggressive. You do NOT need to pay for ads to benefit from the SEO link.</li>
                 </ul>
               </div>
+
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-8 shadow-sm group hover:border-orange-500/30 transition-all">
+                <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center justify-between">
+                  Facebook & Meta Business
+                  <a href="https://www.facebook.com/business" target="_blank" rel="noopener" className="text-xs text-orange-500 font-bold hover:underline">Launch Site ↗</a>
+                </h3>
+                <p className="text-slate-500 text-sm mb-4">The ultimate "NAP Triangulation" source. Google uses your Facebook Page to verify that your Name, Address, and Phone are identical across the web.</p>
+                <ul className="text-xs space-y-2 text-slate-600">
+                  <li className="flex items-center gap-2 underline decoration-orange-500/30 font-medium">✨ Pro Tip: Join 5-10 local community groups and tag your page when residents ask for recommendations. This builds "Social Proof" that AI search models can detect.</li>
+                </ul>
+              </div>
             </div>
 
             {/* Subtle Pitch */}

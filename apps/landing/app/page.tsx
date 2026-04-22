@@ -447,6 +447,11 @@ export default function LandingPage() {
             Tell us about your business and we'll put together a custom plan. No commitment required.
           </p>
           <GetStartedForm />
+          <div className="mt-12 pt-8 border-t border-orange-400/30 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-bold uppercase tracking-widest">
+            <Link href="/seo" className="hover:text-slate-900 transition-colors">SEO Playbook</Link>
+            <Link href="/seo-comparison" className="hover:text-slate-900 transition-colors">Local vs Traditional</Link>
+            <Link href="/listings" className="hover:text-slate-900 transition-colors">Listings Checklist</Link>
+          </div>
         </div>
       </section>
     </>

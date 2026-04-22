@@ -261,6 +261,50 @@ const platforms = [
     pitchAngle:
       "BBB Accreditation (the badge) costs $500–$1,500/yr and is optional. We advise on whether it's worth it for your specific market and handle the submission — no upsell, just strategy.",
   },
+  {
+    id: "facebook",
+    num: "07",
+    name: "Facebook Business Page",
+    url: "https://www.facebook.com/business/pages",
+    color: "bg-blue-600",
+    textColor: "text-blue-700",
+    borderColor: "border-blue-200",
+    bgHover: "hover:border-blue-400/50",
+    tagline: "The #1 social citation. Critical for local recommendations and NAP triangulation.",
+    timeToVerify: "Instant (Creation) · 24h (Publication)",
+    impact: "★★★★☆ High (Trust Signal)",
+    steps: [
+      {
+        title: "Create a Dedicated Business Page",
+        detail:
+          "Do not use your personal profile for business. Go to facebook.com/pages/create. Select 'Business or Brand' and enter your exact business name from your license.",
+      },
+      {
+        title: "Sync Your NAP Exactly",
+        detail:
+          "Your Name, Address, and Phone number (NAP) on Facebook MUST match your Google Business Profile exactly. Google uses Facebook to triangulate and verify your location. Discrepancies here hurt your ranking.",
+      },
+      {
+        title: "Select 'Service Area' if applicable",
+        detail:
+          "If you don't have a storefront (SAB), hide your home address and define your service radius. This prevents confused customers from showing up at your house while still giving you local search credit.",
+      },
+      {
+        title: "The 'Intro Post' Strategy",
+        detail:
+          "Pin a post to the top of your page that includes: 1) Your main service, 2) The cities you serve, and 3) A clear 'Call Now' button. This serves as a secondary landing page for mobile users.",
+      },
+      {
+        title: "Link Your Website",
+        detail:
+          "Under the 'About' section, add early and visible links to your website. This creates a high-authority backlink that signals relevance to modern AI search engines.",
+      },
+    ],
+    proTip:
+      "Join 5–10 'Local Community' groups (e.g. 'Kirkland Neighbors'). When someone asks for a contractor, tag your business page. Facebook's internal search algorithm treats these tags as 'Social Recommendations,' which boosts your local prominence.",
+    pitchAngle:
+      "Most contractors set up Facebook and then forget it. We ensure your Business Page is part of a synchronized digital footprint that updates automatically with your latest project photos.",
+  },
 ];
 
 export default function ListingsPage() {
