@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Local SEO vs Traditional SEO | Stop Wasting Ad Spend",
-  description: "Learn why traditional SEO fails home service contractors and how hyper-local search dominance captures high-intent leads in 72 hours.",
+  description: "Learn why traditional SEO fails home service contractors and how hyper-local search dominance captures high-intent leads in under 7 days.",
 };
 
 const comparisonData = [
@@ -27,7 +27,7 @@ const comparisonData = [
   },
   {
     metric: "Speed to Result",
-    local: "72 Hours to 30 Days",
+    local: "Under 7 Days to 30 Days",
     traditional: "6 to 12 Months",
     winner: "Local",
   },
@@ -111,48 +111,48 @@ export default function SEOComparisonPage() {
 
       {/* ─── THE MAP PACK MATH ──────────────────────────────────────── */}
       <section className="bg-slate-900 text-white py-20 px-4 overflow-hidden relative">
-         <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full -mr-48 -mt-48" />
-         <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-4xl font-black mb-8 text-center md:text-left">The "Map Pack" Math</h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-               <div>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                    In 2026, <strong>44% of all local business clicks</strong> go to the top 3 spots in the Google Map Pack.
-                  </p>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                    Page 1 "Organic" results are now a consolation prize. If you aren't in the top 3 spots on the map, you are effectively invisible to <strong>6 out of 10 homeowners</strong>.
-                  </p>
-                  <div className="inline-block bg-orange-500 text-white font-bold px-6 py-3 rounded-xl border border-orange-400/30">
-                    Our Goal: Local Top 3 or Nothing.
-                  </div>
-               </div>
-               <div className="bg-slate-800 p-8 rounded-[2rem] border border-white/10 shadow-2xl">
-                  <div className="space-y-6">
-                     <div className="flex items-center justify-between">
-                        <span className="text-slate-400 font-bold">Map Pack #1-3</span>
-                        <span className="text-orange-400 font-black text-2xl">44% - 60% CTR</span>
-                     </div>
-                     <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
-                        <div className="bg-orange-500 h-full w-[60%]" />
-                     </div>
-                     <div className="flex items-center justify-between">
-                        <span className="text-slate-400">Organic Link #1</span>
-                        <span className="text-white font-bold">~12% CTR</span>
-                     </div>
-                     <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
-                        <div className="bg-slate-500 h-full w-[12%]" />
-                     </div>
-                     <div className="flex items-center justify-between">
-                        <span className="text-slate-400">Page 1 Bottom</span>
-                        <span className="text-white font-bold">&lt; 3% CTR</span>
-                     </div>
-                     <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
-                        <div className="bg-slate-600 h-full w-[3%]" />
-                     </div>
-                  </div>
-               </div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full -mr-48 -mt-48" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-4xl font-black mb-8 text-center md:text-left">The "Map Pack" Math</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                In 2026, <strong>44% of all local business clicks</strong> go to the top 3 spots in the Google Map Pack.
+              </p>
+              <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                Page 1 "Organic" results are now a consolation prize. If you aren't in the top 3 spots on the map, you are effectively invisible to <strong>6 out of 10 homeowners</strong>.
+              </p>
+              <div className="inline-block bg-orange-500 text-white font-bold px-6 py-3 rounded-xl border border-orange-400/30">
+                Our Goal: Local Top 3 or Nothing.
+              </div>
             </div>
-         </div>
+            <div className="bg-slate-800 p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400 font-bold">Map Pack #1-3</span>
+                  <span className="text-orange-400 font-black text-2xl">44% - 60% CTR</span>
+                </div>
+                <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                  <div className="bg-orange-500 h-full w-[60%]" />
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Organic Link #1</span>
+                  <span className="text-white font-bold">~12% CTR</span>
+                </div>
+                <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                  <div className="bg-slate-500 h-full w-[12%]" />
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Page 1 Bottom</span>
+                  <span className="text-white font-bold">&lt; 3% CTR</span>
+                </div>
+                <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                  <div className="bg-slate-600 h-full w-[3%]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ─── TECHNICAL ACTION ITEMS ─────────────────────────────────── */}
@@ -177,51 +177,51 @@ export default function SEOComparisonPage() {
       {/* ─── THE "DIGITAL GHOST" SCORECARD ───────────────────────────── */}
       <section className="bg-slate-100 py-20 px-4">
         <div className="max-w-3xl mx-auto bg-white rounded-[2rem] p-8 md:p-12 shadow-xl border border-slate-200">
-           <h2 className="text-3xl font-black text-slate-900 mb-2 text-center">Local SEO Scorecard</h2>
-           <p className="text-slate-500 text-center mb-10">Are you a "Digital Ghost" or a Market Leader?</p>
-           
-           <div className="space-y-4">
-              {[
-                "I have a verified Google Business Profile.",
-                "I post new job-site photos at least once a week.",
-                "My website is linked to my Facebook, Bing, and Apple Maps.",
-                "I have location-specific service pages (e.g., 'Roofing in Austin').",
-                "I respond to 100% of my Google reviews.",
-                "My website scores 90+ on Mobile Performance.",
-              ].map((q, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group">
-                   <div className="w-6 h-6 rounded border-2 border-slate-300 group-hover:border-orange-500 transition-colors flex items-center justify-center">
-                     {/* Checkbox visual only for now */}
-                   </div>
-                   <span className="text-slate-700 font-medium">{q}</span>
-                </div>
-              ))}
-           </div>
+          <h2 className="text-3xl font-black text-slate-900 mb-2 text-center">Local SEO Scorecard</h2>
+          <p className="text-slate-500 text-center mb-10">Are you a "Digital Ghost" or a Market Leader?</p>
 
-           <div className="mt-12 p-6 bg-slate-900 rounded-2xl text-center">
-              <p className="text-white font-bold mb-4">Checked 3 or fewer? You are likely a Digital Ghost.</p>
-              <Link href="/#get-started" className="bg-orange-500 hover:bg-orange-600 text-white font-black px-8 py-3 rounded-xl transition-all inline-block">
-                Fix My Scoreboard →
-              </Link>
-           </div>
+          <div className="space-y-4">
+            {[
+              "I have a verified Google Business Profile.",
+              "I post new job-site photos at least once a week.",
+              "My website is linked to my Facebook, Bing, and Apple Maps.",
+              "I have location-specific service pages (e.g., 'Roofing in Austin').",
+              "I respond to 100% of my Google reviews.",
+              "My website scores 90+ on Mobile Performance.",
+            ].map((q, i) => (
+              <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group">
+                <div className="w-6 h-6 rounded border-2 border-slate-300 group-hover:border-orange-500 transition-colors flex items-center justify-center">
+                  {/* Checkbox visual only for now */}
+                </div>
+                <span className="text-slate-700 font-medium">{q}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-6 bg-slate-900 rounded-2xl text-center">
+            <p className="text-white font-bold mb-4">Checked 3 or fewer? You are likely a Digital Ghost.</p>
+            <Link href="/#get-started" className="bg-orange-500 hover:bg-orange-600 text-white font-black px-8 py-3 rounded-xl transition-all inline-block">
+              Fix My Scoreboard →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ─── FINAL CTA ──────────────────────────────────────────────── */}
       <section className="bg-orange-500 py-20 px-4 text-center">
-         <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Stop Fighting For Crumbs.</h2>
-            <p className="text-orange-50 text-xl mb-10">
-              We build high-performance search machines for contractors. <br />
-              Live in 72 hours. No long-term contracts.
-            </p>
-            <button
-               data-convopilot-book
-               className="bg-slate-900 text-white font-black text-xl px-12 py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-2xl"
-            >
-               Book My Free Strategy Call
-            </button>
-         </div>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Stop Fighting For Crumbs.</h2>
+          <p className="text-orange-50 text-xl mb-10">
+            We build high-performance search machines for contractors. <br />
+            Live in under 7 days. No long-term contracts.
+          </p>
+          <button
+            data-convopilot-book
+            className="bg-slate-900 text-white font-black text-xl px-12 py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-2xl"
+          >
+            Book My Free Strategy Call
+          </button>
+        </div>
       </section>
 
       <script

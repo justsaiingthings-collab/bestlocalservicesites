@@ -317,7 +317,7 @@ export default function ListingsPage() {
             Your Business Listings Playbook
           </div>
           <h1 className="text-4xl md:text-6xl font-black leading-tight mb-8">
-            6 Free Listings That Put Your Business{" "}
+            7 Free Listings That Put Your Business{" "}
             <span className="text-orange-400">On the Map.</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
@@ -330,10 +330,10 @@ export default function ListingsPage() {
           {/* Progress Pill */}
           <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-slate-800/80 rounded-2xl px-5 py-4 border border-slate-700 max-w-full">
             <svg className="w-5 h-5 text-orange-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span className="text-slate-300 text-sm text-center">
-              <strong className="text-white">6 platforms</strong> · All free to claim ·{" "}
+              <strong className="text-white"></strong> · All free to claim ·{" "}
               <strong className="text-orange-400">~2–3 hrs total setup time</strong>
             </span>
           </div>

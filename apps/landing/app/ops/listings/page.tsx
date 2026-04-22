@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Listings Tracker | Internal Ops — Best Local Service Sites",
-  description: "Internal operational checklist for tracking client listing setup across all 6 platforms.",
+  description: "Internal operational checklist for tracking client listing setup across all 7 platforms.",
   robots: { index: false, follow: false },
 };
 
@@ -203,7 +203,7 @@ export default function OpsListingsTracker() {
                     {/* Checkbox (visual only — for printing/copy use) */}
                     <div className="w-5 h-5 rounded border-2 border-slate-300 flex items-center justify-center shrink-0 mt-0.5 cursor-pointer hover:border-orange-400 transition-colors">
                       <svg className="w-3 h-3 text-transparent" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
                     <span className="text-slate-700 text-sm">{step}</span>
@@ -234,7 +234,7 @@ export default function OpsListingsTracker() {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
-                All 6 Platforms Live
+                All 7 Platforms Live
               </div>
               <div className="border-2 border-dashed border-slate-700 rounded-xl p-4 text-slate-500 text-sm">
                 ☐ Confirmed · Date: ________
