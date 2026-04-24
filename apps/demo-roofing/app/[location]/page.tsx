@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { roofingConfig as config } from "@bestlocal/templates";
+import Link from "next/link";
 import { Hero, TrustSection, ServiceGrid, WhyChooseUs, CTASection } from "@bestlocal/ui";
 
 interface Props {
@@ -45,7 +46,7 @@ export default function LocationPage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {config.services.map((service) => (
-              <a
+              <Link
                 key={service.slug}
                 href={`/${loc.slug}/${service.slug}`}
                 className="group flex items-start gap-3 border border-slate-200 hover:border-orange-400 rounded-xl p-4 transition-all hover:shadow-sm"
@@ -57,7 +58,7 @@ export default function LocationPage({ params }: Props) {
                   </div>
                   <div className="text-slate-500 text-sm mt-0.5">{service.shortDesc}</div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

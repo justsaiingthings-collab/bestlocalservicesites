@@ -151,7 +151,7 @@ export function generatePage(slug: string): GeneratedPage | null {
 function genServicePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.namePlural}: Find a Licensed ${ind.tradesperson} Near You | Best Local Service Sites`,
+    metaTitle: `${ind.tradesperson} Near You | Best Local Service Sites`,
     metaDescription: `Find licensed, insured ${ind.tradespersonPlural.toLowerCase()} for any ${ind.name.toLowerCase()} job. ${ind.heroTagline}`,
     h1: `${ind.namePlural}: Find a Licensed Professional Near You`,
     intro: `When it comes to ${ind.name.toLowerCase()}, homeowners across the United States face the same challenge: finding a qualified, reliable professional who will show up on time, do the job right, and charge a fair price. ${ind.description} At Best Local Service Sites, we build conversion-optimized websites that help local ${ind.tradespersonPlural.toLowerCase()} reach the homeowners who need them most — so you spend less time searching and more time getting the work done.`,
@@ -218,7 +218,7 @@ function genServicePage(ind: Industry, slug: string): GeneratedPage {
 function genEmergencyServicePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `Emergency ${ind.namePlural} — 24/7 Response | Best Local Service Sites`,
+    metaTitle: `Emergency ${ind.name} — 24/7 | Best Local Service Sites`,
     metaDescription: `Experiencing a ${ind.name.toLowerCase()} emergency? Find licensed 24/7 emergency ${ind.tradespersonPlural.toLowerCase()} in your area. Fast response, professional service.`,
     h1: `Emergency ${ind.namePlural}: 24/7 Response When You Need It Most`,
     intro: `A ${ind.name.toLowerCase()} emergency doesn't wait for business hours. Whether it's ${ind.commonProblems[0].toLowerCase()} or ${ind.commonProblems[1].toLowerCase()}, the difference between a fast professional response and hours of waiting can mean thousands of dollars in additional damage. ${ind.heroTagline} This guide covers what constitutes a genuine emergency, how to find a reliable 24/7 ${ind.tradesperson.toLowerCase()}, and what to expect when you make that urgent call.`,
@@ -284,7 +284,7 @@ function genEmergencyServicePage(ind: Industry, slug: string): GeneratedPage {
 function genLocalServicePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `Local ${ind.namePlural} Near You | Best Local Service Sites`,
+    metaTitle: `Local ${ind.tradesperson} Near You | Best Local Service Sites`,
     metaDescription: `Find trusted local ${ind.tradespersonPlural.toLowerCase()} in your area. Licensed, insured, and reviewed by real customers. ${ind.heroTagline}`,
     h1: `Local ${ind.namePlural}: Why Choosing a Nearby Professional Makes All the Difference`,
     intro: `There's a meaningful difference between a local ${ind.tradesperson.toLowerCase()} who has served your neighborhood for years and a national dispatch service sending whoever happens to be available. ${ind.whyLocalMatters} This guide explains how to find a genuinely local ${ind.name.toLowerCase()} professional, what questions to ask, and why the extra effort to find a local expert is almost always worth it.`,
@@ -359,7 +359,7 @@ function genLocalServicePage(ind: Industry, slug: string): GeneratedPage {
 function genBestServicePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `Best ${ind.namePlural} — How to Find the Right Professional | Best Local Service Sites`,
+    metaTitle: `Best ${ind.name}: How to Choose | Best Local Service Sites`,
     metaDescription: `Searching for the best ${ind.tradesperson.toLowerCase()}? Here's exactly what to look for, what to avoid, and how to make the right choice for your home.`,
     h1: `How to Find the Best ${ind.namePlural} for Your Home`,
     intro: `Searching for the "best ${ind.name.toLowerCase()} service" online returns dozens of options — and very few reliable signals about which one is actually right for your situation. ${ind.description} This guide cuts through the noise and gives you a practical, experience-tested framework for identifying the best ${ind.tradespersonPlural.toLowerCase()} in your area, evaluating their qualifications, and making a confident hiring decision.`,
@@ -423,7 +423,7 @@ function genBestServicePage(ind: Industry, slug: string): GeneratedPage {
 function genNearMePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.namePlural} Near Me — How to Find & Hire Fast | Best Local Service Sites`,
+    metaTitle: `${ind.name} Near Me — Find & Hire | Best Local Service Sites`,
     metaDescription: `Looking for ${ind.name.toLowerCase()} near you? Here's how to find trusted, licensed ${ind.tradespersonPlural.toLowerCase()} in your area fast — and what to look for before you hire.`,
     h1: `${ind.namePlural} Near Me: How to Find a Trusted Local Professional Fast`,
     intro: `When you search "${ind.name.toLowerCase()} near me," you're looking for more than a list of phone numbers — you need a qualified, available professional you can trust. ${ind.description} This guide explains the fastest and most reliable methods for finding a great local ${ind.tradesperson.toLowerCase()}, with specific steps you can take right now to get a qualified professional on-site.`,
@@ -478,7 +478,7 @@ function genNearMePage(ind: Industry, slug: string): GeneratedPage {
 function genServicesNearMePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.name} Services Near Me — Compare & Choose the Right Provider | Best Local Service Sites`,
+    metaTitle: `All ${ind.name} Services Near Me | Best Local Service Sites`,
     metaDescription: `Compare ${ind.namePlural.toLowerCase()} near you. Find licensed, reviewed professionals for every ${ind.name.toLowerCase()} need — from routine maintenance to emergency service.`,
     h1: `${ind.name} Services Near Me: Compare Local Options and Find the Right Fit`,
     intro: `Not all ${ind.name.toLowerCase()} needs are the same, and neither are the companies that handle them. Some specialize in emergency response, others in large installation projects, and others in routine maintenance programs. ${ind.description} This guide helps you understand the full range of ${ind.namePlural.toLowerCase()} available in your area, how to match your specific need to the right type of provider, and how to evaluate your options before making a decision.`,
@@ -544,7 +544,7 @@ function genServicesNearMePage(ind: Industry, slug: string): GeneratedPage {
 function genRepairPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.name} Repair Services — Licensed Professionals | Best Local Service Sites`,
+    metaTitle: `${ind.name} Repair — Licensed | Best Local Service Sites`,
     metaDescription: `Need ${ind.name.toLowerCase()} repair? Find licensed, insured ${ind.tradespersonPlural.toLowerCase()} who diagnose and fix problems correctly the first time. Get a free quote.`,
     h1: `${ind.name} Repair: How to Find a Professional Who Gets It Right the First Time`,
     intro: `${ind.name} repair covers a wide spectrum — from minor fixes you might handle yourself to complex system failures that require immediate professional attention. ${ind.description} Getting the diagnosis right is as important as the repair itself. This guide helps you understand what to expect from the ${ind.name.toLowerCase()} repair process, how to evaluate whether repair or replacement is the smarter investment, and how to find a ${ind.tradesperson.toLowerCase()} who will be honest with you about both.`,
@@ -595,7 +595,7 @@ function genRepairPage(ind: Industry, slug: string): GeneratedPage {
 function genInstallationPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.name} Installation — Proper Setup, Warranty-Backed Work | Best Local Service Sites`,
+    metaTitle: `${ind.name} Installation Service | Best Local Service Sites`,
     metaDescription: `Professional ${ind.name.toLowerCase()} installation by licensed, insured ${ind.tradespersonPlural.toLowerCase()}. Get a free quote and find the right installer for your project.`,
     h1: `${ind.name} Installation: Getting the Project Done Right from Day One`,
     intro: `A proper ${ind.name.toLowerCase()} installation done right the first time is worth far more than the cheapest available bid. ${ind.description} Poor installation leads to premature failure, warranty voidance, and costly repairs that wouldn't have been necessary with a quality initial install. This guide walks through what to expect from a professional ${ind.name.toLowerCase()} installation, how to evaluate installers, and what the process should look like from estimate to completion.`,
@@ -645,7 +645,7 @@ function genInstallationPage(ind: Industry, slug: string): GeneratedPage {
 function genCompanyPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.name} Company Near You — Trusted Local Professionals | Best Local Service Sites`,
+    metaTitle: `${ind.name} Company Near You | Best Local Service Sites`,
     metaDescription: `Find a trusted local ${ind.name.toLowerCase()} company. Licensed, insured, and reviewed by real customers. ${ind.heroTagline}`,
     h1: `Finding the Right ${ind.name} Company for Your Home or Business`,
     intro: `Choosing a ${ind.name.toLowerCase()} company is a decision that deserves more than a quick Google search and a call to whoever answers first. ${ind.description} A great ${ind.name.toLowerCase()} company becomes a long-term partner for your home — reliable, honest, and consistent. Here's how to find one that actually delivers on those qualities.`,
@@ -701,7 +701,7 @@ function genCompanyPage(ind: Industry, slug: string): GeneratedPage {
 function gen24hEmergencyPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `24-Hour Emergency ${ind.namePlural} — Available Now | Best Local Service Sites`,
+    metaTitle: `24-Hour Emergency ${ind.name} | Best Local Service Sites`,
     metaDescription: `Need emergency ${ind.name.toLowerCase()} right now? 24-hour response from licensed, insured ${ind.tradespersonPlural.toLowerCase()} in your area. Don't wait — call now.`,
     h1: `24-Hour Emergency ${ind.namePlural}: Getting Help When Every Minute Counts`,
     intro: `Some ${ind.name.toLowerCase()} situations simply cannot wait until morning. ${ind.heroTagline} When an emergency strikes at 2am or over a holiday weekend, you need a 24-hour ${ind.tradesperson.toLowerCase()} who will actually show up — not one who advertises 24/7 service and sends you to voicemail. This guide tells you exactly what to look for, what to expect, and how to protect yourself during an urgent situation.`,
@@ -752,7 +752,7 @@ function gen24hEmergencyPage(ind: Industry, slug: string): GeneratedPage {
 function genAffordablePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `Affordable ${ind.namePlural} — Quality Without Overpaying | Best Local Service Sites`,
+    metaTitle: `${ind.name} Cost: What to Expect | Best Local Service Sites`,
     metaDescription: `Find affordable ${ind.namePlural.toLowerCase()} from licensed professionals. Understand fair pricing, avoid common billing traps, and get great work at a reasonable cost.`,
     h1: `Affordable ${ind.namePlural}: What You Should Expect to Pay — and How to Avoid Overpaying`,
     intro: `"Affordable" in ${ind.name.toLowerCase()} doesn't mean the cheapest available option. It means fair pricing for quality work from a qualified professional — and knowing enough about the market to recognize when you're being quoted a fair price versus when you're being overcharged. ${ind.description} This guide breaks down what ${ind.namePlural.toLowerCase()} should actually cost, how pricing is structured, and the practical steps to get great work at a reasonable price.`,
@@ -809,7 +809,7 @@ function genAffordablePage(ind: Industry, slug: string): GeneratedPage {
 function genProfessionalPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `Professional ${ind.namePlural} — Licensed, Insured Experts | Best Local Service Sites`,
+    metaTitle: `Vetted ${ind.name} Professionals | Best Local Service Sites`,
     metaDescription: `Hire professional ${ind.tradespersonPlural.toLowerCase()} who are licensed, insured, and accountable. Understand what professional ${ind.name.toLowerCase()} service looks like and how to find it.`,
     h1: `Professional ${ind.namePlural}: What Real Expertise Looks Like and How to Find It`,
     intro: `The word "professional" is used broadly in the ${ind.name.toLowerCase()} industry, but its meaning matters. ${ind.description} A truly professional ${ind.tradesperson.toLowerCase()} is licensed, insured, technically skilled, and accountable to a standard that protects you if something goes wrong. This guide explains what professional ${ind.name.toLowerCase()} service actually entails, how to verify it before hiring, and why the distinction between professional and amateur matters more than most homeowners realize.`,
@@ -860,7 +860,7 @@ function genCityPage(ind: Industry, city: City, slug: string): GeneratedPage {
   const cityContext = city.context[ind.id] || `${city.name} has a strong demand for professional ${ind.name.toLowerCase()} services across its ${city.population} population. ${city.housingNote.charAt(0).toUpperCase() + city.housingNote.slice(1)} creates consistent need for qualified ${ind.tradespersonPlural.toLowerCase()}.`;
   return {
     slug,
-    metaTitle: `${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr} | Best Local Service Sites`,
+    metaTitle: `${ind.name} in ${city.name}, ${city.stateAbbr} | Best Local Service Sites`,
     metaDescription: `Find licensed, insured ${ind.tradespersonPlural.toLowerCase()} in ${city.name}, ${city.state}. Local ${ind.name.toLowerCase()} professionals serving ${city.name} and surrounding areas. Get a free quote today.`,
     h1: `${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr}: Find Trusted Local Professionals`,
     intro: `${cityContext} When you need a ${ind.tradesperson.toLowerCase()} in ${city.name}, the challenge is finding someone who is genuinely local, properly licensed, and available when you need them. This guide covers what homeowners in ${city.name} should look for, what to expect in terms of pricing, and how to find the right ${ind.tradesperson.toLowerCase()} for your specific situation.`,
@@ -918,7 +918,7 @@ function genCityEmergencyPage(ind: Industry, city: City, slug: string): Generate
   const cityContext = city.context[ind.id] || `${city.name} has strong demand for emergency ${ind.name.toLowerCase()} services.`;
   return {
     slug,
-    metaTitle: `Emergency ${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr} — 24/7 Response | Best Local Service Sites`,
+    metaTitle: `Emergency ${ind.name} in ${city.name}, ${city.stateAbbr} | Best Local Service Sites`,
     metaDescription: `Need an emergency ${ind.tradesperson.toLowerCase()} in ${city.name}? Licensed, insured ${ind.tradespersonPlural.toLowerCase()} available 24/7. Fast response across ${city.name} and surrounding areas.`,
     h1: `Emergency ${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr}: 24/7 Response Available`,
     intro: `${ind.name} emergencies in ${city.name} don't wait for business hours. ${cityContext} When you're facing an urgent ${ind.name.toLowerCase()} situation in ${city.name}, you need a licensed professional who can respond quickly — not a company that answers the phone but schedules you three days out. Here's how to find and evaluate 24/7 emergency ${ind.tradespersonPlural.toLowerCase()} in ${city.name} when you need them most.`,
@@ -968,7 +968,7 @@ function genCityBestPage(ind: Industry, city: City, slug: string): GeneratedPage
   const cityContext = city.context[ind.id] || `${city.name} has strong demand for professional ${ind.name.toLowerCase()} services.`;
   return {
     slug,
-    metaTitle: `Best ${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr} | Best Local Service Sites`,
+    metaTitle: `Best ${ind.name} in ${city.name}, ${city.stateAbbr} | Best Local Service Sites`,
     metaDescription: `Looking for the best ${ind.tradesperson.toLowerCase()} in ${city.name}? Here's how to find top-rated, licensed ${ind.tradespersonPlural.toLowerCase()} in ${city.name} and what to look for before hiring.`,
     h1: `Best ${ind.tradespersonPlural} in ${city.name}, ${city.stateAbbr}: How to Find the Right Professional`,
     intro: `Finding the best ${ind.tradesperson.toLowerCase()} in ${city.name} means cutting through dozens of listings to find the one that's right for your specific situation, budget, and timeline. ${cityContext} This guide gives you a city-specific framework for evaluating ${city.name}'s ${ind.name.toLowerCase()} professionals and making a confident decision.`,

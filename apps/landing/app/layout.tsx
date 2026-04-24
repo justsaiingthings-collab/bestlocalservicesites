@@ -6,9 +6,30 @@ export const metadata: Metadata = {
   title: "Best Local Service Sites — Websites That Generate Calls",
   description:
     "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
+  metadataBase: new URL("https://www.bestlocalservicesites.com"),
   openGraph: {
     type: "website",
     siteName: "Best Local Service Sites",
+    title: "Best Local Service Sites — Websites That Generate Calls",
+    description:
+      "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
+    url: "https://www.bestlocalservicesites.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Best Local Service Sites — Websites That Generate Calls for Home Service Contractors",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@convopilot",
+    title: "Best Local Service Sites — Websites That Generate Calls",
+    description:
+      "Done-for-you websites for roofing, HVAC, plumbing, and other home service businesses. Built to convert visitors into calls and booked jobs.",
+    images: ["/og-image.png"],
   },
   other: {
     "og:updated_time": "2026-04-24T00:00:00Z",
@@ -104,6 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
               <a href="/#how-it-works" className="hover:text-slate-900">How it works</a>
               <Link href="/demos" className="hover:text-slate-900">See demos</Link>
+              <Link href="/compare" className="hover:text-slate-900">Compare</Link>
               <Link href="/#get-started" className="hover:text-slate-900">Get a Quote</Link>
             </nav>
             <div className="flex items-center gap-3">
@@ -126,6 +148,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex gap-6 flex-wrap justify-center">
               <Link href="/#get-started" className="hover:text-white">Get a Quote</Link>
               <Link href="/demos" className="hover:text-white">Demos</Link>
+              <Link href="/compare" className="hover:text-white">Compare</Link>
               <Link href="/blog" className="hover:text-white">Resources</Link>
               <a href="/#faq" className="hover:text-white">FAQ</a>
               <a href="mailto:team@bestlocalservicesites.com" className="hover:text-white">Contact</a>

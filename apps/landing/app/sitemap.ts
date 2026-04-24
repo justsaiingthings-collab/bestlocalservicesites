@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllIndustrySlugs } from "./blog/data/generator";
 import { blogPosts } from "./blog/data/blogPosts";
+import { getAllCompetitorSlugs } from "./compare/data/competitors";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://bestlocalservicesites.com";
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/listings",
     "/onboarding",
     "/blog",
+    "/compare",
   ];
 
   const demoRoutes = [
@@ -26,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const industrySlugs = getAllIndustrySlugs();
   const blogPostSlugs = blogPosts.map((p) => p.slug);
+  const competitorSlugs = getAllCompetitorSlugs();
 
   const sitemapData: MetadataRoute.Sitemap = [
     ...coreRoutes.map((route) => ({
@@ -53,6 +56,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-04-24",
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    // Competitor comparison pages
+    ...competitorSlugs.map((slug) => ({
+      url: `${baseUrl}/compare/${slug}`,
+      lastModified: "2026-04-24",
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
     })),
   ];
 

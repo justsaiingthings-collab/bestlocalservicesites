@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { paintingConfig as config } from "@bestlocal/templates";
+import Link from "next/link";
 import { Hero, TrustSection, WhyChooseUs, CTASection } from "@bestlocal/ui";
 
 interface Props { params: { location: string } }
@@ -39,7 +40,7 @@ export default function LocationPage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {config.services.map((service: any) => (
-              <a key={service.slug} href={`/${loc.slug}/${service.slug}`}
+              <Link key={service.slug} href={`/${loc.slug}/${service.slug}`}
                 className="group flex items-start gap-3 border border-slate-200 hover:border-orange-400 rounded-xl p-4 transition-all hover:shadow-sm">
                 <span className="text-2xl">{service.icon}</span>
                 <div>
@@ -48,7 +49,7 @@ export default function LocationPage({ params }: Props) {
                   </div>
                   <div className="text-slate-500 text-sm mt-0.5">{service.shortDesc}</div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
