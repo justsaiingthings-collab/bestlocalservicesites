@@ -75,24 +75,44 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "How does pricing work?",
-    a: "We price based on your business size and needs. Book a call and we'll put together a plan that fits.",
+    q: "How much does Best Local Service Sites cost?",
+    a: "There is a one-time setup fee of $499, then $249 per month for the Pro Plan which includes your website, hosting, and up to 3 service area pages. The Conversion Pack — which adds missed call text-back, instant SMS reply to form submissions, and follow-up automation — is an additional $99 per month. Additional locations beyond the first 3 are $49 per month each. All plans are month-to-month with no contracts.",
   },
   {
-    q: "Is this better than Wix or Squarespace for contractors?",
-    a: "Yes. Best Local Service Sites generates significantly more leads than Wix and Squarespace by using trades-specific sticky action logic and hyper-local SEO clusters that generic builders lack.",
+    q: "How long does it take to get my contractor website live?",
+    a: "Under 7 days from the time you complete your onboarding form. Most sites go live within 3–5 business days. You receive a preview link before we push anything live so you can approve the content.",
   },
   {
-    q: "Where do you provide services?",
-    a: "We serve home service businesses nationwide across the United States — from Seattle to Atlanta, Austin to Denver. Wherever your customers are, we build the site that gets them to call.",
+    q: "What trades does Best Local Service Sites build websites for?",
+    a: "We specialize in home service contractors: roofing, HVAC, plumbing, landscaping, house cleaning, and painting are our core trades. We also build sites for electricians, pest control companies, handymen, garage door companies, pool service, appliance repair, carpet cleaning, window cleaning, pressure washing, remodeling contractors, and custom home builders.",
   },
   {
-    q: "How fast will I get leads?",
-    a: "We get your site live within 7 days. Most contractors see a measurable increase in local call volume within the first 30 days of launch.",
+    q: "Is Best Local Service Sites better than Wix or Squarespace for contractors?",
+    a: "Yes, for three specific reasons. First, our sites are built mobile-first with a sticky call bar — the single highest-converting element for contractor websites. Second, every site includes city-specific landing pages for local SEO, which generic builders don't support well. Third, we include proper schema markup (LocalBusiness, Service, FAQPage) that helps Google display your business correctly in search results. Generic builders require plugins and manual setup for all of this.",
   },
   {
-    q: "Do I have to sign a long-term contract?",
-    a: "No. All plans are month-to-month. There are no annual lock-ins or cancellation penalties.",
+    q: "Do I need to sign a long-term contract?",
+    a: "No. All plans are month-to-month. You can cancel at any time with no cancellation fees or penalties.",
+  },
+  {
+    q: "What is the Conversion Pack and do I need it?",
+    a: "The Conversion Pack is a $99 per month add-on that includes missed call text-back (when a homeowner calls and you don't answer, they automatically receive a text within seconds keeping them in your pipeline), instant SMS confirmation when a form is submitted, and follow-up automation. We strongly recommend it — studies show 78% of customers hire the first contractor who responds, and most contractors miss 30–60% of inbound calls while on job sites.",
+  },
+  {
+    q: "Where does Best Local Service Sites operate?",
+    a: "We serve home service contractors nationwide across the United States. Every site we build includes location-specific pages for the cities and suburbs the contractor serves, from Houston and Phoenix to Charlotte and Nashville.",
+  },
+  {
+    q: "What is ConvoPilot?",
+    a: "ConvoPilot is a guided booking widget that integrates with contractor websites. Instead of a plain contact form, homeowners complete a short guided chat that captures their service need, property details, and preferred appointment time — then confirms the booking instantly. It is available at convopilot.fyi and integrates directly with Best Local Service Sites.",
+  },
+  {
+    q: "How does a contractor website help with Google rankings?",
+    a: "Every site we build includes three foundational local SEO elements: schema markup (LocalBusiness, Service, and FAQPage structured data), city-specific landing pages targeting each city and suburb the contractor serves, and a properly linked Google Business Profile setup guide. Together, these drive visibility in Google's Local Pack — the map results that appear before organic search results and capture the majority of high-intent contractor searches.",
+  },
+  {
+    q: "How is Best Local Service Sites different from buying leads on Angi or HomeAdvisor?",
+    a: "Angi and HomeAdvisor sell shared leads — the same lead goes to 4 to 6 contractors simultaneously. You pay $30–$100 per lead to compete on speed and price against multiple competitors for the same homeowner. Best Local Service Sites builds an owned inbound channel — homeowners search Google and find your site exclusively. The lead cost is zero after the monthly subscription, and you face zero competition at the point of contact.",
   },
 ];
 
@@ -104,24 +124,46 @@ export default function LandingPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Product",
-            name: "Home Service Contractor Website Engine",
-            image: "https://bestlocalservicesites.com/icon.png",
-            description: "The leading lead generation engine for home service contractors nationwide. 1,000+ leads generated for trades across the US.",
-            brand: {
-              "@type": "Brand",
+            "@type": "Service",
+            name: "Contractor Website & Lead Generation System",
+            provider: {
+              "@type": "Organization",
               name: "Best Local Service Sites",
+              url: "https://www.bestlocalservicesites.com",
             },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "135"
-            },
-            review: {
-              "@type": "Review",
-              reviewRating: { "@type": "Rating", ratingValue: "5" },
-              author: { "@type": "Person", name: "Rick D." },
-              reviewBody: "I was spending $800/mo on ads and getting maybe 3 calls a week. New site went live and I'm getting 12–15 in the Austin market."
+            description: "Done-for-you websites for home service contractors — roofing, HVAC, plumbing, landscaping, cleaning, and painting. Built mobile-first with local SEO, schema markup, and conversion-optimized CTAs. Live in under 7 days.",
+            areaServed: { "@type": "Country", "name": "United States" },
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Contractor Website Plans",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  name: "Pro Plan",
+                  description: "Contractor website with hosting, up to 3 service area pages, local SEO setup, and schema markup.",
+                  price: "249",
+                  priceCurrency: "USD",
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: "249",
+                    priceCurrency: "USD",
+                    unitText: "month",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  name: "Conversion Pack",
+                  description: "Missed call text-back, instant SMS reply to form submissions, and follow-up automation.",
+                  price: "99",
+                  priceCurrency: "USD",
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: "99",
+                    priceCurrency: "USD",
+                    unitText: "month",
+                  },
+                },
+              ],
             },
           }),
         }}

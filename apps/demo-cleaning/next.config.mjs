@@ -2,6 +2,7 @@
 const nextConfig = {
   transpilePackages: ["@bestlocal/ui", "@bestlocal/templates"],
   output: "export",
+  trailingSlash: true,
   basePath: "/cleaning",
   assetPrefix: "/cleaning/",
   images: {

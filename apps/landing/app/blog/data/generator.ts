@@ -151,7 +151,7 @@ export function generatePage(slug: string): GeneratedPage | null {
 function genServicePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.namePlural} | Best Local Service Sites`,
+    metaTitle: `${ind.namePlural}: Find a Licensed ${ind.tradesperson} Near You | Best Local Service Sites`,
     metaDescription: `Find licensed, insured ${ind.tradespersonPlural.toLowerCase()} for any ${ind.name.toLowerCase()} job. ${ind.heroTagline}`,
     h1: `${ind.namePlural}: Find a Licensed Professional Near You`,
     intro: `When it comes to ${ind.name.toLowerCase()}, homeowners across the United States face the same challenge: finding a qualified, reliable professional who will show up on time, do the job right, and charge a fair price. ${ind.description} At Best Local Service Sites, we build conversion-optimized websites that help local ${ind.tradespersonPlural.toLowerCase()} reach the homeowners who need them most — so you spend less time searching and more time getting the work done.`,
@@ -423,7 +423,7 @@ function genBestServicePage(ind: Industry, slug: string): GeneratedPage {
 function genNearMePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.namePlural} Near Me — Find Local Professionals | Best Local Service Sites`,
+    metaTitle: `${ind.namePlural} Near Me — How to Find & Hire Fast | Best Local Service Sites`,
     metaDescription: `Looking for ${ind.name.toLowerCase()} near you? Here's how to find trusted, licensed ${ind.tradespersonPlural.toLowerCase()} in your area fast — and what to look for before you hire.`,
     h1: `${ind.namePlural} Near Me: How to Find a Trusted Local Professional Fast`,
     intro: `When you search "${ind.name.toLowerCase()} near me," you're looking for more than a list of phone numbers — you need a qualified, available professional you can trust. ${ind.description} This guide explains the fastest and most reliable methods for finding a great local ${ind.tradesperson.toLowerCase()}, with specific steps you can take right now to get a qualified professional on-site.`,
@@ -478,9 +478,9 @@ function genNearMePage(ind: Industry, slug: string): GeneratedPage {
 function genServicesNearMePage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.namePlural} Near Me — Compare Local Providers | Best Local Service Sites`,
+    metaTitle: `${ind.name} Services Near Me — Compare & Choose the Right Provider | Best Local Service Sites`,
     metaDescription: `Compare ${ind.namePlural.toLowerCase()} near you. Find licensed, reviewed professionals for every ${ind.name.toLowerCase()} need — from routine maintenance to emergency service.`,
-    h1: `${ind.namePlural} Near Me: Compare Local Options and Find the Right Fit`,
+    h1: `${ind.name} Services Near Me: Compare Local Options and Find the Right Fit`,
     intro: `Not all ${ind.name.toLowerCase()} needs are the same, and neither are the companies that handle them. Some specialize in emergency response, others in large installation projects, and others in routine maintenance programs. ${ind.description} This guide helps you understand the full range of ${ind.namePlural.toLowerCase()} available in your area, how to match your specific need to the right type of provider, and how to evaluate your options before making a decision.`,
     sections: [
       {
@@ -595,7 +595,7 @@ function genRepairPage(ind: Industry, slug: string): GeneratedPage {
 function genInstallationPage(ind: Industry, slug: string): GeneratedPage {
   return {
     slug,
-    metaTitle: `${ind.name} Installation Services — Professional & Licensed | Best Local Service Sites`,
+    metaTitle: `${ind.name} Installation — Proper Setup, Warranty-Backed Work | Best Local Service Sites`,
     metaDescription: `Professional ${ind.name.toLowerCase()} installation by licensed, insured ${ind.tradespersonPlural.toLowerCase()}. Get a free quote and find the right installer for your project.`,
     h1: `${ind.name} Installation: Getting the Project Done Right from Day One`,
     intro: `A proper ${ind.name.toLowerCase()} installation done right the first time is worth far more than the cheapest available bid. ${ind.description} Poor installation leads to premature failure, warranty voidance, and costly repairs that wouldn't have been necessary with a quality initial install. This guide walks through what to expect from a professional ${ind.name.toLowerCase()} installation, how to evaluate installers, and what the process should look like from estimate to completion.`,
