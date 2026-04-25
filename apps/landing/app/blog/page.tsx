@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Resources & Guides for Home Service Contractors | Best Local Service Sites",
   description:
     "Local SEO guides, website conversion tips, and industry-specific resources for roofing, HVAC, plumbing, landscaping, cleaning, and painting contractors.",
+  alternates: { canonical: "/blog/" },
 };
 
 const tradeColors: Record<string, string> = {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Live Demos | Best Local Service Sites",
   description:
     "See live conversion-optimized websites built for roofing, HVAC, plumbing, landscaping, cleaning, and painting contractors.",
+  alternates: { canonical: "/demos/" },
 };
 
 const demos = [

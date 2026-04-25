@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Local SEO vs Traditional SEO | Stop Wasting Ad Spend",
   description: "Learn why traditional SEO fails home service contractors and how hyper-local search dominance captures high-intent leads in under 7 days.",
+  alternates: { canonical: "/seo-comparison/" },
 };
 
 const comparisonData = [

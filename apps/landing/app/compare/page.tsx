@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Contractor Website Comparisons | Best Local Service Sites vs Alternatives",
   description:
     "Compare Best Local Service Sites against Angi, HomeAdvisor, Wix, Housecall Pro, ServiceTitan, Thumbtack, and more. See exactly why contractors switch to owned inbound.",
+  alternates: { canonical: "/compare/" },
 };
 
 const categoryOrder = [

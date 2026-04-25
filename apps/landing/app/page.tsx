@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { GetStartedForm } from "./components/GetStartedForm";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const features = [
   {

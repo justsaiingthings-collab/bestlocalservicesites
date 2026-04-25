@@ -22,10 +22,11 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: c.metaTitle,
     description: c.metaDescription,
+    alternates: { canonical: `/compare/${c.slug}/` },
     openGraph: {
       title: c.metaTitle,
       description: c.metaDescription,
-      url: `https://www.bestlocalservicesites.com/compare/${c.slug}`,
+      url: `https://www.bestlocalservicesites.com/compare/${c.slug}/`,
       type: "article",
     },
     twitter: {
