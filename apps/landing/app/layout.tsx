@@ -58,11 +58,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@graph": [
                 {
                   "@type": "Organization",
-                  "@id": "https://bestlocalservicesites.com/#organization",
+                  "@id": "https://www.bestlocalservicesites.com/#organization",
                   "name": "Best Local Service Sites",
-                  "url": "https://bestlocalservicesites.com",
+                  "url": "https://www.bestlocalservicesites.com",
                   "email": "team@bestlocalservicesites.com",
-                  "logo": "https://bestlocalservicesites.com/icon.png",
+                  "logo": "https://www.bestlocalservicesites.com/icon.png",
                   "description": "Done-for-you websites for home service contractors. Built to convert local search traffic into calls and booked jobs.",
                   "dateModified": "2026-04-24T00:00:00Z",
                   "sameAs": [
@@ -104,10 +104,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://bestlocalservicesites.com/#website",
-                  "url": "https://bestlocalservicesites.com",
+                  "@id": "https://www.bestlocalservicesites.com/#website",
+                  "url": "https://www.bestlocalservicesites.com",
                   "name": "Best Local Service Sites",
-                  "publisher": { "@id": "https://bestlocalservicesites.com/#organization" }
+                  "publisher": { "@id": "https://www.bestlocalservicesites.com/#organization" }
                 }
               ]
             }),

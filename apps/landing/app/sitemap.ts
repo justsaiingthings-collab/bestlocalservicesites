@@ -4,7 +4,7 @@ import { blogPosts } from "./blog/data/blogPosts";
 import { getAllCompetitorSlugs } from "./compare/data/competitors";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bestlocalservicesites.com";
+  const baseUrl = "https://www.bestlocalservicesites.com";
 
   const coreRoutes = [
     "",

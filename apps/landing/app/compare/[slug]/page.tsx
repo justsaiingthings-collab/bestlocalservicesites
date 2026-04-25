@@ -73,7 +73,7 @@ export default function ComparePage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "Best Local Service Sites",
-      url: "https://bestlocalservicesites.com",
+      url: "https://www.bestlocalservicesites.com",
     },
     mainEntity: {
       "@type": "FAQPage",

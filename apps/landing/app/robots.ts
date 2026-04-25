@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://bestlocalservicesites.com/sitemap.xml",
+    sitemap: "https://www.bestlocalservicesites.com/sitemap.xml",
   };
 }
