@@ -310,6 +310,29 @@ const platforms = [
 export default function ListingsPage() {
   return (
     <div className="bg-slate-50 min-h-screen overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.bestlocalservicesites.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Listings Checklist",
+                "item": "https://www.bestlocalservicesites.com/listings"
+              }
+            ]
+          }),
+        }}
+      />
       {/* ─── HERO ──────────────────────────────────────────────────── */}
       <section className="bg-slate-900 text-white pt-24 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">

@@ -48,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MQ5TPSC3ZE');`,
           }}
         />
+        <link rel="amphtml" href="https://www.bestlocalservicesites.com/stories/invisible-to-ringing" />
       </head>
       <body className="font-sans">
         <script
@@ -62,11 +63,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "name": "Best Local Service Sites",
                   "url": "https://www.bestlocalservicesites.com",
                   "email": "team@bestlocalservicesites.com",
-                  "logo": "https://www.bestlocalservicesites.com/icon.png",
-                  "description": "Done-for-you websites for home service contractors. Built to convert local search traffic into calls and booked jobs.",
-                  "dateModified": "2026-04-24T00:00:00Z",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.bestlocalservicesites.com/icon.png",
+                    "width": "180",
+                    "height": "180"
+                  },
+                  "description": "Done-for-you websites and lead generation systems for home service contractors. Specialized in roofing, HVAC, plumbing, and landscaping.",
+                  "dateModified": "2026-04-26T00:00:00Z",
+                  "brand": "Best Local Service Sites",
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "sales",
+                    "email": "team@bestlocalservicesites.com",
+                    "availableLanguage": "English"
+                  },
                   "sameAs": [
-                    "https://www.instagram.com/bestlocalservicesites/"
+                    "https://www.instagram.com/bestlocalservicesites/",
+                    "https://twitter.com/convopilot"
                   ],
                   "areaServed": [
                     { "@type": "Country", "name": "United States" }
@@ -76,11 +90,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     "Home Service Marketing",
                     "Lead Generation for Contractors",
                     "Responsive Web Design",
-                    "Conversion Rate Optimization"
+                    "Conversion Rate Optimization",
+                    "AI Optimization (AIO)"
                   ],
                   "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Home Service Lead Generation Services",
+                    "name": "Contractor Marketing Services",
                     "itemListElement": [
                       {
                         "@type": "Offer",
@@ -88,8 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           "@type": "Service",
                           "name": "Conversion-First Contractor Website",
                           "description": "7-day delivery of SEO-optimized contractor websites with sticky mobile CTAs."
-                        },
-                        "areaServed": { "@type": "Country", "name": "United States" }
+                        }
                       },
                       {
                         "@type": "Offer",
@@ -107,7 +121,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "@id": "https://www.bestlocalservicesites.com/#website",
                   "url": "https://www.bestlocalservicesites.com",
                   "name": "Best Local Service Sites",
-                  "publisher": { "@id": "https://www.bestlocalservicesites.com/#organization" }
+                  "description": "Premium websites that generate calls for contractors.",
+                  "publisher": { "@id": "https://www.bestlocalservicesites.com/#organization" },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.bestlocalservicesites.com/blog?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
                 }
               ]
             }),

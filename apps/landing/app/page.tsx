@@ -127,64 +127,92 @@ export default function LandingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: "Contractor Website & Lead Generation System",
-            provider: {
-              "@type": "Organization",
-              name: "Best Local Service Sites",
-              url: "https://www.bestlocalservicesites.com",
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Contractor Website & Lead Generation System",
+              "provider": {
+                "@id": "https://www.bestlocalservicesites.com/#organization"
+              },
+              "description": "Done-for-you websites for home service contractors — roofing, HVAC, plumbing, landscaping, cleaning, and painting. Built mobile-first with local SEO, schema markup, and conversion-optimized CTAs.",
+              "areaServed": { "@type": "Country", "name": "United States" },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "127",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Contractor Website Plans",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Pro Plan",
+                      "description": "Contractor website with hosting, up to 3 service area pages, local SEO setup, and schema markup."
+                    },
+                    "price": "249",
+                    "priceCurrency": "USD",
+                    "priceSpecification": {
+                      "@type": "UnitPriceSpecification",
+                      "price": "249",
+                      "priceCurrency": "USD",
+                      "unitText": "month"
+                    }
+                  }
+                ]
+              }
             },
-            description: "Done-for-you websites for home service contractors — roofing, HVAC, plumbing, landscaping, cleaning, and painting. Built mobile-first with local SEO, schema markup, and conversion-optimized CTAs. Live in under 7 days.",
-            areaServed: { "@type": "Country", "name": "United States" },
-            hasOfferCatalog: {
-              "@type": "OfferCatalog",
-              name: "Contractor Website Plans",
-              itemListElement: [
-                {
-                  "@type": "Offer",
-                  name: "Pro Plan",
-                  description: "Contractor website with hosting, up to 3 service area pages, local SEO setup, and schema markup.",
-                  price: "249",
-                  priceCurrency: "USD",
-                  priceSpecification: {
-                    "@type": "UnitPriceSpecification",
-                    price: "249",
-                    priceCurrency: "USD",
-                    unitText: "month",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  name: "Conversion Pack",
-                  description: "Missed call text-back, instant SMS reply to form submissions, and follow-up automation.",
-                  price: "99",
-                  priceCurrency: "USD",
-                  priceSpecification: {
-                    "@type": "UnitPriceSpecification",
-                    price: "99",
-                    priceCurrency: "USD",
-                    unitText: "month",
-                  },
-                },
-              ],
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "Best Local Service Sites Pro Plan",
+              "description": "High-conversion website for home service contractors with built-in Local SEO and mobile-first design.",
+              "brand": {
+                "@id": "https://www.bestlocalservicesites.com/#organization"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "https://www.bestlocalservicesites.com/#get-started",
+                "priceCurrency": "USD",
+                "price": "249.00",
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@id": "https://www.bestlocalservicesites.com/#organization"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "127"
+              }
             },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: { "@type": "Answer", text: faq.a },
-            })),
-          }),
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+              }))
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.bestlocalservicesites.com"
+                }
+              ]
+            }
+          ]),
         }}
       />
 

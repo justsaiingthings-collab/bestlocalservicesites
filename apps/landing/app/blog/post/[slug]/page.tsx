@@ -64,7 +64,47 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([faqSchema, articleSchema]),
+          __html: JSON.stringify([
+            faqSchema,
+            {
+              ...articleSchema,
+              "author": {
+                "@type": "Organization",
+                "name": "Best Local Service Sites Editorial Team",
+                "url": "https://www.bestlocalservicesites.com"
+              },
+              "image": "https://www.bestlocalservicesites.com/og-image.png",
+              "dateModified": post.publishDate + "T00:00:00Z",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://www.bestlocalservicesites.com/blog/post/${params.slug}`
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.bestlocalservicesites.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Resources",
+                  "item": "https://www.bestlocalservicesites.com/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.title,
+                  "item": `https://www.bestlocalservicesites.com/blog/post/${params.slug}`
+                }
+              ]
+            }
+          ]),
         }}
       />
 

@@ -65,26 +65,52 @@ export default function ComparePage({ params }: Props) {
   const c = competitorMap[params.slug];
   if (!c) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: c.heroHeadline,
-    description: c.metaDescription,
-    url: `https://www.bestlocalservicesites.com/compare/${c.slug}`,
-    publisher: {
-      "@type": "Organization",
-      name: "Best Local Service Sites",
-      url: "https://www.bestlocalservicesites.com",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": c.heroHeadline,
+      "description": c.metaDescription,
+      "url": `https://www.bestlocalservicesites.com/compare/${c.slug}`,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Best Local Service Sites",
+        "url": "https://www.bestlocalservicesites.com"
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": c.faq.map((f) => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      }
     },
-    mainEntity: {
-      "@type": "FAQPage",
-      mainEntity: c.faq.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.bestlocalservicesites.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Compare",
+          "item": "https://www.bestlocalservicesites.com/compare"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": c.name,
+          "item": `https://www.bestlocalservicesites.com/compare/${c.slug}`
+        }
+      ]
+    }
+  ];
 
   const related = competitors
     .filter((x) => x.slug !== c.slug && x.category === c.category)

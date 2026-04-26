@@ -1,5 +1,13 @@
 {
   "buildCommand": "pnpm i --frozen-lockfile && pnpm run build && bash build.sh",
   "outputDirectory": "_site",
-  "installCommand": "echo 'skip'"
+  "installCommand": "echo 'skip'",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "bestlocalservicesites.com" }],
+      "destination": "https://www.bestlocalservicesites.com/:path*",
+      "permanent": true
+    }
+  ]
 }

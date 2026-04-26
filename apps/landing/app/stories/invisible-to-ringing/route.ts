@@ -1,0 +1,192 @@
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const storyHtml = `
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <title>Invisible to Ringing: The Contractor's Path</title>
+    <link rel="canonical" href="https://www.bestlocalservicesites.com/stories/invisible-to-ringing">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+      amp-story {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI ", Roboto, Helvetica, Arial, sans-serif;
+        color: #fff;
+      }
+      amp-story-page {
+        background-color: #0e0d0b;
+      }
+      h1 {
+        font-weight: 900;
+        font-size: 2.5em;
+        line-height: 1.1;
+        margin: 0;
+      }
+      p {
+        font-weight: 400;
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: #ccc;
+      }
+      .amber { color: #f97316; }
+      .bg-gradient {
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+      }
+      .tag {
+        font-family: monospace;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #f97316;
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <amp-story standalone
+        supports-landscape
+        title="Invisible to Ringing"
+        publisher="Best Local Service Sites"
+        publisher-logo-src="https://www.bestlocalservicesites.com/icon.png"
+        poster-portrait-src="https://www.bestlocalservicesites.com/story-a-poster.png">
+      
+      <!-- Page 1: The Silence -->
+      <amp-story-page id="page1">
+        <amp-story-grid-layer template="fill">
+          <amp-img src="/story-a-poster.png" width="720" height="1280" layout="responsive"></amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="bg-gradient">
+          <div animate-in="fade-in" animate-in-duration="1s">
+            <span class="tag">01 · The Silence</span>
+            <h1>The phone isn't ringing.</h1>
+            <p>You're a master of your trade, but in the digital world, you're invisible.</p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 2: The Search -->
+      <amp-story-page id="page2">
+        <amp-story-grid-layer template="vertical">
+          <div animate-in="fly-in-top" animate-in-duration="0.8s">
+            <span class="tag">02 · The Search</span>
+            <h1>A homeowner needs a roofer.</h1>
+            <p>They search Google. Your competitors show up. <span class="amber">You don't.</span></p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 3: The Engine -->
+      <amp-story-page id="page3">
+        <amp-story-grid-layer template="vertical">
+          <div animate-in="twirl-in" animate-in-duration="1s">
+            <span class="tag">03 · The Engine</span>
+            <h1>We build the pipeline.</h1>
+            <p>A conversion-optimized site, live in under <span class="amber">7 days</span>. No fluff. Just leads.</p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 4: Position #1 -->
+      <amp-story-page id="page4">
+        <amp-story-grid-layer template="vertical">
+          <div animate-in="fly-in-bottom" animate-in-duration="0.8s">
+            <span class="tag">04 · The Rise</span>
+            <h1>Local Pack. Position #1.</h1>
+            <p>Your business claimed its spot. Every search leads back to you.</p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 5: The Reach -->
+      <amp-story-page id="page5">
+        <amp-story-grid-layer template="fill">
+          <amp-img src="/story-a-map.png" width="720" height="1280" layout="responsive"></amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="bg-gradient">
+          <div animate-in="fade-in" animate-in-duration="1s">
+            <span class="tag">05 · The Reach</span>
+            <h1>Hyper-local dominance.</h1>
+            <p>From the city center to every suburb. Your name is everywhere.</p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 6: AI Recommended -->
+      <amp-story-page id="page6">
+        <amp-story-grid-layer template="vertical">
+          <div animate-in="pan-left" animate-in-duration="1.5s">
+            <span class="tag">06 · The Future</span>
+            <h1>Cited by AI.</h1>
+            <p>When ChatGPT or Gemini picks a local pro, it picks <span class="amber">you</span>. Our schema makes it easy.</p>
+          </div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- Page 7: The Outcome -->
+      <amp-story-page id="page7">
+        <amp-story-grid-layer template="vertical">
+          <div animate-in="zoom-in" animate-in-duration="1s">
+            <span class="tag">07 · The Result</span>
+            <h1>The phone won't stop ringing.</h1>
+            <p>Exclusive leads. Zero ad spend. Own your inbound channel today.</p>
+          </div>
+        </amp-story-grid-layer>
+        <amp-story-cta-layer>
+          <a href="https://www.bestlocalservicesites.com/#get-started" class="button">Get a Free Quote →</a>
+        </amp-story-cta-layer>
+      </amp-story-page>
+
+      <!-- Bookend for Desktop/Mobile CX -->
+      <amp-story-bookend layout="nodisplay">
+        <script type="application/json">
+          {
+            "bookendVersion": "v1.0",
+            "shareProviders": ["twitter", "linkedin", "email"],
+            "components": [
+              {
+                "type": "heading",
+                "text": "Ready to own your local market?"
+              },
+              {
+                "type": "small",
+                "title": "Pricing & Plans",
+                "url": "https://www.bestlocalservicesites.com/pricing",
+                "image": "https://www.bestlocalservicesites.com/og-image.png"
+              },
+              {
+                "type": "small",
+                "title": "Lead Gen Demos",
+                "url": "https://www.bestlocalservicesites.com/demos",
+                "image": "https://www.bestlocalservicesites.com/og-image.png"
+              },
+              {
+                "type": "cta-link",
+                "links": [
+                  {
+                    "text": "Start Your 7-Day Build",
+                    "url": "https://www.bestlocalservicesites.com/onboarding"
+                  }
+                ]
+              }
+            ]
+          }
+        </script>
+      </amp-story-bookend>
+
+    </amp-story>
+  </body>
+</html>
+  `;
+
+  return new NextResponse(storyHtml, {
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
+}
