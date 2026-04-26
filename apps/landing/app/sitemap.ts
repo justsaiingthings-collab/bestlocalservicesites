@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/onboarding",
     "/blog",
     "/compare",
+    "/stories",
     "/stories/invisible-to-ringing",
     "/stories/day-in-the-life",
   ];

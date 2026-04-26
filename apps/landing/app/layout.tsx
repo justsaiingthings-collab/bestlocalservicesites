@@ -21,6 +21,12 @@ export const metadata: Metadata = {
         height: 630,
         alt: "Best Local Service Sites — Websites That Generate Calls for Home Service Contractors",
       },
+      {
+        url: "/icon.png",
+        width: 512,
+        height: 512,
+        alt: "Best Local Service Sites Logo",
+      },
     ],
   },
   twitter: {
@@ -48,7 +54,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MQ5TPSC3ZE');`,
           }}
         />
-        <link rel="amphtml" href="https://www.bestlocalservicesites.com/stories/invisible-to-ringing" />
       </head>
       <body className="font-sans">
         <script
@@ -75,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "contactType": "sales",
+                    "telephone": "+1-206-659-7027",
                     "email": "team@bestlocalservicesites.com",
                     "availableLanguage": "English"
                   },

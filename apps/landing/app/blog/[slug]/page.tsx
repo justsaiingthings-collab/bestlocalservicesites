@@ -37,21 +37,40 @@ function buildSchema(page: GeneratedPage): string {
     ? `${page.city.name}, ${page.city.stateAbbr}`
     : "United States";
 
+  const industrySubtypeMap: Record<string, string> = {
+    "hvac": "HVACBusiness",
+    "plumbing": "PlumbingBusiness",
+    "roofing": "RoofingContractor",
+    "electrical": "Electrician",
+    "landscaping": "LandscapingBusiness",
+    "cleaning": "HouseCleaningService",
+    "pest-control": "PestControlService",
+    "painting": "PaintingBusiness",
+    "handyman": "HomeAndConstructionBusiness",
+    "pool": "PoolService",
+    "appliance": "ApplianceRepairService",
+    "garage-door": "HomeAndConstructionBusiness",
+  };
+
+  const businessType = industrySubtypeMap[page.industry.id] || "LocalBusiness";
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: page.h1,
-    description: page.metaDescription,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Best Local Service Sites",
-      url: "https://www.bestlocalservicesites.com",
+    "name": page.h1,
+    "description": page.metaDescription,
+    "provider": {
+      "@type": businessType,
+      "name": "Best Local Service Sites",
+      "url": "https://www.bestlocalservicesites.com",
+      "telephone": "+1-206-659-7027",
+      "image": "https://www.bestlocalservicesites.com/icon.png"
     },
-    areaServed: {
+    "areaServed": {
       "@type": "Place",
-      name: locationName,
+      "name": locationName,
     },
-    serviceType: page.industry.name,
+    "serviceType": page.industry.name,
   };
 
   const faqSchema = {
@@ -341,7 +360,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       {/* ── Mobile sticky CTA ── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-gray-900 border-t border-gray-700 flex">
         <a
-          href="tel:+18005551234"
+          href="tel:+12066597027"
           className="flex-1 bg-orange-500 text-white font-bold text-center py-4 text-sm"
         >
           📞 Call Now

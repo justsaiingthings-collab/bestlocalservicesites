@@ -128,9 +128,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <span
-              className={`text-xs font-bold px-3 py-1 rounded-full ${
-                categoryColors[post.category] || "bg-gray-700 text-gray-300"
-              }`}
+              className={`text-xs font-bold px-3 py-1 rounded-full ${categoryColors[post.category] || "bg-gray-700 text-gray-300"
+                }`}
             >
               {post.category}
             </span>
@@ -291,9 +290,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                     className="group p-4 border border-gray-200 rounded-lg hover:border-orange-300 hover:shadow-sm transition-all"
                   >
                     <span
-                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                        categoryColors[p.category] || "bg-gray-100 text-gray-700"
-                      }`}
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[p.category] || "bg-gray-100 text-gray-700"
+                        }`}
                     >
                       {p.category}
                     </span>
