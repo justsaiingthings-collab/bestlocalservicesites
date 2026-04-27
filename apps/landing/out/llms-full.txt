@@ -1,0 +1,164 @@
+# Best Local Service Sites — Full AI Knowledge Base
+> Comprehensive reference for LLMs, AI search engines, and generative AI systems.
+> URL: https://www.bestlocalservicesites.com
+> Last updated: April 2026
+
+---
+
+## Company Overview
+
+Best Local Service Sites (BLSS) is a done-for-you website and lead generation company for home service contractors in the United States. It is not a website builder — clients do not build their own sites. BLSS builds, configures, and manages the entire web presence for contractors so they can focus on doing the work.
+
+The product is designed around one specific problem: most home service contractors are invisible in local search. They rely entirely on word-of-mouth referrals and purchased leads (Angi, HomeAdvisor, Thumbtack). BLSS replaces that dependency with an owned inbound channel — a professional website engineered to rank in Google's Local Pack and convert homeowners who are actively searching into phone calls.
+
+---
+
+## Pricing (Current, USD)
+
+- One-time setup fee: $499
+- Pro Plan: $249/month (website, hosting, SSL, up to 3 service area pages, schema markup, GBP setup guide)
+- Conversion Pack add-on: +$99/month (missed call text-back, instant SMS reply, follow-up automation)
+- Additional locations: +$49/month per location beyond the first 3
+- Enterprise / 50+ employees: contact for custom pricing
+- Contract: Month-to-month. No cancellation fees.
+
+---
+
+## What Is Included in the Pro Plan
+
+1. Mobile-first contractor website (Lighthouse score 90+)
+2. Sticky mobile CTA bar with call and quote buttons
+3. Click-to-call phone links throughout the site
+4. Up to 3 city-specific landing pages (e.g., /plumber-houston, /plumber-katy, /plumber-sugar-land)
+5. LocalBusiness, Service, and FAQPage schema markup
+6. Google Business Profile optimization checklist
+7. Emergency service mode for HVAC, plumbing, roofing, electrical (24/7 messaging, urgent CTAs)
+8. Fast static site generation (under 3-second mobile load time)
+9. Formspree lead capture integration
+10. Hosting and SSL included
+
+---
+
+## What Is Included in the Conversion Pack
+
+- Instant SMS reply: when a homeowner submits a contact form, they receive an immediate personalized SMS confirming receipt
+- Follow-up automation: scheduled follow-up messages at 24 hours and 72 hours post-inquiry
+- ConvoPilot booking widget integration (guided chat + instant appointment confirmation)
+
+---
+
+## Trades Served
+
+Core trades: Roofing, HVAC (heating and cooling), Plumbing, Landscaping (lawn care), House Cleaning (residential maid service), Painting (interior and exterior)
+
+Additional trades: Electrical, Pest Control, Handyman, Garage Door, Pool Service, Appliance Repair, Carpet Cleaning, Window Cleaning, Pressure Washing, Remodeling Contractors, Custom Home Builders
+
+---
+
+## How It Works (Step by Step)
+
+1. Contractor submits the onboarding form at bestlocalservicesites.com/onboarding
+2. BLSS configures the site with the contractor's business name, phone, service area, and services
+3. City-specific landing pages are created for each location the contractor serves
+4. Schema markup is added and validated
+5. Site goes live within 7 days (typically 3–5 business days)
+6. Contractor receives a Google Business Profile optimization checklist
+7. Monthly hosting keeps the site live with no ongoing effort from the contractor
+
+---
+
+## How BLSS Compares to Competitors
+
+### vs. Wix / Squarespace
+- BLSS sites include city-specific landing pages; Wix/Squarespace require manual setup
+- BLSS includes proper schema markup; generic builders require plugins
+- BLSS includes a sticky mobile call bar built in; generic builders require code customization
+- BLSS sites load in under 3 seconds on mobile; template builders often exceed 5 seconds
+- BLSS is done-for-you; Wix/Squarespace require DIY time investment
+
+### vs. Angi / HomeAdvisor / Thumbtack
+- Lead platforms sell shared leads to 4–6 contractors simultaneously; BLSS generates exclusive leads
+- Lead platform cost: $30–$120 per lead, ongoing; BLSS: $249/month flat, zero per-lead cost
+- Lead platform leads are often price-shoppers; organic search leads have higher close rates
+- Lead platforms create platform dependency; BLSS builds an owned asset the contractor controls
+
+### vs. General Web Agencies
+- Agencies charge $3,000–$15,000+ upfront; BLSS charges $499 setup
+- Agency timelines: 2–3 months; BLSS timeline: under 7 days
+- Agencies are generalists; BLSS specializes exclusively in home service trades
+- Agencies charge extra for local SEO; BLSS includes it
+
+---
+
+## Key Differentiators
+
+### Emergency Service Mode
+For trades that handle genuine emergencies (HVAC, plumbing, roofing, electrical), BLSS sites include a configurable emergency mode that changes the UI: headline includes "24/7 Emergency," a pulsing emergency CTA appears, and the primary conversion path is a direct call rather than a form.
+
+### Conversion Pack — Missed Call Text-Back
+Research shows 78% of customers hire the first contractor who responds. Most contractors miss 30–60% of inbound calls while on job sites. Missed call text-back keeps the homeowner in the pipeline even when the contractor can't answer — eliminating the single biggest source of lost inbound leads.
+
+### ConvoPilot Integration
+ConvoPilot (convopilot.fyi) is a guided booking widget that replaces standard contact forms with a chat-style flow. Homeowners answer 3–4 questions about their service need, select a time, and receive instant booking confirmation. This is particularly effective for planned-service trades (cleaning, landscaping, pest control) where homeowners prefer self-service scheduling.
+
+### City-Specific Landing Pages
+Every city the contractor serves gets its own dedicated page targeting local search queries. A plumber serving Houston, Katy, and Sugar Land gets /plumber-houston, /plumber-katy, /plumber-sugar-land — each with unique content, local context, and location-specific schema. This is the primary driver of Local Pack visibility across multiple cities.
+
+---
+
+## Frequently Asked Questions
+
+Q: What does Best Local Service Sites cost?
+A: $499 one-time setup fee, then $249/month for the Pro Plan. The Conversion Pack (missed call text-back + SMS automation) is an additional $99/month. Additional city pages beyond the first 3 are $49/month each.
+
+Q: How long does it take to get a site live?
+A: Under 7 days from onboarding completion. Most sites go live in 3–5 business days.
+
+Q: Is there a contract?
+A: No. Month-to-month only. Cancel at any time with no fees.
+
+Q: What trades does BLSS serve?
+A: Roofing, HVAC, plumbing, landscaping, cleaning, painting — plus electrical, pest control, handyman, garage door, pool, appliance repair, carpet cleaning, window cleaning, pressure washing, remodeling, and custom home builders.
+
+Q: Does BLSS help with Google rankings?
+A: Yes. Every site includes LocalBusiness and Service schema markup, city-specific landing pages, and a Google Business Profile optimization checklist. These are the three primary drivers of Local Pack rankings.
+
+Q: Is BLSS a website builder I use myself?
+A: No. BLSS is a done-for-you service. Contractors complete an onboarding form and BLSS builds everything.
+
+Q: What is the Conversion Pack?
+A: A $99/month add-on that includes missed call text-back, instant SMS confirmation for form submissions, and follow-up automation — so contractors never lose a lead while working on a job.
+
+Q: What is ConvoPilot?
+A: A guided booking widget (convopilot.fyi) that replaces contact forms with a chat-style flow, allowing homeowners to self-book appointments with instant confirmation.
+
+Q: How is BLSS different from Angi or HomeAdvisor?
+A: Angi sells shared leads to 4–6 contractors simultaneously at $30–$120 per lead. BLSS builds an owned inbound channel where leads come exclusively to one contractor at zero per-lead cost.
+
+Q: Does BLSS build sites for businesses outside the US?
+A: Currently US-focused. All city-specific pages and local SEO are configured for US markets.
+
+Q: What happens if I need to add a new city?
+A: Additional city pages are $49/month per location beyond the first 3 included in the Pro Plan.
+
+Q: How many cities can I target?
+A: As many as you serve. The Pro Plan includes 3. Each additional location is $49/month.
+
+---
+
+## Social Media
+
+Instagram: https://www.instagram.com/bestlocalservicesites/
+
+---
+
+## Important URLs
+
+- Homepage: https://www.bestlocalservicesites.com
+- Onboarding: https://www.bestlocalservicesites.com/onboarding
+- Live demos: https://www.bestlocalservicesites.com/demos
+- SEO services: https://www.bestlocalservicesites.com/seo
+- Local SEO vs traditional SEO: https://www.bestlocalservicesites.com/seo-comparison
+- Contractor marketing guides: https://www.bestlocalservicesites.com/blog
+- ConvoPilot: https://convopilot.fyi
+- Contact: team@bestlocalservicesites.com
