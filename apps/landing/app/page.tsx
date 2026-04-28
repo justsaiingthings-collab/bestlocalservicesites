@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GetStartedForm } from "./components/GetStartedForm";
+import { LeadROICalculator } from "./components/LeadROICalculator";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -36,6 +37,11 @@ const features = [
     icon: "🤖",
     title: "AIO (AI Optimization)",
     desc: "We don't just do SEO. We optimize for the AI era. Your site is engineered to be cited and recommended by ChatGPT, Gemini, and Perplexity when local owners search for help.",
+  },
+  {
+    icon: "📊",
+    title: "Transparency Dashboard",
+    desc: "No more guessing if your marketing is working. Log in anytime to see real-time keyword progress, technical health logs, and your live lead feed.",
   },
 ];
 
@@ -217,8 +223,8 @@ export default function LandingPage() {
       />
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 text-white pt-20 pb-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-slate-900 text-white pt-20 pb-24 px-4 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
             🚀 Live in under 7 days · No contracts
           </div>
@@ -232,9 +238,9 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#get-started"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-black text-lg px-8 py-4 rounded-xl transition-colors"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-black text-lg px-8 py-4 rounded-xl transition-colors shadow-lg shadow-orange-500/20"
             >
-              Request a Free Quote →
+              Get a Free Strategy Audit →
             </Link>
             <Link
               href="/demos"
@@ -252,6 +258,28 @@ export default function LandingPage() {
             <span>⚡ Live in under 7 days</span>
           </div>
         </div>
+
+        {/* Floating SMS Mockup - Fixing the "Missed Call" Pain point visually */}
+        <div className="hidden lg:block absolute -right-20 bottom-10 w-80 rotate-[-5deg] opacity-50 hover:opacity-100 transition-opacity duration-500">
+          <div className="bg-white rounded-[2rem] p-4 shadow-2xl border-4 border-slate-800">
+            <div className="bg-slate-100 rounded-xl p-3 mb-3">
+              <div className="text-[10px] font-bold text-slate-400 mb-1">MISSED CALL · 2:14 PM</div>
+              <div className="text-xs font-black text-slate-900">Incoming Call: (512) 555-0198</div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="bg-orange-500 text-white text-[11px] p-3 rounded-2xl rounded-tr-none self-end max-w-[80%]">
+                "Hey! Sorry we missed your call, we're currently on a job site. How can Apex Roofing help you today?"
+              </div>
+              <div className="bg-slate-200 text-slate-900 text-[11px] p-3 rounded-2xl rounded-tl-none self-start max-w-[80%]">
+                "Hi, I have a leak in my garage and need someone out tomorrow morning if possible!"
+              </div>
+              <div className="bg-orange-500 text-white text-[11px] p-3 rounded-2xl rounded-tr-none self-end max-w-[80%] font-bold">
+                "We can be there at 9 AM. What's your address?"
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-4 text-xs font-black text-orange-500 uppercase tracking-widest">Missed Call Text-Back in Action</div>
+        </div>
       </section>
 
       {/* ─── THE PROBLEM ─────────────────────────────────────────────── */}
@@ -263,6 +291,34 @@ export default function LandingPage() {
           <p className="text-slate-500 text-lg max-w-2xl mx-auto mb-10">
             A pretty design does absolutely nothing if the phone isn't ringing. If your web presence isn't operating as an automated sales rep capturing local leads 24/7, you are actively giving away market share.
           </p>
+          
+          {/* Decision Matrix: Managed vs DIY */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto text-left">
+            <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-200">
+              <h3 className="text-xl font-black mb-4 flex items-center gap-2">
+                🚲 The "Bicycle" Option <span className="text-sm font-normal text-slate-400">(Wix/WP)</span>
+              </h3>
+              <ul className="space-y-3 text-sm text-slate-500">
+                <li className="flex gap-2"><span>✗</span> You have to build it yourself</li>
+                <li className="flex gap-2"><span>✗</span> You manage the SEO updates</li>
+                <li className="flex gap-2"><span>✗</span> You fix it when it breaks</li>
+                <li className="flex gap-2"><span>✗</span> You are the technician</li>
+              </ul>
+            </div>
+            <div className="bg-orange-600 p-8 rounded-[2.5rem] text-white shadow-xl shadow-orange-600/20 relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+              <h3 className="text-xl font-black mb-4 flex items-center gap-2">
+                🏎️ The "Chauffeur" Choice <span className="text-sm font-normal text-orange-200">(Us)</span>
+              </h3>
+              <ul className="space-y-3 text-sm text-orange-100">
+                <li className="flex gap-2"><span>✓</span> We build, write, and deploy</li>
+                <li className="flex gap-2"><span>✓</span> We manage daily SEO clusters</li>
+                <li className="flex gap-2"><span>✓</span> We optimize for AI search</li>
+                <li className="flex gap-2"><span>✓</span> You handle the calls</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {[
               { bad: "Phone number buried", good: "Sticky instant-dial logic fixed dynamically on every screen." },
@@ -282,24 +338,188 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── HOW IT WORKS ──────────────────────────────────────────── */}
-      <section className="bg-slate-50 py-16 px-4" id="how-it-works">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-12">
-            We Build The Engine. You Take The Calls.
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step) => (
-              <div key={step.n} className="text-center">
-                <div className="w-14 h-14 rounded-full bg-orange-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-4">
-                  {step.n}
+      {/* ─── OWNED VS SHARED ────────────────────────────────────────── */}
+      <section className="bg-white py-24 px-4 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
+                Stop Being a <span className="text-red-600">Digital Beggar</span> on Angi and HomeAdvisor.
+              </h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">✗</div>
+                  <div>
+                    <h3 className="font-bold text-slate-900">Shared Leads = Race to the Bottom</h3>
+                    <p className="text-slate-500 text-sm">They sell the same lead to 5 contractors. You're forced to compete on price against guys who cut corners.</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-2">{step.title}</h3>
-                <p className="text-slate-500">{step.desc}</p>
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">✗</div>
+                  <div>
+                    <h3 className="font-bold text-slate-900">Zero Brand Equity</h3>
+                    <p className="text-slate-500 text-sm">You are just a name in a list. When you stop paying them, your business disappears.</p>
+                  </div>
+                </div>
+                <div className="h-px bg-slate-100 my-8"></div>
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold shrink-0">✓</div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-green-700">Owned Inbound = Market Authority</h3>
+                    <p className="text-slate-500 text-sm">Homeowners find YOU on Google. They aren't comparing prices; they are looking for the local expert. That's you.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-slate-50 border border-slate-200 rounded-[3rem] p-8 md:p-12 relative shadow-inner">
+              <div className="text-center mb-8">
+                <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">The Lead Comparison</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center">
+                  <div className="text-red-500 text-2xl mb-2">😫</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase mb-1">Shared Lead</div>
+                  <div className="text-xl font-black text-slate-900">$45 - $120</div>
+                  <div className="text-[10px] text-slate-500 mt-2">Plus 4 Competitors</div>
+                </div>
+                <div className="bg-white p-6 rounded-3xl shadow-sm border-2 border-orange-500 text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-orange-500 text-white text-[8px] px-2 py-0.5 font-black uppercase">Better</div>
+                  <div className="text-green-500 text-2xl mb-2">🤑</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase mb-1">Owned Lead</div>
+                  <div className="text-xl font-black text-slate-900">$0.00</div>
+                  <div className="text-[10px] text-slate-500 mt-2">Exclusively Yours</div>
+                </div>
+              </div>
+              <div className="mt-8 p-6 bg-white rounded-3xl border border-slate-200 shadow-sm text-sm text-slate-600 leading-relaxed italic">
+                "I used to spend $3k/mo on leads. Now I spend $348/mo on the system and get twice as many calls. My profit margins have never been higher."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── HOW IT WORKS: THE 5-MINUTE ONBOARDING ─────────────────── */}
+      <section className="bg-slate-50 py-24 px-4" id="how-it-works">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
+              The 5-Minute Onboarding. <br />
+              <span className="text-orange-500">We Handle The Rest.</span>
+            </h2>
+            <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+              We know you're exhausted. We don't need a "project kickoff" or hours of your time. Give us the basics, then get back to work.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Visual Step-by-Step */}
+            <div className="space-y-12">
+              {steps.map((step) => (
+                <div key={step.n} className="flex gap-6 items-start group">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center font-black text-slate-900 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                    {step.n}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black text-slate-900 mb-2">{step.title}</h3>
+                    <p className="text-slate-500 leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Managed Service Promise Card */}
+            <div className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-sm relative">
+              <div className="absolute top-8 right-8">
+                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 mb-6">The "Chauffeur" Guarantee</h3>
+              <div className="space-y-4 mb-8">
+                {[
+                  "No writing required (we handle all copy)",
+                  "No design choices (we use proven conversion layouts)",
+                  "No technical setup (we handle hosting & domain)",
+                  "No SEO management (it's built into the engine)"
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-slate-600 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-sm text-slate-500 italic">
+                "Literally took 5 minutes to fill out the form. 6 days later, my new site was live and my phone started ringing. Didn't have to touch a single line of code."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── THE ROADMAP ────────────────────────────────────────────── */}
+      <section className="bg-slate-900 py-24 px-4 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              The 180-Day Dominance Roadmap
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              SEO is a marathon, not a sprint. We don't hide behind "maybe" — we give you a clear, technical path from Day 1 to market leadership.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { 
+                day: "Day 7", 
+                title: "Engine Ignition", 
+                status: "Live & Indexed", 
+                desc: "Your high-conversion site is live with full schema markup and sitemaps submitted to Google/Bing." 
+              },
+              { 
+                day: "Day 30", 
+                title: "Local Pack Entry", 
+                status: "Gaining Velocity", 
+                desc: "Hyper-local service clusters start appearing in 'Near Me' searches. First organic calls typically trigger here." 
+              },
+              { 
+                day: "Day 90", 
+                title: "Market Lockout", 
+                status: "Page 1 Dominance", 
+                desc: "Your business claims top spots for high-value keywords. Conversion engine is tuned based on real traffic data." 
+              },
+              { 
+                day: "Day 180", 
+                title: "Unstoppable ROI", 
+                status: "Auto-Pilot Growth", 
+                desc: "Organic lead flow replaces paid ad spend. Your site is cited by AI search as the trusted local authority." 
+              },
+            ].map((p, i) => (
+              <div key={i} className="relative group">
+                <div className="text-orange-500 font-black text-xl mb-2">{p.day}</div>
+                <div className="h-0.5 bg-slate-800 w-full mb-6 relative">
+                  <div className="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 rounded-full bg-orange-500 ring-4 ring-orange-500/20" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{p.title}</h3>
+                <div className="text-xs font-bold text-green-500 uppercase tracking-widest mb-3">{p.status}</div>
+                <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
+
+          <div className="mt-16 text-center">
+            <Link 
+              href="/dashboard" 
+              className="inline-flex items-center gap-2 text-white font-bold hover:text-orange-400 transition-colors border-b border-white/20 pb-1"
+            >
+              Preview your Transparency Dashboard →
+            </Link>
+          </div>
         </div>
+        
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-orange-500/5 to-transparent pointer-events-none" />
       </section>
 
       {/* ─── FEATURES ──────────────────────────────────────────────── */}
@@ -495,8 +715,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── FAQ ───────────────────────────────────────────────────── */}
-      <section className="bg-slate-50 py-16 px-4" id="faq">
+      {/* ─── ROI CALCULATOR ────────────────────────────────────────── */}
+      <section className="bg-white py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <LeadROICalculator />
+        </div>
+      </section>
+
+      {/* ─── FAQ ───────────────────────────────────────────────────── */}      <section className="bg-slate-50 py-16 px-4" id="faq">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 text-center mb-10">
             Common questions

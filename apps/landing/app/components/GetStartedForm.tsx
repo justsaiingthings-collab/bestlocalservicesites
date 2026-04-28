@@ -60,10 +60,10 @@ export function GetStartedForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl p-8 text-center max-w-xl mx-auto">
-        <div className="text-5xl mb-4">✅</div>
-        <h3 className="text-2xl font-black text-slate-900 mb-2">We'll call you soon.</h3>
-        <p className="text-slate-500">Expect a call within 1 business day.</p>
+      <div className="bg-white rounded-2xl p-8 text-center max-w-xl mx-auto border-4 border-orange-500 shadow-2xl">
+        <div className="text-5xl mb-4">🗓️</div>
+        <h3 className="text-2xl font-black text-slate-900 mb-2">Strategy Call Scheduled.</h3>
+        <p className="text-slate-500">A Senior SEO Strategist will call you personally within 24 hours to review your current web presence.</p>
       </div>
     );
   }
@@ -150,12 +150,12 @@ export function GetStartedForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-black text-lg py-4 rounded-xl transition-colors"
+          className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-300 text-white font-black text-lg py-4 rounded-xl shadow-lg hover:shadow-orange-200 transition-all"
         >
-          {loading ? "Submitting..." : "Get My Free Quote →"}
+          {loading ? "Submitting..." : "Get My Free Strategy Audit →"}
         </button>
         <p className="text-center text-xs text-slate-400">
-          We'll call you within 1 business day. No spam.
+          Personal consultation. No obligation.
         </p>
       </div>
     </form>
