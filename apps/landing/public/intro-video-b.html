@@ -1,0 +1,2288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>BLSS — Intro Video · B · Day in the Life</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:wght@400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0a0a; height: 100%; overflow: hidden; -webkit-font-smoothing: antialiased; }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  @keyframes blink { 0%,50%{opacity:1}50.01%,100%{opacity:0} }
+  @keyframes slideUp { from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1} }
+  @keyframes stamp { 0%{transform:translateY(-50%) scale(2.4) rotate(-8deg);opacity:0}60%{transform:translateY(-50%) scale(0.92) rotate(-4deg);opacity:1}100%{transform:translateY(-50%) scale(1) rotate(-4deg);opacity:1} }
+  @keyframes ringShake { 0%,100%{transform:rotate(0)}15%{transform:rotate(-14deg)}30%{transform:rotate(14deg)}45%{transform:rotate(-10deg)}60%{transform:rotate(10deg)}75%{transform:rotate(-6deg)}90%{transform:rotate(6deg)} }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+
+// animations.jsx
+// Reusable animation starter: Stage, Timeline, Sprite, easing helpers.
+// Usage (in an HTML file that loads React + Babel):
+//
+//   <Stage width={1280} height={720} duration={10} background="#f6f4ef">
+//     <MyScene />
+//   </Stage>
+//
+// Inside <Stage>, any child can call useTime() to read the current
+// playhead (seconds). Or wrap content in <Sprite start={1} end={4}>...</Sprite>
+// to only render during that window -- children receive a `localTime` and
+// `progress` via the useSprite() hook.
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Easing functions (hand-rolled, Popmotion-style) ─────────────────────────
+// All easings take t ∈ [0,1] and return eased t ∈ [0,1] (may overshoot for back/elastic).
+const Easing = {
+  linear: (t) => t,
+
+  // Quad
+  easeInQuad:    (t) => t * t,
+  easeOutQuad:   (t) => t * (2 - t),
+  easeInOutQuad: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
+
+  // Cubic
+  easeInCubic:    (t) => t * t * t,
+  easeOutCubic:   (t) => (--t) * t * t + 1,
+  easeInOutCubic: (t) => (t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1),
+
+  // Quart
+  easeInQuart:    (t) => t * t * t * t,
+  easeOutQuart:   (t) => 1 - (--t) * t * t * t,
+  easeInOutQuart: (t) => (t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t),
+
+  // Expo
+  easeInExpo:  (t) => (t === 0 ? 0 : Math.pow(2, 10 * (t - 1))),
+  easeOutExpo: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+  easeInOutExpo: (t) => {
+    if (t === 0) return 0;
+    if (t === 1) return 1;
+    if (t < 0.5) return 0.5 * Math.pow(2, 20 * t - 10);
+    return 1 - 0.5 * Math.pow(2, -20 * t + 10);
+  },
+
+  // Sine
+  easeInSine:    (t) => 1 - Math.cos((t * Math.PI) / 2),
+  easeOutSine:   (t) => Math.sin((t * Math.PI) / 2),
+  easeInOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+
+  // Back (overshoot)
+  easeOutBack: (t) => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  },
+  easeInBack: (t) => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return c3 * t * t * t - c1 * t * t;
+  },
+  easeInOutBack: (t) => {
+    const c1 = 1.70158, c2 = c1 * 1.525;
+    return t < 0.5
+      ? (Math.pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+      : (Math.pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+  },
+
+  // Elastic
+  easeOutElastic: (t) => {
+    const c4 = (2 * Math.PI) / 3;
+    if (t === 0) return 0;
+    if (t === 1) return 1;
+    return Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
+  },
+};
+
+// ── Core interpolation helpers ──────────────────────────────────────────────
+
+// Clamp a value to [min, max]
+const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+// interpolate([0, 0.5, 1], [0, 100, 50], ease?) -> fn(t)
+// Popmotion-style: linearly maps t across input keyframes to output values,
+// with optional easing per segment (single fn or array of fns).
+function interpolate(input, output, ease = Easing.linear) {
+  return (t) => {
+    if (t <= input[0]) return output[0];
+    if (t >= input[input.length - 1]) return output[output.length - 1];
+    for (let i = 0; i < input.length - 1; i++) {
+      if (t >= input[i] && t <= input[i + 1]) {
+        const span = input[i + 1] - input[i];
+        const local = span === 0 ? 0 : (t - input[i]) / span;
+        const easeFn = Array.isArray(ease) ? (ease[i] || Easing.linear) : ease;
+        const eased = easeFn(local);
+        return output[i] + (output[i + 1] - output[i]) * eased;
+      }
+    }
+    return output[output.length - 1];
+  };
+}
+
+// animate({from, to, start, end, ease})(t) — simpler single-segment tween.
+// Returns `from` before `start`, `to` after `end`.
+function animate({ from = 0, to = 1, start = 0, end = 1, ease = Easing.easeInOutCubic }) {
+  return (t) => {
+    if (t <= start) return from;
+    if (t >= end) return to;
+    const local = (t - start) / (end - start);
+    return from + (to - from) * ease(local);
+  };
+}
+
+// ── Timeline context ────────────────────────────────────────────────────────
+
+const TimelineContext = React.createContext({ time: 0, duration: 10, playing: false });
+
+const useTime = () => React.useContext(TimelineContext).time;
+const useTimeline = () => React.useContext(TimelineContext);
+
+// ── Sprite ──────────────────────────────────────────────────────────────────
+// Renders children only when the playhead is inside [start, end]. Provides
+// a sub-context with `localTime` (seconds since start) and `progress` (0..1).
+//
+//   <Sprite start={2} end={5}>
+//     {({ localTime, progress }) => <Thing x={progress * 100} />}
+//   </Sprite>
+//
+// Or as a plain wrapper — children can call useSprite() themselves.
+
+const SpriteContext = React.createContext({ localTime: 0, progress: 0, duration: 0 });
+const useSprite = () => React.useContext(SpriteContext);
+
+function Sprite({ start = 0, end = Infinity, children, keepMounted = false }) {
+  const { time } = useTimeline();
+  const visible = time >= start && time <= end;
+  if (!visible && !keepMounted) return null;
+
+  const duration = end - start;
+  const localTime = Math.max(0, time - start);
+  const progress = duration > 0 && isFinite(duration)
+    ? clamp(localTime / duration, 0, 1)
+    : 0;
+
+  const value = { localTime, progress, duration, visible };
+
+  return (
+    <SpriteContext.Provider value={value}>
+      {typeof children === 'function' ? children(value) : children}
+    </SpriteContext.Provider>
+  );
+}
+
+// ── Sample sprite components ────────────────────────────────────────────────
+
+// TextSprite: fades/slides text in on entry, holds, then fades out on exit.
+// Props: text, x, y, size, color, font, entryDur, exitDur, align
+function TextSprite({
+  text,
+  x = 0, y = 0,
+  size = 48,
+  color = '#111',
+  font = 'Inter, system-ui, sans-serif',
+  weight = 600,
+  entryDur = 0.45,
+  exitDur = 0.35,
+  entryEase = Easing.easeOutBack,
+  exitEase = Easing.easeInCubic,
+  align = 'left',
+  letterSpacing = '-0.01em',
+}) {
+  const { localTime, duration } = useSprite();
+  const exitStart = Math.max(0, duration - exitDur);
+
+  let opacity = 1;
+  let ty = 0;
+
+  if (localTime < entryDur) {
+    const t = entryEase(clamp(localTime / entryDur, 0, 1));
+    opacity = t;
+    ty = (1 - t) * 16;
+  } else if (localTime > exitStart) {
+    const t = exitEase(clamp((localTime - exitStart) / exitDur, 0, 1));
+    opacity = 1 - t;
+    ty = -t * 8;
+  }
+
+  const translateX = align === 'center' ? '-50%' : align === 'right' ? '-100%' : '0';
+
+  return (
+    <div style={{
+      position: 'absolute',
+      left: x, top: y,
+      transform: `translate(${translateX}, ${ty}px)`,
+      opacity,
+      fontFamily: font,
+      fontSize: size,
+      fontWeight: weight,
+      color,
+      letterSpacing,
+      whiteSpace: 'pre',
+      lineHeight: 1.1,
+      willChange: 'transform, opacity',
+    }}>
+      {text}
+    </div>
+  );
+}
+
+// ImageSprite: scales + fades in; optional Ken Burns drift during hold.
+function ImageSprite({
+  src,
+  x = 0, y = 0,
+  width = 400, height = 300,
+  entryDur = 0.6,
+  exitDur = 0.4,
+  kenBurns = false,
+  kenBurnsScale = 1.08,
+  radius = 12,
+  fit = 'cover',
+  placeholder = null, // {label: string} for striped placeholder
+}) {
+  const { localTime, duration } = useSprite();
+  const exitStart = Math.max(0, duration - exitDur);
+
+  let opacity = 1;
+  let scale = 1;
+
+  if (localTime < entryDur) {
+    const t = Easing.easeOutCubic(clamp(localTime / entryDur, 0, 1));
+    opacity = t;
+    scale = 0.96 + 0.04 * t;
+  } else if (localTime > exitStart) {
+    const t = Easing.easeInCubic(clamp((localTime - exitStart) / exitDur, 0, 1));
+    opacity = 1 - t;
+    scale = (kenBurns ? kenBurnsScale : 1) + 0.02 * t;
+  } else if (kenBurns) {
+    const holdSpan = exitStart - entryDur;
+    const holdT = holdSpan > 0 ? (localTime - entryDur) / holdSpan : 0;
+    scale = 1 + (kenBurnsScale - 1) * holdT;
+  }
+
+  const content = placeholder ? (
+    <div style={{
+      width: '100%', height: '100%',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: 'repeating-linear-gradient(135deg, #e9e6df 0 10px, #dcd8cf 10px 20px)',
+      color: '#6b6458',
+      fontFamily: 'JetBrains Mono, ui-monospace, monospace',
+      fontSize: 13,
+      letterSpacing: '0.04em',
+      textTransform: 'uppercase',
+    }}>
+      {placeholder.label || 'image'}
+    </div>
+  ) : (
+    <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: fit, display: 'block' }} />
+  );
+
+  return (
+    <div style={{
+      position: 'absolute',
+      left: x, top: y,
+      width, height,
+      opacity,
+      transform: `scale(${scale})`,
+      transformOrigin: 'center',
+      borderRadius: radius,
+      overflow: 'hidden',
+      willChange: 'transform, opacity',
+    }}>
+      {content}
+    </div>
+  );
+}
+
+// RectSprite: simple rectangle that animates position/size/color via props.
+// Useful demo primitive — takes a `render` fn for per-frame customization.
+function RectSprite({
+  x = 0, y = 0,
+  width = 100, height = 100,
+  color = '#111',
+  radius = 8,
+  entryDur = 0.4,
+  exitDur = 0.3,
+  render, // optional: (ctx) => style overrides
+}) {
+  const spriteCtx = useSprite();
+  const { localTime, duration } = spriteCtx;
+  const exitStart = Math.max(0, duration - exitDur);
+
+  let opacity = 1;
+  let scale = 1;
+
+  if (localTime < entryDur) {
+    const t = Easing.easeOutBack(clamp(localTime / entryDur, 0, 1));
+    opacity = clamp(localTime / entryDur, 0, 1);
+    scale = 0.4 + 0.6 * t;
+  } else if (localTime > exitStart) {
+    const t = Easing.easeInQuad(clamp((localTime - exitStart) / exitDur, 0, 1));
+    opacity = 1 - t;
+    scale = 1 - 0.15 * t;
+  }
+
+  const overrides = render ? render(spriteCtx) : {};
+
+  return (
+    <div style={{
+      position: 'absolute',
+      left: x, top: y,
+      width, height,
+      background: color,
+      borderRadius: radius,
+      opacity,
+      transform: `scale(${scale})`,
+      transformOrigin: 'center',
+      willChange: 'transform, opacity',
+      ...overrides,
+    }} />
+  );
+}
+
+
+function Stage({
+  width = 1280,
+  height = 720,
+  duration = 10,
+  background = '#f6f4ef',
+  fps = 60,
+  loop = true,
+  autoplay = true,
+  persistKey = 'animstage',
+  children,
+}) {
+  const [time, setTime] = React.useState(() => {
+    try {
+      const v = parseFloat(localStorage.getItem(persistKey + ':t') || '0');
+      return isFinite(v) ? clamp(v, 0, duration) : 0;
+    } catch { return 0; }
+  });
+  const [playing, setPlaying] = React.useState(autoplay);
+  const [hoverTime, setHoverTime] = React.useState(null);
+  const [scale, setScale] = React.useState(1);
+
+  const stageRef = React.useRef(null);
+  const canvasRef = React.useRef(null);
+  const rafRef = React.useRef(null);
+  const lastTsRef = React.useRef(null);
+
+  // Persist playhead
+  React.useEffect(() => {
+    try { localStorage.setItem(persistKey + ':t', String(time)); } catch {}
+  }, [time, persistKey]);
+
+  // Auto-scale to fit viewport
+  React.useEffect(() => {
+    if (!stageRef.current) return;
+    const el = stageRef.current;
+    const measure = () => {
+      const barH = 44; // playback bar height
+      const s = Math.min(
+        el.clientWidth / width,
+        (el.clientHeight - barH) / height
+      );
+      setScale(Math.max(0.05, s));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener('resize', measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [width, height]);
+
+  // Animation loop
+  React.useEffect(() => {
+    if (!playing) {
+      lastTsRef.current = null;
+      return;
+    }
+    const step = (ts) => {
+      if (lastTsRef.current == null) lastTsRef.current = ts;
+      const dt = (ts - lastTsRef.current) / 1000;
+      lastTsRef.current = ts;
+      setTime((t) => {
+        let next = t + dt;
+        if (next >= duration) {
+          if (loop) next = next % duration;
+          else { next = duration; setPlaying(false); }
+        }
+        return next;
+      });
+      rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastTsRef.current = null;
+    };
+  }, [playing, duration, loop]);
+
+  // Keyboard: space = play/pause, ← → = seek
+  React.useEffect(() => {
+    const onKey = (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        setPlaying(p => !p);
+      } else if (e.code === 'ArrowLeft') {
+        setTime(t => clamp(t - (e.shiftKey ? 1 : 0.1), 0, duration));
+      } else if (e.code === 'ArrowRight') {
+        setTime(t => clamp(t + (e.shiftKey ? 1 : 0.1), 0, duration));
+      } else if (e.key === '0' || e.code === 'Home') {
+        setTime(0);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [duration]);
+
+  const displayTime = hoverTime != null ? hoverTime : time;
+
+  const ctxValue = React.useMemo(
+    () => ({ time: displayTime, duration, playing, setTime, setPlaying }),
+    [displayTime, duration, playing]
+  );
+
+  return (
+    <div
+      ref={stageRef}
+      style={{
+        position: 'absolute', inset: 0,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center',
+        background: '#0a0a0a',
+        fontFamily: 'Inter, system-ui, sans-serif',
+      }}
+    >
+      {/* Canvas area — vertically centered in remaining space */}
+      <div style={{
+        flex: 1,
+        width: '100%',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        overflow: 'hidden',
+        minHeight: 0,
+      }}>
+        <div
+          ref={canvasRef}
+          style={{
+            width, height,
+            background,
+            position: 'relative',
+            transform: `scale(${scale})`,
+            transformOrigin: 'center',
+            flexShrink: 0,
+            boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+            overflow: 'hidden',
+          }}
+        >
+          <TimelineContext.Provider value={ctxValue}>
+            {children}
+          </TimelineContext.Provider>
+        </div>
+      </div>
+
+      {/* Playback bar — stacked below canvas, never overlapping */}
+      <PlaybackBar
+        time={displayTime}
+        actualTime={time}
+        duration={duration}
+        playing={playing}
+        onPlayPause={() => setPlaying(p => !p)}
+        onReset={() => { setTime(0); }}
+        onSeek={(t) => setTime(t)}
+        onHover={(t) => setHoverTime(t)}
+      />
+    </div>
+  );
+}
+
+// ── Playback bar ────────────────────────────────────────────────────────────
+// Play/pause, return-to-begin, scrub track, time display.
+// Uses fixed-width time fields so layout doesn't thrash.
+
+function PlaybackBar({ time, duration, playing, onPlayPause, onReset, onSeek, onHover }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+
+  const timeFromEvent = React.useCallback((e) => {
+    const rect = trackRef.current.getBoundingClientRect();
+    const x = clamp((e.clientX - rect.left) / rect.width, 0, 1);
+    return x * duration;
+  }, [duration]);
+
+  const onTrackMove = (e) => {
+    if (!trackRef.current) return;
+    const t = timeFromEvent(e);
+    if (dragging) {
+      onSeek(t);
+    } else {
+      onHover(t);
+    }
+  };
+
+  const onTrackLeave = () => {
+    if (!dragging) onHover(null);
+  };
+
+  const onTrackDown = (e) => {
+    setDragging(true);
+    const t = timeFromEvent(e);
+    onSeek(t);
+    onHover(null);
+  };
+
+  React.useEffect(() => {
+    if (!dragging) return;
+    const onUp = () => setDragging(false);
+    const onMove = (e) => {
+      if (!trackRef.current) return;
+      const t = timeFromEvent(e);
+      onSeek(t);
+    };
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('mousemove', onMove);
+    return () => {
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('mousemove', onMove);
+    };
+  }, [dragging, timeFromEvent, onSeek]);
+
+  const pct = duration > 0 ? (time / duration) * 100 : 0;
+  const fmt = (t) => {
+    const total = Math.max(0, t);
+    const m = Math.floor(total / 60);
+    const s = Math.floor(total % 60);
+    const cs = Math.floor((total * 100) % 100);
+    return `${String(m).padStart(1, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`;
+  };
+
+  const mono = 'JetBrains Mono, ui-monospace, SFMono-Regular, monospace';
+
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 12,
+      padding: '8px 16px',
+      background: 'rgba(20,20,20,0.92)',
+      borderTop: '1px solid rgba(255,255,255,0.08)',
+      width: '100%',
+      maxWidth: 680,
+      alignSelf: 'center',
+
+      borderRadius: 8,
+      color: '#f6f4ef',
+      fontFamily: 'Inter, system-ui, sans-serif',
+      userSelect: 'none',
+      flexShrink: 0,
+    }}>
+      <IconButton onClick={onReset} title="Return to start (0)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 2v10M12 2L5 7l7 5V2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/>
+        </svg>
+      </IconButton>
+      <IconButton onClick={onPlayPause} title="Play/pause (space)">
+        {playing ? (
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect x="3" y="2" width="3" height="10" fill="currentColor"/>
+            <rect x="8" y="2" width="3" height="10" fill="currentColor"/>
+          </svg>
+        ) : (
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 2l9 5-9 5V2z" fill="currentColor"/>
+          </svg>
+        )}
+      </IconButton>
+
+      {/* Current time: fixed width so it doesn't thrash */}
+      <div style={{
+        fontFamily: mono,
+        fontSize: 12,
+        fontVariantNumeric: 'tabular-nums',
+        width: 64, textAlign: 'right',
+        color: '#f6f4ef',
+      }}>
+        {fmt(time)}
+      </div>
+
+      {/* Scrub track */}
+      <div
+        ref={trackRef}
+        onMouseMove={onTrackMove}
+        onMouseLeave={onTrackLeave}
+        onMouseDown={onTrackDown}
+        style={{
+          flex: 1,
+          height: 22,
+          position: 'relative',
+          cursor: 'pointer',
+          display: 'flex', alignItems: 'center',
+        }}
+      >
+        <div style={{
+          position: 'absolute',
+          left: 0, right: 0, height: 4,
+          background: 'rgba(255,255,255,0.12)',
+          borderRadius: 2,
+        }}/>
+        <div style={{
+          position: 'absolute',
+          left: 0, width: `${pct}%`, height: 4,
+          background: 'oklch(72% 0.12 250)',
+          borderRadius: 2,
+        }}/>
+        <div style={{
+          position: 'absolute',
+          left: `${pct}%`, top: '50%',
+          width: 12, height: 12,
+          marginLeft: -6, marginTop: -6,
+          background: '#fff',
+          borderRadius: 6,
+          boxShadow: '0 2px 4px rgba(0,0,0,0.4)',
+        }}/>
+      </div>
+
+      {/* Duration: fixed width */}
+      <div style={{
+        fontFamily: mono,
+        fontSize: 12,
+        fontVariantNumeric: 'tabular-nums',
+        width: 64, textAlign: 'left',
+        color: 'rgba(246,244,239,0.55)',
+      }}>
+        {fmt(duration)}
+      </div>
+    </div>
+  );
+}
+
+function IconButton({ children, onClick, title }) {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <button
+      onClick={onClick}
+      title={title}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        width: 28, height: 28,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: hover ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.04)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: 6,
+        color: '#f6f4ef',
+        cursor: 'pointer',
+        padding: 0,
+        transition: 'background 120ms',
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+
+Object.assign(window, {
+  Easing, interpolate, animate, clamp,
+  TimelineContext, useTime, useTimeline,
+  Sprite, SpriteContext, useSprite,
+  TextSprite, ImageSprite, RectSprite,
+  Stage, PlaybackBar,
+});
+
+</script>
+<script type="text/babel">
+// Shared visual primitives for the BLSS intro video
+// Brand: dark, cinematic, premium. Single amber accent.
+
+const BRAND = {
+  bg: '#0e0d0b',           // near-black warm
+  bgSoft: '#161412',
+  ink: '#f6f1e7',          // warm off-white
+  inkDim: 'rgba(246,241,231,0.55)',
+  inkFaint: 'rgba(246,241,231,0.18)',
+  rule: 'rgba(246,241,231,0.10)',
+  amber: 'oklch(0.78 0.16 70)',     // signature accent
+  amberDim: 'oklch(0.78 0.16 70 / 0.18)',
+  red: 'oklch(0.62 0.22 25)',
+  green: 'oklch(0.72 0.16 150)',
+  display: '"Inter Tight", "Inter", system-ui, sans-serif',
+  mono: '"JetBrains Mono", ui-monospace, SFMono-Regular, monospace',
+};
+
+// ── Cinematic letterbox bars (always visible, sets the tone) ─────────────────
+function Letterbox({ height = 60 }) {
+  return (
+    <React.Fragment>
+      <div style={{
+        position: 'absolute', left: 0, right: 0, top: 0, height,
+        background: '#000', zIndex: 100, pointerEvents: 'none',
+      }}/>
+      <div style={{
+        position: 'absolute', left: 0, right: 0, bottom: 0, height,
+        background: '#000', zIndex: 100, pointerEvents: 'none',
+      }}/>
+    </React.Fragment>
+  );
+}
+
+// ── Subtle film grain via SVG turbulence ────────────────────────────────────
+function FilmGrain({ opacity = 0.06 }) {
+  return (
+    <svg style={{
+      position: 'absolute', inset: 0, width: '100%', height: '100%',
+      pointerEvents: 'none', mixBlendMode: 'overlay', opacity, zIndex: 90,
+    }}>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
+        <feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1 0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain)"/>
+    </svg>
+  );
+}
+
+// ── Vignette ────────────────────────────────────────────────────────────────
+function Vignette({ strength = 0.55 }) {
+  return (
+    <div style={{
+      position: 'absolute', inset: 0,
+      background: `radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,${strength}) 100%)`,
+      pointerEvents: 'none', zIndex: 80,
+    }}/>
+  );
+}
+
+// ── Timecode/scene label, like a film slate (top-left) ──────────────────────
+function Slate({ scene, label, time }) {
+  return (
+    <div style={{
+      position: 'absolute', top: 76, left: 40, zIndex: 110,
+      fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim,
+      letterSpacing: '0.18em', textTransform: 'uppercase',
+      display: 'flex', gap: 18,
+    }}>
+      <span>SCN {String(scene).padStart(2,'0')}</span>
+      <span style={{ color: BRAND.amber }}>● REC</span>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+// ── Caption block (kinetic, since silent-friendly) ──────────────────────────
+// Big editorial caption that slides up from the bottom safe area.
+function Caption({ text, sub, x = 80, y = 880, size = 64, weight = 600, accent }) {
+  const { localTime, duration, progress } = useSprite();
+  const enter = Easing.easeOutCubic(clamp(localTime / 0.5, 0, 1));
+  const exitStart = Math.max(0, duration - 0.4);
+  const exit = localTime > exitStart ? Easing.easeInCubic(clamp((localTime - exitStart) / 0.4, 0, 1)) : 0;
+  const opacity = enter * (1 - exit);
+  const ty = (1 - enter) * 24 + exit * -10;
+
+  return (
+    <div style={{
+      position: 'absolute', left: x, top: y,
+      transform: `translateY(${ty}px)`,
+      opacity, zIndex: 70,
+      fontFamily: BRAND.display,
+      fontSize: size, fontWeight: weight, lineHeight: 1.05,
+      letterSpacing: '-0.025em',
+      color: BRAND.ink,
+      maxWidth: 1100,
+    }}>
+      {sub && (
+        <div style={{
+          fontFamily: BRAND.mono, fontSize: 13,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: accent || BRAND.amber, marginBottom: 14, fontWeight: 500,
+        }}>
+          <span style={{
+            display: 'inline-block', width: 22, height: 1, background: 'currentColor',
+            verticalAlign: 'middle', marginRight: 12,
+          }}/>
+          {sub}
+        </div>
+      )}
+      <div style={{ textWrap: 'balance' }}>{text}</div>
+    </div>
+  );
+}
+
+// Word-by-word reveal caption
+function WordReveal({ words, x = 80, y = 880, size = 72, weight = 600, perWord = 0.08, accentIdx = -1 }) {
+  const { localTime, duration } = useSprite();
+  const exitStart = Math.max(0, duration - 0.4);
+  const globalExit = localTime > exitStart ? Easing.easeInCubic(clamp((localTime - exitStart) / 0.4, 0, 1)) : 0;
+
+  return (
+    <div style={{
+      position: 'absolute', left: x, top: y, zIndex: 70,
+      fontFamily: BRAND.display, fontSize: size, fontWeight: weight,
+      letterSpacing: '-0.025em', lineHeight: 1.05,
+      color: BRAND.ink, maxWidth: 1300,
+      opacity: 1 - globalExit,
+    }}>
+      {words.map((w, i) => {
+        const start = i * perWord;
+        const t = Easing.easeOutCubic(clamp((localTime - start) / 0.35, 0, 1));
+        return (
+          <span key={i} style={{
+            display: 'inline-block',
+            opacity: t,
+            transform: `translateY(${(1 - t) * 16}px)`,
+            color: i === accentIdx ? BRAND.amber : BRAND.ink,
+            marginRight: '0.25em',
+          }}>{w}</span>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Crosshair targeting ticks (corners of a rect) ────────────────────────────
+function Targeting({ x, y, w, h, color = BRAND.amber, size = 16, thickness = 2 }) {
+  const c = (cx, cy, dx, dy) => (
+    <React.Fragment>
+      <div style={{ position:'absolute', left: cx, top: cy, width: size, height: thickness, background: color, transform: `translate(${dx === -1 ? '0' : `-${size}px`}, 0)` }}/>
+      <div style={{ position:'absolute', left: cx, top: cy, width: thickness, height: size, background: color, transform: `translate(0, ${dy === -1 ? '0' : `-${size}px`})` }}/>
+    </React.Fragment>
+  );
+  return (
+    <div style={{ position:'absolute', left: x, top: y, width: w, height: h, pointerEvents: 'none' }}>
+      {c(0, 0, -1, -1)}
+      {c(w, 0, 1, -1)}
+      {c(0, h, -1, 1)}
+      {c(w, h, 1, 1)}
+    </div>
+  );
+}
+
+// ── Animated counter ────────────────────────────────────────────────────────
+function Counter({ from = 0, to = 100, duration = 1.2, format = (v) => Math.round(v).toLocaleString() }) {
+  const { localTime } = useSprite();
+  const t = Easing.easeOutCubic(clamp(localTime / duration, 0, 1));
+  const v = from + (to - from) * t;
+  return <React.Fragment>{format(v)}</React.Fragment>;
+}
+
+// ── Logo lockup ─────────────────────────────────────────────────────────────
+function BLSSLogo({ x, y, size = 48, color = BRAND.ink }) {
+  return (
+    <div style={{ position: 'absolute', left: x, top: y, display:'flex', alignItems:'center', gap: 14 }}>
+      <div style={{
+        width: size, height: size, borderRadius: 10,
+        background: BRAND.amber,
+        display: 'flex', alignItems:'center', justifyContent:'center',
+        boxShadow: `0 0 0 1px ${BRAND.ink}10`,
+      }}>
+        <svg width={size*0.5} height={size*0.5} viewBox="0 0 24 24" fill="none">
+          <path d="M3 11 L12 4 L21 11 V20 H14 V14 H10 V20 H3 Z" fill="#0e0d0b" stroke="#0e0d0b" strokeWidth="1.2" strokeLinejoin="round"/>
+        </svg>
+      </div>
+      <div style={{
+        fontFamily: BRAND.display, fontSize: size * 0.42, fontWeight: 600,
+        letterSpacing: '-0.02em', color, lineHeight: 1.05,
+        whiteSpace: 'nowrap',
+      }}>
+        Best Local<br/>Service Sites
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, {
+  BRAND, Letterbox, FilmGrain, Vignette, Slate,
+  Caption, WordReveal, Targeting, Counter, BLSSLogo,
+});
+</script>
+<script type="text/babel">
+// Two new scenes shared by both variations:
+//  - Listings scene (Google Business, Yelp, Bing, Apple Maps, Nextdoor)
+//  - Conversion engine scene (popover widgets + scheduling pipelines)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SceneListings — We claim, verify, and optimize every directory
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneListings({ start, end, sub = "The footprint", caption = "Claimed. Verified. Synced.", subCopy = "Google · Yelp · Bing · Apple Maps · Nextdoor" }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <ListingsVisual/>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub={sub} text={caption} y={870} size={56}/>
+      </Sprite>
+      <Sprite start={start + 0.2} end={end}>
+        <div style={{
+          position:'absolute', left: 80, top: 970,
+          fontFamily: BRAND.mono, fontSize: 13, color: BRAND.inkDim,
+          letterSpacing:'0.18em', textTransform:'uppercase',
+        }}>{subCopy}</div>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function ListingsVisual() {
+  const { localTime } = useSprite();
+  const cards = [
+    { name: 'Google Business', tag: 'Most-clicked', t: 0.3, color: '#4285F4',
+      icon: <svg width="28" height="28" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>,
+      stats: { rating: '4.9', reviews: '247', views: '12.4k / mo' },
+    },
+    { name: 'Yelp', tag: 'Trust signal', t: 0.7, color: '#D32323',
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="#D32323"><path d="M12.6 2.3c.5-.4 1.4-.4 1.6.4l1.3 6.6c.1.7-.4 1.1-1 1.3l-3.3.7c-.7.1-1.1-.7-1.1-1.4l1.5-7.6zm-.9 8.8c0 .5-.5.9-1 .9l-7-1.7c-.6-.3-.9-1.1-.5-1.7l1.5-2.8c.4-.6 1-.4 1.4-.1l5.1 3.5c.4.3.5.7.5 1.9zm.7 1.6c.4-.4 1.2-.5 1.6.1l4.4 5.3c.3.5.1 1.2-.4 1.5l-2.7 1.6c-.6.3-1.2 0-1.4-.5l-1.6-7.1c0-.4-.1-.6.1-.9zm-.6.9c.4.2.4.7.4 1l-.7 6.7c-.1.5-.7 1-1.3.7l-3-1c-.5-.2-.8-.9-.5-1.5l3.6-5.4c.2-.5.9-.8 1.5-.5zm6.6-2.3c.6-.1 1.1.6 1 1.1l-.5 3.1c-.2.7-.9 1-1.4.6l-5.4-3.7c-.4-.4-.4-1.1.1-1.3.2-.2 6.2-.2 6.2-.2"/></svg>,
+      stats: { rating: '4.8', reviews: '128', views: '3.2k / mo' },
+    },
+    { name: 'Bing Places', tag: 'AI surfacing', t: 1.1, color: '#008373',
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 2v17.5l5.5 2.5 9-5v-4.5L13 9 9 7.5V14l4 2-3 1.5L7 16V4z" fill="#008373"/></svg>,
+      stats: { rating: '4.9', reviews: '52', views: '1.8k / mo' },
+    },
+    { name: 'Apple Maps', tag: 'iOS default', t: 1.5, color: '#FF3B30',
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" fill="#fff" stroke="#ddd"/><path d="M12 6c-2.5 0-4.5 2-4.5 4.5C7.5 14 12 18 12 18s4.5-4 4.5-7.5C16.5 8 14.5 6 12 6zm0 6.5a2 2 0 110-4 2 2 0 010 4z" fill="#FF3B30"/></svg>,
+      stats: { rating: '4.9', reviews: '93', views: '2.1k / mo' },
+    },
+    { name: 'Nextdoor', tag: 'Neighborhood', t: 1.9, color: '#00B246',
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="#00B246"><path d="M12 3l9 7v11h-6v-6h-6v6H3V10l9-7z"/></svg>,
+      stats: { rating: '★ Recommended', reviews: '34', views: '780 / mo' },
+    },
+  ];
+  return (
+    <div style={{
+      position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)',
+      width: 1660, display:'flex', flexDirection:'column', gap: 14,
+    }}>
+      <div style={{ display:'flex', alignItems:'baseline', gap: 18, marginBottom: 12 }}>
+        <div style={{ fontFamily: BRAND.mono, fontSize: 12, color: BRAND.amber, letterSpacing:'0.22em', textTransform:'uppercase', whiteSpace:'nowrap' }}>Listings · Day 2</div>
+        <div style={{ flex: 1, height: 1, background: BRAND.rule }}/>
+        <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim, letterSpacing:'0.16em', textTransform:'uppercase', whiteSpace:'nowrap' }}>
+          We claim · We verify · We sync
+        </div>
+      </div>
+
+      {cards.map((c, i) => {
+        const visible = localTime > c.t;
+        const tx = Easing.easeOutCubic(clamp((localTime - c.t) / 0.4, 0, 1));
+        const verifiedT = clamp((localTime - c.t - 0.6) / 0.4, 0, 1);
+        return (
+          <div key={i} style={{
+            display:'flex', alignItems:'center', gap: 20,
+            padding: '14px 22px',
+            background: BRAND.bgSoft,
+            border: `1px solid ${verifiedT >= 1 ? BRAND.amber : BRAND.rule}`,
+            borderRadius: 8,
+            opacity: visible ? tx : 0,
+            transform: `translateX(${visible ? (1-tx) * -28 : -28}px)`,
+          }}>
+            <div style={{
+              width: 52, height: 52, borderRadius: 10,
+              background: '#fff',
+              display:'flex', alignItems:'center', justifyContent:'center',
+              flexShrink: 0,
+            }}>
+              {c.icon}
+            </div>
+            <div style={{ minWidth: 220, flexShrink: 0 }}>
+              <div style={{ fontFamily: BRAND.display, fontSize: 22, fontWeight: 600, color: BRAND.ink, letterSpacing:'-0.01em', whiteSpace:'nowrap' }}>{c.name}</div>
+              <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: c.color, letterSpacing:'0.14em', textTransform:'uppercase', marginTop: 4, whiteSpace:'nowrap' }}>{c.tag}</div>
+            </div>
+
+            <div style={{ display:'flex', gap: 32, marginLeft: 16, opacity: verifiedT, flex: 1 }}>
+              <Stat label="Rating" v={c.stats.rating}/>
+              <Stat label="Reviews" v={c.stats.reviews}/>
+              <Stat label="Monthly views" v={c.stats.views}/>
+            </div>
+
+            <div style={{ marginLeft: 'auto', display:'flex', alignItems:'center', gap: 14, flexShrink: 0 }}>
+              <div style={{
+                fontFamily: BRAND.mono, fontSize: 11, letterSpacing:'0.16em', textTransform:'uppercase',
+                opacity: verifiedT,
+                color: BRAND.amber, whiteSpace:'nowrap',
+              }}>
+                ✓ Verified
+              </div>
+              <div style={{
+                fontFamily: BRAND.mono, fontSize: 11, letterSpacing:'0.14em', textTransform:'uppercase',
+                color: BRAND.inkDim, whiteSpace:'nowrap',
+                padding:'4px 10px', border:`1px solid ${BRAND.rule}`, borderRadius: 4,
+              }}>
+                Synced ↻
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* footer note */}
+      <div style={{
+        marginTop: 8, fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim,
+        letterSpacing:'0.14em', textTransform:'uppercase', textAlign:'center',
+        opacity: clamp((localTime - 2.5) / 0.6, 0, 1),
+      }}>
+        We do this for you. New owners welcome.
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, v }) {
+  return (
+    <div style={{ minWidth: 110, flexShrink: 0 }}>
+      <div style={{ fontFamily: BRAND.mono, fontSize: 10, color: BRAND.inkDim, letterSpacing:'0.14em', textTransform:'uppercase', whiteSpace:'nowrap' }}>{label}</div>
+      <div style={{ fontFamily: BRAND.display, fontSize: 18, fontWeight: 500, color: BRAND.ink, letterSpacing:'-0.01em', marginTop: 4, whiteSpace:'nowrap' }}>{v}</div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SceneConversion — popover widgets + scheduling pipeline
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneConversion({ start, end, sub = "Zero-friction engine", caption = "Capture every visitor. Book them on the spot." }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: '#f6f1e7' }}/>
+      <ConversionVisual/>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub={sub} text={caption} y={870} x={520} size={48}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function ConversionVisual() {
+  const { localTime } = useSprite();
+  // Stage 1: visitor on site (left phone mock)
+  // Stage 2: popover slides up
+  // Stage 3: pipeline shows lead → contact → booked
+  return (
+    <div style={{
+      position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)',
+      width: 1500, display:'flex', alignItems:'stretch', gap: 56,
+    }}>
+      {/* left: phone mock */}
+      <div style={{ flexShrink: 0, width: 380 }}>
+        <PhoneMockWithPopover/>
+      </div>
+
+      {/* right: pipeline */}
+      <div style={{ flex: 1, display:'flex', flexDirection:'column', justifyContent:'center', gap: 22 }}>
+        <div style={{
+          fontFamily: BRAND.mono, fontSize: 12, color: '#888',
+          letterSpacing:'0.22em', textTransform:'uppercase',
+          opacity: clamp((localTime - 0.2)/0.4, 0, 1),
+        }}>Scheduling pipeline · live</div>
+
+        <div style={{
+          fontFamily: BRAND.display, fontSize: 38, fontWeight: 500,
+          letterSpacing:'-0.025em', color:'#1a1a1a', lineHeight: 1.1,
+          opacity: clamp((localTime - 0.4)/0.5, 0, 1),
+          maxWidth: 740,
+        }}>
+          One visit. One tap. Booked, confirmed, on your calendar.
+        </div>
+
+        {/* steps */}
+        <div style={{ display:'flex', flexDirection:'column', gap: 10, marginTop: 10 }}>
+          {[
+            { t: 1.4, label: 'Visitor lands', sub: 'Anonymous · 0 friction', state: 'visitor' },
+            { t: 2.2, label: 'Popover triggers', sub: 'Exit-intent · scroll · 7 sec', state: 'capture', accent: true },
+            { t: 3.0, label: 'Auto-text confirmation', sub: 'SMS in <30 sec', state: 'sms' },
+            { t: 3.8, label: 'Booked', sub: 'Synced to your calendar', state: 'booked', success: true },
+          ].map((s, i) => {
+            const visible = localTime > s.t;
+            const tx = Easing.easeOutCubic(clamp((localTime - s.t)/0.35, 0, 1));
+            return (
+              <div key={i} style={{
+                display:'flex', alignItems:'center', gap: 20,
+                padding:'16px 22px',
+                background:'#fff',
+                border: `1px solid ${s.success ? BRAND.amber : '#ece8de'}`,
+                borderLeft: `4px solid ${s.success ? BRAND.amber : s.accent ? '#3b6fb5' : '#ddd'}`,
+                borderRadius: 8,
+                opacity: visible ? tx : 0,
+                transform: `translateX(${visible ? (1-tx) * 30 : 30}px)`,
+              }}>
+                <div style={{ fontFamily: BRAND.mono, fontSize: 11, color:'#888', letterSpacing:'0.14em', width: 32 }}>0{i+1}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: BRAND.display, fontSize: 18, fontWeight: 600, color:'#1a1a1a' }}>{s.label}</div>
+                  <div style={{ fontFamily: BRAND.mono, fontSize: 11, color:'#888', letterSpacing:'0.12em', textTransform:'uppercase', marginTop: 4 }}>{s.sub}</div>
+                </div>
+                <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: s.success ? BRAND.amber : '#aaa', letterSpacing:'0.16em', textTransform:'uppercase' }}>
+                  {s.success ? '✓ Done' : 'Auto'}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* badges */}
+        <div style={{
+          display:'flex', gap: 10, marginTop: 6,
+          opacity: clamp((localTime - 4.4)/0.5, 0, 1),
+        }}>
+          {['Native popover', 'SMS pipeline', 'Calendar sync', 'Voicemail capture', 'No code'].map((b, i) => (
+            <div key={i} style={{
+              padding:'6px 12px', border:'1px solid #d8d3c8', borderRadius: 999,
+              fontFamily: BRAND.mono, fontSize: 11, color:'#444', letterSpacing:'0.12em', textTransform:'uppercase',
+            }}>{b}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PhoneMockWithPopover() {
+  const { localTime } = useSprite();
+  // Popover appears at ~1.6s, then submit at ~2.6s, success at ~3.4s
+  const popT = clamp((localTime - 1.4)/0.5, 0, 1);
+  const popOpacity = Easing.easeOutCubic(popT);
+  const popY = (1 - popOpacity) * 40;
+
+  const filled = localTime > 2.4;
+  const submitted = localTime > 3.0;
+  const success = localTime > 3.6;
+
+  return (
+    <div style={{
+      width: 380, height: 760,
+      borderRadius: 48, padding: 12,
+      background: 'linear-gradient(135deg, #1c1a17, #0c0b0a)',
+      boxShadow: '0 60px 120px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.08)',
+      position:'relative',
+    }}>
+      <div style={{
+        width: '100%', height:'100%', borderRadius: 38,
+        background:'#fff', overflow:'hidden', position:'relative',
+        fontFamily: BRAND.display,
+      }}>
+        {/* notch */}
+        <div style={{
+          position:'absolute', top: 12, left:'50%', transform:'translateX(-50%)',
+          width: 110, height: 28, background:'#000', borderRadius: 16, zIndex: 5,
+        }}/>
+
+        {/* fake site */}
+        <div style={{ padding:'56px 20px 20px', background:'#0e0d0b', color:'#f6f1e7', minHeight: 280 }}>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 9, color: BRAND.amber, letterSpacing:'0.22em', textTransform:'uppercase', marginBottom: 10 }}>Storm Peak Roofing · Austin</div>
+          <div style={{ fontSize: 24, fontWeight: 500, letterSpacing:'-0.02em', lineHeight: 1.05 }}>Roof leak? We're rolling within the hour.</div>
+          <div style={{ marginTop: 12, fontSize: 12, color:'rgba(246,241,231,0.55)' }}>Free inspections. 24/7 emergency response.</div>
+        </div>
+        <div style={{ padding:'14px 18px' }}>
+          <div style={{ height: 8, background:'#ece8de', borderRadius: 4, marginBottom: 8 }}/>
+          <div style={{ height: 8, background:'#ece8de', borderRadius: 4, width:'80%', marginBottom: 8 }}/>
+          <div style={{ height: 8, background:'#ece8de', borderRadius: 4, width:'60%' }}/>
+        </div>
+
+        {/* Popover */}
+        <div style={{
+          position:'absolute', left: 12, right: 12, bottom: 12,
+          background:'#fff',
+          borderRadius: 16,
+          boxShadow: '0 -10px 40px rgba(0,0,0,0.18), 0 0 0 1px #ece8de',
+          padding: '18px 18px 16px',
+          opacity: popOpacity,
+          transform: `translateY(${popY}px)`,
+        }}>
+          <div style={{
+            display:'flex', alignItems:'center', justifyContent:'space-between',
+            marginBottom: 12, gap: 10,
+          }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color:'#1a1a1a', letterSpacing:'-0.01em', whiteSpace:'nowrap' }}>Get a free quote</div>
+            <div style={{ width: 22, height: 22, borderRadius:'50%', background:'#f3efe6', display:'flex', alignItems:'center', justifyContent:'center', fontSize: 12, color:'#888', flexShrink: 0 }}>×</div>
+          </div>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 9, color:'#888', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom: 8 }}>Takes 12 seconds</div>
+
+          {!success && (
+            <React.Fragment>
+              <div style={{
+                height: 38, border:'1px solid #ece8de', borderRadius: 8,
+                padding:'0 12px', display:'flex', alignItems:'center',
+                fontSize: 13, color: filled ? '#1a1a1a' : '#bbb', marginBottom: 8,
+              }}>
+                {filled ? '(512) 555-0294' : 'Phone number'}
+                {!filled && popOpacity > 0.5 && <span style={{ width: 1, height: 14, background:'#1a1a1a', marginLeft: 4, animation:'blink 1s step-end infinite' }}/>}
+              </div>
+              <div style={{
+                height: 38, border:'1px solid #ece8de', borderRadius: 8,
+                padding:'0 12px', display:'flex', alignItems:'center',
+                fontSize: 13, color: filled ? '#1a1a1a' : '#bbb', marginBottom: 12,
+              }}>
+                {filled ? 'Roof leak — bedroom ceiling' : 'What do you need?'}
+              </div>
+              <div style={{
+                height: 42, borderRadius: 8,
+                background: submitted ? '#1aaf5c' : BRAND.amber,
+                color: submitted ? '#fff' : '#0e0d0b',
+                display:'flex', alignItems:'center', justifyContent:'center',
+                fontSize: 14, fontWeight: 700, letterSpacing:'-0.01em',
+                transition: 'background 0.2s',
+              }}>
+                {submitted ? '✓ Sending…' : 'Get my free quote →'}
+              </div>
+              <div style={{ marginTop: 10, fontFamily: BRAND.mono, fontSize: 9, color:'#888', letterSpacing:'0.12em', textTransform:'uppercase', textAlign:'center' }}>
+                No spam · Reply by SMS in 30 sec
+              </div>
+            </React.Fragment>
+          )}
+
+          {success && (
+            <div style={{ padding:'10px 0' }}>
+              <div style={{ width: 44, height: 44, borderRadius:'50%', background:'#1aaf5c1a', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 12px' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12l5 5L20 7" stroke="#1aaf5c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div style={{ fontSize: 16, fontWeight: 700, color:'#1a1a1a', textAlign:'center', letterSpacing:'-0.01em' }}>You're booked.</div>
+              <div style={{ fontSize: 12, color:'#666', textAlign:'center', marginTop: 6 }}>
+                Tomorrow · 10:00 AM · Inspection
+              </div>
+              <div style={{ marginTop: 12, padding:'8px 12px', background:'#f3efe6', borderRadius: 8, fontFamily: BRAND.mono, fontSize: 10, color:'#666', letterSpacing:'0.04em' }}>
+                💬 Confirmation sent to (512) 555-0294
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { SceneListings, SceneConversion });
+</script>
+<script type="text/babel">
+// Variation B: "Day in the Life"
+// 50 seconds. Cinematic clock-driven story.
+// A contractor's day from quiet morning to packed schedule.
+// Beat sheet (timestamps relative to start):
+//  0.0 –  6.0  Scene 1: 6:00 AM. Quiet truck cab. Empty schedule on tablet.
+//  6.0 – 12.0  Scene 2: 7 days earlier — onboarding form (5 min)
+// 12.0 – 18.5  Scene 3: BLSS deploys. Site ships. Hyperlocal pages live.
+// 18.5 – 25.0  Scene 4: Map glows — leads start firing in real-time
+// 25.0 – 31.5  Scene 5: AI tools cite the business
+// 31.5 – 38.0  Scene 6: Schedule fills hour by hour through the day
+// 38.0 – 44.0  Scene 7: Stat ledger — week's totals
+// 44.0 – 50.0  Scene 8: CTA outro
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Shared chrome — running clock top-right
+// ─────────────────────────────────────────────────────────────────────────────
+function ClockHUD({ getTime }) {
+  const t = useTime();
+  return (
+    <div style={{
+      position:'absolute', top: 76, right: 40, zIndex: 110,
+      fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim,
+      letterSpacing: '0.18em', textTransform:'uppercase',
+      display:'flex', gap: 18, alignItems:'center',
+    }}>
+      <span>{getTime(t)}</span>
+      <span style={{ width: 6, height: 6, borderRadius:'50%', background: BRAND.amber, display:'inline-block' }}/>
+      <span>Tue · Apr 28</span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B1 — Empty morning
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB1Empty() {
+  return (
+    <Sprite start={0} end={6.2}>
+      <div style={{
+        position:'absolute', inset: 0,
+        background: 'radial-gradient(ellipse at 70% 40%, #1c1814 0%, #0a0907 75%, #050403 100%)',
+      }}/>
+      {/* dawn light streaks */}
+      <DawnStreaks/>
+
+      {/* tablet centered */}
+      <div style={{
+        position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%) rotate(-2deg)',
+      }}>
+        <EmptyScheduleTablet/>
+      </div>
+
+      <Sprite start={1.4} end={6.0}>
+        <Caption sub="6:14 AM · Tuesday" text="Empty schedule. Empty pipeline." y={830} size={62}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function DawnStreaks() {
+  const t = useTime();
+  return (
+    <React.Fragment>
+      {[0, 1, 2].map(i => (
+        <div key={i} style={{
+          position:'absolute',
+          left: -200 + i * 600 + Math.sin(t * 0.2 + i) * 30,
+          top: 100 + i * 80,
+          width: 800, height: 1,
+          background: `linear-gradient(90deg, transparent, ${BRAND.amber}33, transparent)`,
+          opacity: 0.4,
+        }}/>
+      ))}
+    </React.Fragment>
+  );
+}
+
+function EmptyScheduleTablet() {
+  return (
+    <div style={{
+      width: 880, height: 620,
+      background: '#1a1814',
+      borderRadius: 26, padding: 18,
+      boxShadow: '0 60px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(246,241,231,0.06)',
+    }}>
+      <div style={{
+        width: '100%', height:'100%',
+        background: '#fff', borderRadius: 14, overflow:'hidden',
+        fontFamily: BRAND.display,
+        display:'flex', flexDirection:'column',
+      }}>
+        <div style={{
+          padding: '14px 24px', borderBottom: '1px solid #ece8de',
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+        }}>
+          <div style={{ fontSize: 16, fontWeight: 600, color:'#1a1a1a' }}>Today's Jobs</div>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 11, color:'#888', letterSpacing:'0.16em', textTransform:'uppercase' }}>Tue · Apr 28</div>
+        </div>
+        <div style={{ flex: 1, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap: 10 }}>
+          <div style={{ width: 48, height: 48, borderRadius:'50%', background:'#f0ebe0', display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="5" width="18" height="16" rx="2" stroke="#aaa" strokeWidth="1.6"/>
+              <path d="M3 10h18M9 3v4M15 3v4" stroke="#aaa" strokeWidth="1.6" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <div style={{ fontSize: 22, fontWeight: 500, color:'#888', letterSpacing:'-0.01em' }}>No appointments</div>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 11, color:'#aaa', letterSpacing:'0.16em', textTransform:'uppercase' }}>Pipeline · 0</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B2 — Onboarding form (5 min, 7 days ago)
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB2Onboarding() {
+  return (
+    <Sprite start={6.0} end={12.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <div style={{
+        position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)',
+      }}>
+        <OnboardingForm/>
+      </div>
+      <Sprite start={6.2} end={12.0}>
+        <Caption sub="7 days earlier" text="One form. Five minutes. Then we get to work." y={870} size={54}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function OnboardingForm() {
+  const { localTime } = useSprite();
+  const fields = [
+    { label: 'Trade', value: 'Roofing', t: 0.4 },
+    { label: 'Service area', value: 'Austin, TX + 11 suburbs', t: 1.0 },
+    { label: 'Phone', value: '(512) 555-7663', t: 1.6 },
+    { label: 'Years in business', value: '8', t: 2.2 },
+    { label: 'Specialty', value: 'Storm damage, re-roofs', t: 2.8 },
+  ];
+  const submitT = clamp((localTime - 4.0) / 0.5, 0, 1);
+
+  return (
+    <div style={{
+      width: 720,
+      background: BRAND.bgSoft,
+      border: `1px solid ${BRAND.rule}`, borderRadius: 12,
+      padding: '36px 40px',
+      fontFamily: BRAND.display, color: BRAND.ink,
+    }}>
+      <div style={{
+        fontFamily: BRAND.mono, fontSize: 11, color: BRAND.amber,
+        letterSpacing:'0.22em', textTransform:'uppercase', marginBottom: 22,
+      }}>● Onboarding · Step 1 of 1</div>
+      <div style={{ fontSize: 32, fontWeight: 500, letterSpacing:'-0.02em', marginBottom: 28 }}>
+        Tell us about your business.
+      </div>
+
+      <div style={{ display:'flex', flexDirection:'column', gap: 18 }}>
+        {fields.map((f, i) => {
+          const tx = clamp((localTime - f.t) / 0.4, 0, 1);
+          return (
+            <div key={i} style={{
+              opacity: tx, transform: `translateY(${(1-tx)*8}px)`,
+              borderBottom: `1px solid ${BRAND.rule}`, paddingBottom: 12,
+              display:'flex', alignItems:'baseline', gap: 18,
+            }}>
+              <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim, letterSpacing:'0.14em', textTransform:'uppercase', width: 160 }}>{f.label}</div>
+              <div style={{ fontSize: 18, color: BRAND.ink, fontWeight: 500 }}>{f.value}</div>
+              {tx >= 1 && <div style={{ marginLeft:'auto', color: BRAND.amber, fontFamily: BRAND.mono, fontSize: 11, letterSpacing:'0.14em' }}>✓</div>}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{
+        marginTop: 32, padding: '14px 22px',
+        background: submitT >= 1 ? BRAND.amber : BRAND.rule,
+        color: submitT >= 1 ? '#0e0d0b' : BRAND.inkDim,
+        borderRadius: 8, display:'inline-flex', alignItems:'center', gap: 12,
+        fontSize: 16, fontWeight: 600, letterSpacing:'-0.01em',
+        opacity: clamp((localTime - 3.5)/0.5, 0, 1),
+      }}>
+        Submit
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B3 — Site deploys
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB3Deploy() {
+  return (
+    <Sprite start={12.0} end={18.7}>
+      <div style={{ position:'absolute', inset: 0, background: '#f6f1e7' }}/>
+      <div style={{ position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)' }}>
+        <DeployedSite/>
+      </div>
+      <Sprite start={12.2} end={18.5}>
+        <Caption sub="Day 6 · 11:42 AM" text="Site live. Sticky CTA. Schema indexed." y={870} size={54} accent={BRAND.green}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function DeployedSite() {
+  const { localTime } = useSprite();
+  return (
+    <div style={{
+      width: 1080, background: '#fff',
+      borderRadius: 16, overflow:'hidden',
+      boxShadow:'0 40px 80px rgba(0,0,0,0.25)',
+      fontFamily: BRAND.display,
+    }}>
+      <div style={{
+        height: 40, background:'#ebe7df', display:'flex', alignItems:'center', gap: 8, padding:'0 16px',
+      }}>
+        <div style={{ width:12, height:12, borderRadius:'50%', background:'#e06b5e' }}/>
+        <div style={{ width:12, height:12, borderRadius:'50%', background:'#e7c25c' }}/>
+        <div style={{ width:12, height:12, borderRadius:'50%', background:'#7cc77a' }}/>
+        <div style={{ flex:1, height: 22, background:'#fff', borderRadius:11, marginLeft: 16, fontFamily: BRAND.mono, fontSize: 11, color:'#888', display:'flex', alignItems:'center', paddingLeft: 12 }}>
+          stormpeakroofing.com
+        </div>
+      </div>
+
+      {/* hero */}
+      <div style={{
+        padding: '60px 56px 48px', background: '#0e0d0b', color: BRAND.ink, position:'relative', minHeight: 360,
+      }}>
+        <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.amber, letterSpacing:'0.22em', textTransform:'uppercase', marginBottom: 20 }}>
+          Storm-tested roofing · Austin, TX
+        </div>
+        <div style={{ fontSize: 56, fontWeight: 500, letterSpacing:'-0.03em', lineHeight: 1.05, maxWidth: 800 }}>
+          Roof leak? We're rolling within the hour.
+        </div>
+        <div style={{ marginTop: 24, fontSize: 18, color: BRAND.inkDim, maxWidth: 620, lineHeight: 1.5 }}>
+          Licensed, insured, free inspections. Storm damage specialists serving Austin and 11 surrounding suburbs.
+        </div>
+
+        {/* sticky CTA at bottom */}
+        <div style={{
+          position:'absolute', left: 0, right: 0, bottom: 0,
+          background: BRAND.amber, padding: '16px 28px',
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+          color:'#0e0d0b',
+          opacity: clamp((localTime - 1.2)/0.5, 0, 1),
+          transform: `translateY(${(1 - clamp((localTime - 1.2)/0.5, 0, 1)) * 30}px)`,
+        }}>
+          <div style={{ display:'flex', alignItems:'center', gap: 12 }}>
+            <div style={{ width: 32, height: 32, borderRadius:'50%', background:'#0e0d0b', color: BRAND.amber, display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </div>
+            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing:'-0.01em' }}>Tap to call · (512) 555-7663</div>
+          </div>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 11, letterSpacing:'0.2em', textTransform:'uppercase', border:'1px solid #0e0d0b', padding:'4px 10px', borderRadius: 4 }}>
+            24/7
+          </div>
+        </div>
+      </div>
+
+      {/* status ribbon */}
+      <div style={{
+        padding: '14px 28px', display:'flex', gap: 24, fontFamily: BRAND.mono, fontSize: 11,
+        color:'#1a1a1a', letterSpacing:'0.16em', textTransform:'uppercase',
+        opacity: clamp((localTime - 1.8)/0.5, 0, 1),
+      }}>
+        {[
+          { l: 'Schema', v: 'LocalBusiness ✓' },
+          { l: 'Speed', v: '98 / 100' },
+          { l: 'Mobile', v: 'Optimized ✓' },
+          { l: 'City pages', v: '12 indexed' },
+        ].map((s, i) => (
+          <div key={i}>
+            <span style={{ color:'#888' }}>{s.l} · </span>
+            <span style={{ color: '#1aaf5c' }}>{s.v}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B4 — Real-time leads firing in
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB4Leads() {
+  return (
+    <Sprite start={18.5} end={25.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <LeadFireMap/>
+      <Sprite start={18.7} end={25.0}>
+        <Caption sub="Day 6 · 2:18 PM" text="Organic leads. Zero ad spend." y={870} size={56}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function LeadFireMap() {
+  const { localTime } = useSprite();
+  // pings happen at staggered times across cities
+  const pings = [
+    { x: 540, y: 420, t: 0.4, city: 'Austin', name: 'Sarah M.' },
+    { x: 615, y: 360, t: 1.1, city: 'Round Rock', name: 'Mike R.' },
+    { x: 460, y: 380, t: 1.8, city: 'Cedar Park', name: 'Linda K.' },
+    { x: 600, y: 290, t: 2.5, city: 'Georgetown', name: 'Tom B.' },
+    { x: 565, y: 510, t: 3.2, city: 'Buda', name: 'James W.' },
+    { x: 660, y: 410, t: 3.9, city: 'Pflugerville', name: 'Carla H.' },
+    { x: 380, y: 460, t: 4.6, city: 'Lakeway', name: 'Brian T.' },
+    { x: 555, y: 555, t: 5.3, city: 'Kyle', name: 'Anna L.' },
+  ];
+
+  return (
+    <div style={{ position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)', width: 1100, height: 600 }}>
+      {/* background grid */}
+      <svg width="1100" height="600" style={{ position:'absolute', inset: 0 }}>
+        <defs>
+          <pattern id="gridB" width="44" height="44" patternUnits="userSpaceOnUse">
+            <path d="M 44 0 L 0 0 0 44" fill="none" stroke={BRAND.rule} strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="1100" height="600" fill="url(#gridB)"/>
+        <path d="M 100 320 C 300 280, 500 380, 700 340 S 1000 300, 1100 360" stroke={BRAND.inkFaint} strokeWidth="2" fill="none"/>
+      </svg>
+
+      {/* pings */}
+      {pings.map((p, i) => {
+        if (localTime < p.t) return null;
+        const local = localTime - p.t;
+        const ringScale = 1 + local * 6;
+        const ringOpacity = clamp(1 - local / 1.2, 0, 1);
+        const dotT = Easing.easeOutBack(clamp(local / 0.3, 0, 1));
+        return (
+          <div key={i} style={{ position:'absolute', left: p.x, top: p.y, transform:'translate(-50%, -50%)' }}>
+            {/* ring */}
+            <div style={{
+              position:'absolute', left:'50%', top:'50%',
+              width: 20, height: 20, borderRadius:'50%',
+              border: `2px solid ${BRAND.amber}`,
+              opacity: ringOpacity,
+              transform: `translate(-50%, -50%) scale(${ringScale})`,
+            }}/>
+            {/* dot */}
+            <div style={{
+              width: 12, height: 12, borderRadius:'50%',
+              background: BRAND.amber, transform: `scale(${dotT})`,
+              boxShadow: `0 0 18px ${BRAND.amber}aa`,
+            }}/>
+            {/* lead card */}
+            {local > 0.3 && local < 4 && (
+              <div style={{
+                position:'absolute', left: 18, top: -14,
+                background: BRAND.bgSoft + 'ee',
+                border:`1px solid ${BRAND.rule}`, borderRadius: 6,
+                padding:'8px 12px', fontFamily: BRAND.mono, fontSize: 11,
+                whiteSpace:'nowrap', backdropFilter:'blur(6px)',
+                opacity: clamp(1 - (local - 3) / 1, 0, 1),
+              }}>
+                <span style={{ color: BRAND.amber, letterSpacing:'0.14em', textTransform:'uppercase' }}>+ Lead</span>
+                <span style={{ color: BRAND.ink, marginLeft: 10 }}>{p.name}</span>
+                <span style={{ color: BRAND.inkDim, marginLeft: 10 }}>{p.city}</span>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* live counter */}
+      <div style={{
+        position:'absolute', right: 0, top: 0, textAlign:'right',
+      }}>
+        <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.amber, letterSpacing:'0.22em', textTransform:'uppercase', marginBottom: 8 }}>
+          ● Live · Today
+        </div>
+        <div style={{ fontFamily: BRAND.display, fontSize: 96, fontWeight: 200, color: BRAND.ink, letterSpacing:'-0.05em', lineHeight: 1 }}>
+          <Counter from={0} to={Math.min(8, Math.floor(localTime * 1.5))} duration={0.3} format={(v) => Math.round(v)}/>
+        </div>
+        <div style={{ fontFamily: BRAND.mono, fontSize: 12, color: BRAND.inkDim, letterSpacing:'0.16em', textTransform:'uppercase', marginTop: 4 }}>
+          inbound calls
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B5 — AIO citation
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB5AIO() {
+  return (
+    <Sprite start={25.0} end={31.7}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <AIOVisualB/>
+      <Sprite start={25.2} end={31.5}>
+        <Caption sub="Day 6 · 4:02 PM" text="When ChatGPT picks a roofer, it picks yours." y={870} size={54}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function AIOVisualB() {
+  const { localTime } = useSprite();
+  return (
+    <div style={{
+      position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)',
+      width: 1000,
+    }}>
+      {/* AI source row */}
+      <div style={{ display:'flex', gap: 12, marginBottom: 22, justifyContent:'center' }}>
+        {[
+          { name: 'ChatGPT', t: 0.0, lit: 0.4 },
+          { name: 'Gemini', t: 0.15, lit: 0.7 },
+          { name: 'Perplexity', t: 0.3, lit: 1.0 },
+          { name: 'Claude', t: 0.45, lit: 1.3 },
+        ].map((b, i) => {
+          const tx = clamp((localTime - b.t)/0.4, 0, 1);
+          const isLit = localTime > b.lit;
+          return (
+            <div key={i} style={{
+              padding:'8px 14px',
+              border: `1px solid ${isLit ? BRAND.amber : BRAND.rule}`,
+              background: isLit ? BRAND.amberDim : 'transparent',
+              borderRadius: 4,
+              fontFamily: BRAND.mono, fontSize: 11, letterSpacing:'0.14em',
+              color: isLit ? BRAND.amber : BRAND.inkDim, textTransform:'uppercase',
+              opacity: tx, transform: `translateY(${(1-tx)*8}px)`,
+            }}>
+              {b.name}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Result card */}
+      <div style={{
+        background: BRAND.bgSoft,
+        border: `1px solid ${BRAND.rule}`, borderRadius: 12,
+        padding: '32px 40px',
+        fontFamily: BRAND.display, color: BRAND.ink,
+      }}>
+        <div style={{
+          fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim,
+          letterSpacing:'0.18em', textTransform:'uppercase', marginBottom: 12,
+        }}>Recommended for you · Austin, TX</div>
+
+        <div style={{
+          fontSize: 28, fontWeight: 500, letterSpacing:'-0.02em', lineHeight: 1.4,
+          color: BRAND.ink, opacity: clamp((localTime - 1.6)/0.6, 0, 1),
+        }}>
+          For storm damage in the Austin area, the most consistently recommended option is{' '}
+          <span style={{
+            color: BRAND.amber, fontWeight: 700,
+            background: BRAND.amberDim, padding:'2px 10px', borderRadius: 4,
+          }}>Storm Peak Roofing</span>.{' '}
+          They're known for fast response, strong reviews (4.9★, 247), and 24/7 availability.
+        </div>
+
+        {/* citations */}
+        <div style={{
+          marginTop: 24, paddingTop: 20, borderTop: `1px solid ${BRAND.rule}`,
+          display:'flex', gap: 18, flexWrap:'wrap',
+          opacity: clamp((localTime - 3.4)/0.5, 0, 1),
+        }}>
+          {['stormpeakroofing.com', 'g.co/business', 'reviews · austin', 'bbb.org'].map((c, i) => (
+            <div key={i} style={{
+              fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim,
+              letterSpacing:'0.1em', display:'flex', alignItems:'center', gap: 8,
+            }}>
+              <span style={{
+                width: 18, height: 18, borderRadius: 3, background: BRAND.rule, color: BRAND.amber,
+                display:'inline-flex', alignItems:'center', justifyContent:'center', fontSize: 10, fontWeight:600,
+              }}>{i+1}</span>
+              {c}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B6 — Schedule fills
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB6Schedule() {
+  return (
+    <Sprite start={31.5} end={38.2}>
+      <div style={{ position:'absolute', inset: 0, background: '#f6f1e7' }}/>
+      <div style={{ position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)' }}>
+        <ScheduleFilling/>
+      </div>
+      <Sprite start={31.7} end={38.0}>
+        <Caption sub="Day 7 · This morning" text="Today's schedule. Booked solid." y={870} size={56} accent={BRAND.red}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function ScheduleFilling() {
+  const { localTime } = useSprite();
+  const slots = [
+    { time: '7:00 AM', name: 'Sarah M. · Inspection', city: 'Austin', t: 0.2, kind: 'inspection' },
+    { time: '8:30 AM', name: 'Mike R. · Estimate', city: 'Round Rock', t: 0.6, kind: 'estimate' },
+    { time: '10:00 AM', name: 'Linda K. · Repair', city: 'Cedar Park', t: 1.0, kind: 'repair' },
+    { time: '11:30 AM', name: 'Tom B. · Inspection', city: 'Georgetown', t: 1.4, kind: 'inspection' },
+    { time: '1:00 PM', name: 'Carla H. · Estimate', city: 'Pflugerville', t: 1.8, kind: 'estimate' },
+    { time: '2:30 PM', name: 'James W. · Replacement', city: 'Buda', t: 2.2, kind: 'repair' },
+    { time: '4:00 PM', name: 'Brian T. · Inspection', city: 'Lakeway', t: 2.6, kind: 'inspection' },
+    { time: '5:30 PM', name: 'Anna L. · Estimate', city: 'Kyle', t: 3.0, kind: 'estimate' },
+  ];
+  const kindColor = { inspection: '#3b6fb5', estimate: '#1aaf5c', repair: '#c0382b' };
+
+  return (
+    <div style={{
+      width: 880, padding: 18,
+      background: '#1a1814', borderRadius: 26,
+      boxShadow: '0 60px 120px rgba(0,0,0,0.5), 0 0 0 1px rgba(246,241,231,0.06)',
+    }}>
+      <div style={{ background:'#fff', borderRadius: 14, overflow:'hidden', fontFamily: BRAND.display }}>
+        <div style={{
+          padding: '14px 22px', borderBottom: '1px solid #ece8de',
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+        }}>
+          <div style={{ fontSize: 16, fontWeight: 600, color:'#1a1a1a' }}>Today's Jobs</div>
+          <div style={{ fontFamily: BRAND.mono, fontSize: 11, color:'#1aaf5c', letterSpacing:'0.16em', textTransform:'uppercase' }}>
+            ● <Counter from={0} to={Math.min(8, Math.floor(localTime / 0.4))} duration={0.2} format={v => Math.round(v)}/> booked
+          </div>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column' }}>
+          {slots.map((s, i) => {
+            const visible = localTime > s.t;
+            const tx = Easing.easeOutCubic(clamp((localTime - s.t)/0.35, 0, 1));
+            return (
+              <div key={i} style={{
+                display:'flex', alignItems:'center', gap: 16,
+                padding:'14px 22px',
+                borderBottom: '1px solid #f3efe6',
+                opacity: visible ? tx : 0,
+                transform: `translateX(${visible ? (1-tx)*-20 : 0}px)`,
+              }}>
+                <div style={{ width: 88, fontFamily: BRAND.mono, fontSize: 12, color:'#888', letterSpacing:'0.08em' }}>{s.time}</div>
+                <div style={{ width: 4, height: 36, background: kindColor[s.kind], borderRadius: 2 }}/>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 16, fontWeight: 600, color:'#1a1a1a' }}>{s.name}</div>
+                  <div style={{ fontSize: 12, color:'#888', marginTop: 2 }}>{s.city}</div>
+                </div>
+                <div style={{ fontFamily: BRAND.mono, fontSize: 10, color: kindColor[s.kind], letterSpacing:'0.16em', textTransform:'uppercase' }}>
+                  ✓ confirmed
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene B7 — Week ledger
+// ─────────────────────────────────────────────────────────────────────────────
+function SceneB7Ledger() {
+  return (
+    <Sprite start={38.0} end={44.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <Ledger/>
+      <Sprite start={38.2} end={44.0}>
+        <Caption sub="Week 1 · Receipts" text="No ads. No agency. Just leads." y={870} size={58}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+function Ledger() {
+  const { localTime } = useSprite();
+  const stats = [
+    { t: 0.3, big: 47, label: 'inbound calls', sub: 'this week', fmt: v => Math.round(v) },
+    { t: 0.9, big: 23, label: 'jobs booked', sub: '0 missed leads', fmt: v => Math.round(v) },
+    { t: 1.5, big: 0, label: 'ad dollars spent', sub: '100% organic', fmt: v => '$' + Math.round(v) },
+    { t: 2.1, big: 4.9, label: 'rating', sub: 'across 247 reviews', fmt: v => v.toFixed(1) + '★' },
+  ];
+
+  return (
+    <div style={{
+      position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)',
+      width: 1280,
+    }}>
+      <div style={{
+        display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 0,
+        borderTop: `1px solid ${BRAND.rule}`,
+        borderBottom: `1px solid ${BRAND.rule}`,
+      }}>
+        {stats.map((s, i) => {
+          const visible = localTime > s.t;
+          const tx = Easing.easeOutCubic(clamp((localTime - s.t)/0.5, 0, 1));
+          return (
+            <div key={i} style={{
+              padding: '40px 28px',
+              borderRight: i < 3 ? `1px solid ${BRAND.rule}` : 'none',
+              opacity: visible ? tx : 0,
+              transform: `translateY(${visible ? (1-tx)*16 : 16}px)`,
+            }}>
+              <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.amber, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom: 16 }}>
+                0{i+1}
+              </div>
+              <div style={{
+                fontFamily: BRAND.display, fontSize: 92, fontWeight: 200, color: BRAND.ink,
+                letterSpacing:'-0.05em', lineHeight: 1, marginBottom: 14,
+              }}>
+                {visible ? <Counter from={0} to={s.big} duration={1.0} format={s.fmt}/> : s.fmt(0)}
+              </div>
+              <div style={{ fontFamily: BRAND.display, fontSize: 18, fontWeight: 500, color: BRAND.ink, letterSpacing:'-0.01em' }}>
+                {s.label}
+              </div>
+              <div style={{ fontFamily: BRAND.mono, fontSize: 11, color: BRAND.inkDim, letterSpacing:'0.14em', textTransform:'uppercase', marginTop: 6 }}>
+                {s.sub}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Variation B composition
+// ─────────────────────────────────────────────────────────────────────────────
+function VariationB({ opts = {} }) {
+  const o = {
+    grain: 0.05, vignette: 0.45, letterbox: 56,
+    showLetterbox: true, showGrain: true, showLogo: true, ...opts,
+  };
+  // Computes a clock readout based on global time
+  const getClock = (t) => {
+    if (t < 6) return '6:14 AM';
+    if (t < 12) return '7 days ago';
+    if (t < 18.5) return 'Day 6 · 11:42 AM';
+    if (t < 25) return 'Day 6 · 2:18 PM';
+    if (t < 31.5) return 'Day 6 · 3:00 PM';
+    if (t < 38) return 'Day 6 · 3:45 PM';
+    if (t < 44.5) return 'Day 6 · 4:02 PM';
+    if (t < 51) return 'Day 7 · 8:14 AM';
+    if (t < 57) return 'Week 1';
+    return 'Today';
+  };
+  return (
+    <React.Fragment>
+      <SceneB1Empty/>
+      <SceneB2Onboarding/>
+      <SceneB3Deploy/>
+      <SceneB4Leads/>
+      <SceneListings start={25.0} end={31.5} sub="Day 2 · Footprint" caption="Listed everywhere. Verified for you." subCopy="Google · Yelp · Bing · Apple Maps · Nextdoor"/>
+      <SceneConversion start={31.5} end={38.0} sub="Day 4 · Conversion engine" caption="Popover. SMS. Calendar. Booked."/>
+      <SceneB5AIO_v2 start={38.0} end={44.5}/>
+      <SceneB6Schedule_v2 start={44.5} end={51.0}/>
+      <SceneB7Ledger_v2 start={51.0} end={57.0}/>
+      <Scene8CTA_v2 start={57.0} end={63.0}/>
+      <Vignette strength={o.vignette}/>
+      {o.showGrain && <FilmGrain opacity={o.grain}/>}
+      {o.showLetterbox && <Letterbox height={o.letterbox}/>}
+      {o.showLogo && <BLSSLogo x={40} y={32} size={36}/>}
+      <ClockHUD getTime={getClock}/>
+    </React.Fragment>
+  );
+}
+
+function SceneB5AIO_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <AIOVisualB/>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub="Day 6 · 4:02 PM" text="When ChatGPT picks a roofer, it picks yours." y={870} size={54}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+function SceneB6Schedule_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: '#f6f1e7' }}/>
+      <div style={{ position:'absolute', left: '50%', top: '50%', transform:'translate(-50%, -50%)' }}>
+        <ScheduleFilling/>
+      </div>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub="Day 7 · This morning" text="Today's schedule. Booked solid." y={870} size={56} accent={BRAND.red}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+function SceneB7Ledger_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <Ledger/>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub="Week 1 · Receipts" text="No ads. No agency. Just leads." y={870} size={58}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+
+Object.assign(window, { VariationB });
+</script>
+<script type="text/babel">
+// CTA visual components — shared between Variation A & B
+function CTAVisual() {
+  const { localTime } = useSprite();
+  const logoT = Easing.easeOutCubic(clamp(localTime / 0.6, 0, 1));
+  const titleT = Easing.easeOutCubic(clamp((localTime - 0.5) / 0.7, 0, 1));
+  const ctaT = Easing.easeOutCubic(clamp((localTime - 1.3) / 0.6, 0, 1));
+  const urlT = Easing.easeOutCubic(clamp((localTime - 2.0) / 0.6, 0, 1));
+
+  return (
+    <div style={{
+      position:'absolute', inset: 0,
+      display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
+      gap: 0,
+    }}>
+      {/* logo mark */}
+      <div style={{ opacity: logoT, transform: `scale(${0.96 + 0.04 * logoT})`, marginBottom: 36 }}>
+        <div style={{
+          width: 88, height: 88, borderRadius: 18,
+          background: BRAND.amber,
+          display:'flex', alignItems:'center', justifyContent:'center',
+        }}>
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+            <path d="M3 11 L12 4 L21 11 V20 H14 V14 H10 V20 H3 Z" fill="#0e0d0b" stroke="#0e0d0b" strokeWidth="1.2" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      {/* eyebrow */}
+      <div style={{
+        opacity: titleT,
+        fontFamily: BRAND.mono, fontSize: 13, color: BRAND.amber,
+        letterSpacing:'0.28em', textTransform:'uppercase', marginBottom: 22,
+      }}>
+        <span style={{ display:'inline-block', width:30, height:1, background:'currentColor', verticalAlign:'middle', marginRight: 16 }}/>
+        Best Local Service Sites
+        <span style={{ display:'inline-block', width:30, height:1, background:'currentColor', verticalAlign:'middle', marginLeft: 16 }}/>
+      </div>
+
+      {/* title */}
+      <div style={{
+        opacity: titleT,
+        transform: `translateY(${(1-titleT)*16}px)`,
+        fontFamily: BRAND.display, fontSize: 96, fontWeight: 300,
+        color: BRAND.ink, letterSpacing:'-0.04em', textAlign:'center',
+        lineHeight: 1.0, maxWidth: 1300, textWrap: 'balance', marginBottom: 28,
+      }}>
+        Live in under <span style={{ color: BRAND.amber, fontWeight: 500 }}>7 days</span>.<br/>
+        No contracts.
+      </div>
+
+      {/* CTA button */}
+      <div style={{ opacity: ctaT, transform: `translateY(${(1-ctaT)*12}px)`, marginBottom: 32 }}>
+        <div style={{
+          background: BRAND.amber, color:'#0e0d0b',
+          padding: '20px 36px', borderRadius: 8,
+          fontFamily: BRAND.display, fontSize: 22, fontWeight: 600,
+          letterSpacing:'-0.01em',
+          display:'flex', alignItems:'center', gap: 14,
+          boxShadow: `0 20px 60px ${BRAND.amber}40`,
+        }}>
+          Request a free quote
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      {/* URL */}
+      <div style={{
+        opacity: urlT,
+        fontFamily: BRAND.mono, fontSize: 16, color: BRAND.inkDim,
+        letterSpacing:'0.12em',
+      }}>
+        bestlocalservicesites.com
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Variation A composition
+// ─────────────────────────────────────────────────────────────────────────────
+function VariationA({ opts = {} }) {
+  const o = {
+    grain: 0.05, vignette: 0.45, letterbox: 56,
+    showLetterbox: true, showGrain: true, showLogo: true, ...opts,
+  };
+  return (
+    <React.Fragment>
+      <Scene1Silent/>
+      <Scene2Search/>
+      <Scene3Build/>
+      <Scene4Rank/>
+      <Scene5Map/>
+      <SceneListings start={31.0} end={37.5} sub="The footprint" caption="Claimed everywhere your customers look." subCopy="Google · Yelp · Bing · Apple Maps · Nextdoor"/>
+      <Scene6AIO_v2 start={37.5} end={44.0}/>
+      <SceneConversion start={44.0} end={50.5} sub="Zero-friction engine" caption="Native popovers. Booked on the spot."/>
+      <Scene7Ringing_v2 start={50.5} end={57.5}/>
+      <Scene8CTA_v2 start={57.5} end={63.5}/>
+      <Vignette strength={o.vignette}/>
+      {o.showGrain && <FilmGrain opacity={o.grain}/>}
+      {o.showLetterbox && <Letterbox height={o.letterbox}/>}
+      {o.showLogo && <BLSSLogo x={40} y={32} size={36}/>}
+    </React.Fragment>
+  );
+}
+
+// Wrapper variants that retime existing scenes
+function Scene6AIO_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <AIOVisual/>
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub="The new front door" text="Cited by ChatGPT. Recommended by Gemini." y={870} size={54}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+function Scene7Ringing_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end + 0.2}>
+      <div style={{
+        position:'absolute', inset: 0,
+        background: 'radial-gradient(ellipse at 30% 50%, #1a1612 0%, #0a0907 70%, #050403 100%)',
+      }}/>
+      <RingingPhone />
+      <StatsStack />
+      <Sprite start={start + 0.2} end={end}>
+        <Caption sub="The result" text="The phone won't stop ringing." y={870} size={64}/>
+      </Sprite>
+    </Sprite>
+  );
+}
+function Scene8CTA_v2({ start, end }) {
+  return (
+    <Sprite start={start} end={end}>
+      <div style={{ position:'absolute', inset: 0, background: BRAND.bg }}/>
+      <CTAVisual/>
+    </Sprite>
+  );
+}
+Object.assign(window, { CTAVisual, Scene8CTA, Scene8CTA_v2 });
+</script>
+
+<script type="text/babel">
+const DURATION = 63;
+const STAGE_W  = 1920;
+const STAGE_H  = 1080;
+
+// ── Tweaks (persist to localStorage) ─────────────────────────────────────────
+const TWEAK_DEFAULTS = {
+  accent: '#e7a23c',
+  fontStack: 'Inter Tight',
+  grain: 0.05,
+  vignette: 0.45,
+  letterbox: 56,
+  showLetterbox: true,
+  showGrain: true,
+  showLogo: true,
+  playbackSpeed: 1,
+};
+const FONT_STACKS = {
+  'Inter Tight':     '"Inter Tight", "Inter", system-ui, sans-serif',
+  'Space Grotesk':   '"Space Grotesk", system-ui, sans-serif',
+  'Instrument Serif':'"Instrument Serif", Georgia, serif',
+  'System':          'system-ui, -apple-system, sans-serif',
+};
+
+// ── PlaybackBar ───────────────────────────────────────────────────────────────
+function PlaybackBarFull({ time, duration, playing, onPlayPause, onReset, onSeek, onHover, label }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const pct = duration > 0 ? (time / duration) * 100 : 0;
+  const fmt = t => {
+    const m = Math.floor(t/60), s = Math.floor(t%60), cs = Math.floor((t*100)%100);
+    return String(m)+':'+String(s).padStart(2,'0')+'.'+String(cs).padStart(2,'0');
+  };
+  const seekFrom = e => {
+    const rect = trackRef.current.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    return clamp((clientX-rect.left)/rect.width,0,1)*duration;
+  };
+  React.useEffect(() => {
+    if (!dragging) return;
+    const up = ()=>setDragging(false);
+    const mv = e=>{ if(trackRef.current) onSeek(seekFrom(e)); };
+    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+    window.addEventListener('mousemove',mv); window.addEventListener('touchmove',mv,{passive:false});
+    return ()=>{ window.removeEventListener('mouseup',up); window.removeEventListener('touchend',up); window.removeEventListener('mousemove',mv); window.removeEventListener('touchmove',mv); };
+  },[dragging]);
+  const mono = '"JetBrains Mono",ui-monospace,monospace';
+  const btn = (onClick,title,children) => {
+    const [h,sh]=React.useState(false);
+    return <button onClick={onClick} title={title} onMouseEnter={()=>sh(true)} onMouseLeave={()=>sh(false)} style={{width:32,height:32,display:'flex',alignItems:'center',justifyContent:'center',background:h?'rgba(255,255,255,0.12)':'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:7,color:'#f6f1e7',cursor:'pointer',padding:0,fontSize:13,transition:'background 120ms'}}>{children}</button>;
+  };
+  return (
+    <div style={{display:'flex',alignItems:'center',gap:10,padding:'8px 16px 8px',background:'rgba(14,13,11,0.96)',borderTop:'1px solid rgba(255,255,255,0.07)',flexShrink:0,paddingBottom:'max(8px,env(safe-area-inset-bottom,0px))'}}>
+      {btn(onReset,'Reset to start (0)', <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 2v10M12 2L5 7l7 5V2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/></svg>)}
+      {btn(onPlayPause,'Play/pause (Space)', playing
+        ? <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
+        : <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+      )}
+      <div style={{fontFamily:mono,fontSize:11,fontVariantNumeric:'tabular-nums',width:72,textAlign:'right',color:'#f6f1e7',flexShrink:0}}>{fmt(time)}</div>
+      <div ref={trackRef}
+        onMouseDown={e=>{setDragging(true);onSeek(seekFrom(e));onHover&&onHover(null);}}
+        onTouchStart={e=>{setDragging(true);onSeek(seekFrom(e));}}
+        onMouseMove={e=>{if(!trackRef.current)return;if(dragging){onSeek(seekFrom(e));}else{onHover&&onHover(seekFrom(e));}}}
+        onMouseLeave={()=>{if(!dragging)onHover&&onHover(null);}}
+        style={{flex:1,height:24,position:'relative',cursor:'pointer',display:'flex',alignItems:'center'}}>
+        <div style={{position:'absolute',left:0,right:0,height:4,background:'rgba(255,255,255,0.12)',borderRadius:2}}/>
+        <div style={{position:'absolute',left:0,width:pct+'%',height:4,background:'#e7a23c',borderRadius:2}}/>
+        <div style={{position:'absolute',left:pct+'%',top:'50%',width:12,height:12,marginLeft:-6,marginTop:-6,background:'#fff',borderRadius:6,boxShadow:'0 2px 4px rgba(0,0,0,0.4)'}}/>
+      </div>
+      <div style={{fontFamily:mono,fontSize:11,fontVariantNumeric:'tabular-nums',width:72,color:'rgba(246,244,239,0.4)',flexShrink:0}}>{fmt(duration)}</div>
+      <div style={{fontFamily:mono,fontSize:10,color:'rgba(246,241,231,0.3)',letterSpacing:'0.14em',textTransform:'uppercase',flexShrink:0}}>{label}</div>
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+function App() {
+  const PKEY = 'blss-B · Day in the Life';
+
+  const [tweaks] = React.useState(TWEAK_DEFAULTS);
+  // apply brand
+  BRAND.amber   = tweaks.accent;
+  BRAND.amberDim = tweaks.accent + '2e';
+  BRAND.display  = FONT_STACKS[tweaks.fontStack] || FONT_STACKS['Inter Tight'];
+
+  const [time, setTime]       = React.useState(0);
+  const [playing, setPlaying] = React.useState(true);
+  const [hoverT, setHoverT]   = React.useState(null);
+  const [scale, setScale]     = React.useState(1);
+
+  const containerRef = React.useRef(null);
+  const lastTs       = React.useRef(null);
+  const rafId        = React.useRef(null);
+
+  // persist playhead
+  React.useEffect(() => {
+    try { localStorage.setItem(PKEY+':t', String(time)); } catch{}
+  }, [time]);
+
+  // keyboard
+  React.useEffect(() => {
+    const onKey = e => {
+      if (e.target && (e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) return;
+      if (e.code==='Space')    { e.preventDefault(); setPlaying(p=>!p); }
+      if (e.code==='ArrowLeft')  setTime(t=>clamp(t-(e.shiftKey?1:0.1),0,DURATION));
+      if (e.code==='ArrowRight') setTime(t=>clamp(t+(e.shiftKey?1:0.1),0,DURATION));
+      if (e.key==='0'||e.code==='Home') setTime(0);
+    };
+    window.addEventListener('keydown', onKey);
+    return ()=>window.removeEventListener('keydown', onKey);
+  },[]);
+
+  // RAF loop
+  React.useEffect(() => {
+    if (!playing) { lastTs.current=null; return; }
+    const step = ts => {
+      if (lastTs.current==null) lastTs.current=ts;
+      const dt = (ts-lastTs.current)/1000 * tweaks.playbackSpeed;
+      lastTs.current = ts;
+      setTime(t => { let n=t+dt; if(n>=DURATION) n=n%DURATION; return n; });
+      rafId.current = requestAnimationFrame(step);
+    };
+    rafId.current = requestAnimationFrame(step);
+    return ()=>{ if(rafId.current) cancelAnimationFrame(rafId.current); lastTs.current=null; };
+  }, [playing, tweaks.playbackSpeed]);
+
+  // responsive scale
+  React.useEffect(() => {
+    if (!containerRef.current) return;
+    const el = containerRef.current;
+    const measure = () => {
+      const s = Math.min(el.clientWidth/STAGE_W, el.clientHeight/STAGE_H);
+      setScale(Math.max(0.04, s));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener('resize', measure);
+    return ()=>{ ro.disconnect(); window.removeEventListener('resize',measure); };
+  }, []);
+
+  const displayTime = hoverT != null ? hoverT : time;
+  const ctxVal = React.useMemo(()=>({ time:displayTime, duration:DURATION, playing, setTime, setPlaying }),[displayTime,playing]);
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',height:'100%',background:'#0a0a0a',paddingTop:'env(safe-area-inset-top,0px)'}}>
+      {/* Canvas area */}
+      <div ref={containerRef} style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',minHeight:0}}>
+        <div style={{width:STAGE_W,height:STAGE_H,background:'#0e0d0b',position:'relative',transform:'scale('+scale+')',transformOrigin:'center',flexShrink:0,overflow:'hidden',boxShadow:'0 20px 60px rgba(0,0,0,0.5)'}}>
+          <TimelineContext.Provider value={ctxVal}>
+            <VariationB opts={tweaks}/>
+          </TimelineContext.Provider>
+        </div>
+      </div>
+      {/* Playback bar */}
+      <PlaybackBarFull
+        time={displayTime}
+        duration={DURATION}
+        playing={playing}
+        label="B · Day in the Life"
+        onPlayPause={()=>setPlaying(p=>!p)}
+        onReset={()=>setTime(0)}
+        onSeek={t=>setTime(t)}
+        onHover={t=>setHoverT(t)}
+      />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+</script>
+</body>
+</html>
